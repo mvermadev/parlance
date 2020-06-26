@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-         The RecruitingMonk Development in MV branch.
+         The RecruitingMonk Development in MV branch load-2.
         </p>
         <a
           className="App-link"
