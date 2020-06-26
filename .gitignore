@@ -24,4 +24,4 @@ yarn-error.log*
 
 # MyIgnore
 .ABC_ignore
-.ignore_file.js
+ignore_file.js
