@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # MyIgnore - folder
-.ABC_ignore
+.ABC_ignore/
 
 # MyIgnore - file
-.ignore_file.js*
+ignore_file.js
