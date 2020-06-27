@@ -1,0 +1,20 @@
+.TopHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.logo img{
+    width: 100px;
+    height: 40px;
+    position: relative;
+    top: 5px;
+}
+
+.signin{
+    padding-right: 15px;
+    color: #b32800;
+    font-weight: bold;
+}
