@@ -15,6 +15,7 @@ import logo from '../../../img/logo.png'
 import '../universal.css'
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import MovieIcon from '@material-ui/icons/Movie';
+import Sign from '../../Authentication/GetIn/Sign';
 
 const useStyles = makeStyles({
   list: {
@@ -51,11 +52,11 @@ export default function TopHeader() {
       <List>
         <ListItem button>
                 <ListItemIcon> <LiveHelpIcon style={{color : '#b32800'}}/> </ListItemIcon>
-                <ListItemText primary='Question'  style={{color : '#b32800'}}/>
+                <ListItemText primary='Questions'  style={{color : '#b32800'}}/>
         </ListItem>
         <ListItem button>
                 <ListItemIcon> <MailIcon style={{color : '#b32800'}}/> </ListItemIcon>
-                <ListItemText primary='FolloMont - Bot'  style={{color : '#b32800'}}/>
+                <ListItemText primary='FellowMont - Bot'  style={{color : '#b32800'}}/>
         </ListItem>
         <ListItem button>
                 <ListItemIcon> <MovieIcon style={{color : '#b32800'}} /> </ListItemIcon>
@@ -98,7 +99,7 @@ export default function TopHeader() {
   const signin = () =>{
     return(
         <div className="signin">
-            <p>Sign in</p>
+            <p><Sign/> </p>
         </div>
     )
   }

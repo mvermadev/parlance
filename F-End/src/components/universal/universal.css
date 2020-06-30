@@ -13,8 +13,34 @@
     top: 5px;
 }
 
-.signin{
-    padding-right: 15px;
-    color: #b32800;
-    font-weight: bold;
+
+
+.BottomHeader{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.BottomHeader form input{
+    border: 1px solid #b32800;
+    line-height: 25px;
+    width: 60vw;
+    border-radius: none;
+    border-radius: 5px 0px 0px 5px;
+    padding: 5px 10px;
+}
+
+.BottomHeader form button{
+    line-height: 35px;
+    background-color: #b32800;
+    color: #ffffff;
+    width: 60px;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.BottomNav{
+    width: '100vw';
+    position: absolute;
+    bottom: 0px;
 }

@@ -7,6 +7,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import BottomHeader from './BottomHeader';
+import { Divider } from '@material-ui/core';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,9 +46,6 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100vw',
-  },
-  textColor: {
-      color: '#b32800'
   }
 }));
 
@@ -74,10 +73,12 @@ export default function MiddleHeader() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Popular" {...a11yProps(0)} />
+          <Tab label="Popular" {...a11yProps(0)}  />
           <Tab label="Recent" {...a11yProps(1)} />
           <Tab label="Viewed" {...a11yProps(2)} />
         </Tabs>
+        <Divider/>
+        <BottomHeader/>
       </AppBar>
       <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

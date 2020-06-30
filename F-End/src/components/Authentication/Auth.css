@@ -1,0 +1,21 @@
+.signin{
+    padding-right: 15px;
+    color: #b32800;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+}
+
+.apiBtn{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 75vw;
+}
+
+.apiBtn Button{
+    margin: 5px;
+    font-size: 15px;
+    line-height: 0;
+}
