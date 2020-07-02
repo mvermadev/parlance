@@ -7,10 +7,11 @@
 
 
 .logo img{
-    width: 100px;
-    height: 40px;
-    position: relative;
-    top: 5px;
+    width: 71.45px;
+    height: 28px;
+    position: absolute;
+    left: calc(50% - 71.45px/2 - 2.78px);
+    top: 14px;
 }
 
 
@@ -19,19 +20,24 @@
     display: flex;
     justify-content: center;
     padding: 10px;
+    position: absolute;
+    top: 41px;
+    left: 0px;
+    right: 0px;
+
 }
 
 .BottomHeader form input{
-    border: 1px solid #b32800;
-    line-height: 25px;
-    width: 60vw;
+    border: 2px solid #b32800;
+    height: 36px;
+    width: 75vw;
     border-radius: none;
     border-radius: 5px 0px 0px 5px;
     padding: 5px 10px;
 }
 
 .BottomHeader form button{
-    line-height: 35px;
+    height: 36px;
     background-color: #b32800;
     color: #ffffff;
     width: 60px;

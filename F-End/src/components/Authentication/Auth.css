@@ -1,11 +1,21 @@
-.signin{
+.signinModal{
+    width: 80vw;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: none;
+    border-radius: 7px;
+}
+
+/* .signin{
     padding-right: 15px;
     color: #b32800;
     font-weight: bold;
     background-color: transparent;
-    border: none;
     font-size: 17px;
-}
+} */
 
 .apiBtn{
     display: flex;
@@ -18,4 +28,31 @@
     margin: 5px;
     font-size: 15px;
     line-height: 0;
+}
+
+.addtnlLogTool{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    color: rgb(109, 109, 109);
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgb(180, 176, 176);
+}
+.separator::before {
+    margin-right: .25em;
+}
+.separator::after {
+    margin-left: .25em;
 }

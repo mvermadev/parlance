@@ -46,6 +46,8 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100vw',
+    position: 'absolute',
+    top: '53px'
   }
 }));
 
@@ -78,7 +80,6 @@ export default function MiddleHeader() {
           <Tab label="Viewed" {...a11yProps(2)} />
         </Tabs>
         <Divider/>
-        <BottomHeader/>
       </AppBar>
       <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

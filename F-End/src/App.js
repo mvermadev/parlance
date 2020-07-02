@@ -5,7 +5,7 @@ import Collector from './components/Collector';
 
 function App() {
   return (
-    <div>
+    <div className="App">
           <Collector/>
     </div>
   );

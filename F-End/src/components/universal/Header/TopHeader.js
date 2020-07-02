@@ -73,7 +73,7 @@ export default function TopHeader() {
         ['left'].map((anchor) => (
             <React.Fragment key={anchor}>
               <Button onClick={toggleDrawer(anchor, true)}>
-                  <MenuIcon style={{ color: '#b32800' }} fontSize="medium" />
+                  <MenuIcon style={{ color: '#b32800', position: 'absolute', top: '12px', left: '19px' }} fontSize="medium" />
               </Button>
               <SwipeableDrawer
                 anchor={anchor}
@@ -98,7 +98,7 @@ export default function TopHeader() {
 
   const signin = () =>{
     return(
-        <div className="signin">
+        <div>
             <p><Sign/> </p>
         </div>
     )
