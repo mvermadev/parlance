@@ -11,6 +11,7 @@
     height: 40px;
     position: relative;
     top: 5px;
+    color: '#B0343C'
 }
 
 
@@ -22,8 +23,8 @@
 }
 
 .BottomHeader form input{
-    border: 1px solid #b32800;
-    line-height: 25px;
+    border: 2px solid #B0343C;
+    height: 36px;
     width: 60vw;
     border-radius: none;
     border-radius: 5px 0px 0px 5px;
@@ -31,8 +32,8 @@
 }
 
 .BottomHeader form button{
-    line-height: 35px;
-    background-color: #b32800;
+    height: 36px;
+    background-color: #B0343C;
     color: #ffffff;
     width: 60px;
     border: none;

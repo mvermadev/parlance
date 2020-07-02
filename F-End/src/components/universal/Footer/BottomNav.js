@@ -10,7 +10,7 @@ import PersonIcon from '@material-ui/icons/Person';
 const useStyles = makeStyles({
   root: {
     width: '100vw',
-    backgroundColor: '#b32800',
+    backgroundColor: '#B0343C',
     position: 'absolute',
     bottom: '0px',
 },
