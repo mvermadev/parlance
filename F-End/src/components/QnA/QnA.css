@@ -1,0 +1,69 @@
+.QuesCard{
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #c2c0c0;
+    margin: 0px 10px;
+    background-color: #fff;
+    line-height: 20px;
+    max-height: 35vh;
+    padding: 0px;
+}
+
+.QuesCard .topQues{
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    line-height: 0;
+}
+
+.QuesCard .topQues img{
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+}
+
+.QuesCard .topQues .topQues1{
+    padding-left: 10px;
+}
+
+.QuesCard .topQues .topQues2{
+    display: flex;
+}
+
+.QuesCard .topQues .topQues2 p{
+    padding-left: 10px;
+    font-size: 14px;
+    color: #333333;
+    position: relative;
+    bottom: 5px;
+}
+
+.QuesCard .middleQues{
+   display: flex;
+   flex-flow: column wrap;
+    padding: 0px 10px;
+    position: relative;
+    bottom: 15px;
+}
+
+.QuesCard .middleQues p:nth-child(2){
+    position: relative;
+    bottom: 20px;
+}
+
+.QuesCard .btmQues{
+    position: relative;
+    bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+
+.QuesCard .btmQues .btmQues2{
+    display: flex;
+    align-items: center;
+}
+
+

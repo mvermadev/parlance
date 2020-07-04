@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 35px;
+    background-color: #fff;
 }
 
 
@@ -19,12 +21,13 @@
 .BottomHeader{
     display: flex;
     justify-content: center;
-    padding: 10px;
-    position: absolute;
-    top: 41px;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    top: 0px;
     left: 0px;
     right: 0px;
-
+    border-top: 3px solid #f0f0f0;
+    background-color: #fff;
 }
 
 .BottomHeader form input{
@@ -34,6 +37,10 @@
     border-radius: none;
     border-radius: 5px 0px 0px 5px;
     padding: 5px 10px;
+}
+
+.BottomHeader form input{
+    background-color: #F5F5F5;
 }
 
 .BottomHeader form button{
@@ -49,4 +56,29 @@
     width: '100vw';
     position: absolute;
     bottom: 0px;
+}
+
+.Filter{
+    background-color: #f0f0f0;
+}
+
+.Filter .topFilter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+    font-weight: bold;
+}
+
+.Filter .btmFilter{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 15px;
+    color: #353535;
+}
+
+.Filter .btmFilter p:nth-child(2){
+    margin-left: 20px;
 }
