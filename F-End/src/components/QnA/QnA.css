@@ -2,11 +2,16 @@
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 20px #c2c0c0;
-    margin: 0px 10px;
+    margin: 15px 10px;
     background-color: #fff;
     line-height: 20px;
-    max-height: 35vh;
+    height: auto;
     padding: 0px;
+    z-index: 1;
+}
+
+.QuesCard:nth-last-child(1){
+    margin-bottom: 70px;
 }
 
 .QuesCard .topQues{
@@ -38,22 +43,34 @@
     bottom: 5px;
 }
 
+.QuesCard .topQuesHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .QuesCard .middleQues{
    display: flex;
    flex-flow: column wrap;
     padding: 0px 10px;
     position: relative;
-    bottom: 15px;
+    /* bottom: 15px; */
 }
 
 .QuesCard .middleQues p:nth-child(2){
     position: relative;
-    bottom: 20px;
+    /* bottom: 10px; */
+    color: #333333
+}
+
+.QuesCard .middleQues img {
+    width: 100%;
+    height: 100px;
 }
 
 .QuesCard .btmQues{
     position: relative;
-    bottom: 40px;
+    /* bottom: 2rem; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -66,4 +83,16 @@
     align-items: center;
 }
 
+.QuesCard .btmQues .btmQues1 {
+    display: flex;
+    align-items: center;
+}
 
+.QuesCard .btmQues .btmQues1 .cardIcons{
+    display: flex;
+    align-items: center;
+}
+
+.QuesCard .btmQues .btmQues1 .cardIcons p{
+    color: rgb(38, 0, 176);
+}

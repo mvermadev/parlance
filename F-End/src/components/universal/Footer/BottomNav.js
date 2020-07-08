@@ -11,8 +11,9 @@ const useStyles = makeStyles({
   root: {
     width: '100vw',
     backgroundColor: '#b32800',
-    position: 'absolute',
+    position: 'fixed',
     bottom: '0px',
+    zIndex: '99'
 },
 });
 
@@ -29,7 +30,9 @@ export default function BottomNav() {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction label="HOME" icon={<HomeIcon style={{color: '#fff'}} />}  style={{color: '#fff'}} />
+      <BottomNavigationAction label="HOME" icon={<HomeIcon style={{color: '#fff'}} />}  style={{color: '#fff'}} >
+        <p>gkhjkh</p>
+      </BottomNavigationAction>
       <BottomNavigationAction label="COMMUNITY" icon={<ForumIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
       <BottomNavigationAction label="SUPPORT" icon={<LiveHelpIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
       <BottomNavigationAction label="PROFILE" icon={<PersonIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
