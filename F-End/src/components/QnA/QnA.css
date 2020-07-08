@@ -1,4 +1,4 @@
-.QuesCard{
+.QuesCard, .PopularPosts{
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 20px #c2c0c0;
@@ -11,7 +11,7 @@
 }
 
 .QuesCard:nth-last-child(1){
-    margin-bottom: 70px;
+    /* margin-bottom: 70px; */
 }
 
 .QuesCard .topQues{
@@ -95,4 +95,48 @@
 
 .QuesCard .btmQues .btmQues1 .cardIcons p{
     color: rgb(38, 0, 176);
+}
+
+.PopularPosts{
+    margin-bottom: 70px;
+    line-height: 15px;
+}
+
+.PopularPosts .allPosts{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.PopularPosts .postTitle .postTitle1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.PopularPosts .postTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 20px
+}
+
+.PopularPosts .postTitle h3{
+    margin-left: 10px;
+    color: #545454
+} 
+
+.PopularPosts .allPosts .post{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.PopularPosts .allPosts .post p:nth-child(1){
+    color: #B0343C;
+    font-size: 18px;
+}
+
+.PopularPosts .allPosts .post p:nth-child(2){
+    color: rgb(38, 0, 176);
+    font-size: 16px;
 }

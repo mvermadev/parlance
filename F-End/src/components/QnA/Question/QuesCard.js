@@ -13,8 +13,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import PopularPosts from '../PopularPosts'
 import '../QnA.css'
-
+ 
 function QuesCard() {
 
     const titleCard =
@@ -200,6 +201,7 @@ function QuesCard() {
             {urlCardCompo()}
             {titleCardCompo()}
             {urlCardCompo()}
+            <PopularPosts/>
         </div>
     )
 
