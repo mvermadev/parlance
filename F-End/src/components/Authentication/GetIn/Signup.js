@@ -13,10 +13,11 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
+import MailIcon from '@material-ui/icons/Mail';
+import {useHistory} from 'react-router-dom'
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Signup from './Signup';
-import Forget from './Forget';
+import Sign from './Sign';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +39,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
  
-export default function Sign() {
+export default function Signup() {
+
+    const history = useHistory();
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -62,14 +66,15 @@ export default function Sign() {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
 
-      // const doSignUp =()=>{
-      //   document.getElementById('siginModalId').style.display = 'none';
-      // }
+    
+    //   const doSignUp =()=>{
+    //     document.getElementById('siginModalId').style.display = 'none';
+    // }
 
   return (
     <div>
-      <Button style={{color: '#B0343C', fontWeight: 'bold', position: 'absolute', top: '8px', right: '16px'}} type="button" onClick={handleOpen}>
-        Sign in
+      <Button style={{color: '#B0343C', fontWeight: 'bold'}} type="button" onClick={handleOpen}>
+        Sign Up
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -92,19 +97,26 @@ export default function Sign() {
 
             <div class="separator">or use</div>
 
-              <div className={classes.margin} className="inputFields">
-                <div>
+              <div className={classes.margin}>
+              
               <Grid container spacing={1} alignItems="flex-end">
                 <Grid item>
                   <AccountCircle style={{color: '#767676'}} />
                 </Grid>
                 <Grid item>
+                  <TextField id="input-with-icon-grid" label="Username" type="text" requireds/>
+                </Grid>
+              </Grid>
+              
+              <Grid container spacing={1} alignItems="flex-end">
+                <Grid item>
+                  <MailIcon style={{color: '#767676'}} />
+                </Grid>
+                <Grid item>
                   <TextField id="input-with-icon-grid" label="Email" type="email" requireds/>
                 </Grid>
               </Grid>
-                </div>
 
-              <div>
               <Grid container spacing={1} alignItems="flex-end">
                 <Grid item>
                   <LockIcon style={{color: '#767676'}} />
@@ -113,34 +125,23 @@ export default function Sign() {
                   <TextField id="input-with-icon-grid" label="Password" type="password" requireds/>
                 </Grid>
               </Grid>
-              </div>
-            </div>
 
-            <div className="addtnlLogTool">
-            <FormGroup 
-              style={{fontSize:'10px'}}
-            >
-              <FormControlLabel className="addtnlLogTool"
-                control={<Checkbox checked={state.checkedMe} onChange={handleChange} name="checkedMe" style={{color: '#767676', fontSize: '10px'}}  size="small"/>}
-                label="Remember Me!"
-                />
-                </FormGroup>
-             
-              <p style={{color: '#B0343C'}}>
-               <Forget/>
-              </p>
+              <Grid container spacing={1} alignItems="flex-end">
+                <Grid item>
+                  <LockIcon style={{color: '#767676'}} />
+                </Grid>
+                <Grid item>
+                  <TextField id="input-with-icon-grid" label="Confirm Password" type="password" requireds/>
+                </Grid>
+              </Grid>
             </div>
 
             <div className="logBtn">
               <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw'}}>
-                Login
+                Signup
               </Button>
             </div>
-            <div className="signUpBtn">
-              <p>Don't have account, </p>
-              {/* <Button color="primary">Sign Up Here</Button> */}
-              <p><Signup/></p>
-            </div>
+
           </div>
         </Fade>
       </Modal>

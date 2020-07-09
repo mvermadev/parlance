@@ -7,6 +7,7 @@
     flex-direction: column;
     border: none;
     border-radius: 7px;
+    display: block;
 }
 
 /* .signin{
@@ -35,6 +36,18 @@
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
+}
+
+.signinModal .signUpBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -15px;
+}
+
+.signinModal .inputFields{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .separator {

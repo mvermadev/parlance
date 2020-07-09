@@ -16,7 +16,6 @@ import LockIcon from '@material-ui/icons/Lock';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Signup from './Signup';
-import Forget from './Forget';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
  
-export default function Sign() {
+export default function Forget() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -68,9 +67,9 @@ export default function Sign() {
 
   return (
     <div>
-      <Button style={{color: '#B0343C', fontWeight: 'bold', position: 'absolute', top: '8px', right: '16px'}} type="button" onClick={handleOpen}>
-        Sign in
-      </Button>
+      <p style={{color: '#B0343C', fontSize: '16px'}} onClick={handleOpen}>
+        Forget Password?
+      </p>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -85,15 +84,8 @@ export default function Sign() {
       >
         <Fade in={open} className="signinModal" id="siginModalId">
           <div className={classes.paper}>
-            <div className="apiBtn" id="transition-modal-title">
-                <Button id="transition-modal-description" variant="contained" color="secondary">Continue with <p style={{fontWeight: 'bold'}}>&nbsp;Google</p></Button>
-                <Button id="transition-modal-description" variant="contained" color="primary">Continue with <p style={{fontWeight: 'bold'}}>&nbsp;LinkedIn</p></Button>
-            </div>
 
-            <div class="separator">or use</div>
-
-              <div className={classes.margin} className="inputFields">
-                <div>
+              <div className={classes.margin}>
               <Grid container spacing={1} alignItems="flex-end">
                 <Grid item>
                   <AccountCircle style={{color: '#767676'}} />
@@ -102,45 +94,15 @@ export default function Sign() {
                   <TextField id="input-with-icon-grid" label="Email" type="email" requireds/>
                 </Grid>
               </Grid>
-                </div>
 
-              <div>
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  <LockIcon style={{color: '#767676'}} />
-                </Grid>
-                <Grid item>
-                  <TextField id="input-with-icon-grid" label="Password" type="password" requireds/>
-                </Grid>
-              </Grid>
-              </div>
-            </div>
-
-            <div className="addtnlLogTool">
-            <FormGroup 
-              style={{fontSize:'10px'}}
-            >
-              <FormControlLabel className="addtnlLogTool"
-                control={<Checkbox checked={state.checkedMe} onChange={handleChange} name="checkedMe" style={{color: '#767676', fontSize: '10px'}}  size="small"/>}
-                label="Remember Me!"
-                />
-                </FormGroup>
-             
-              <p style={{color: '#B0343C'}}>
-               <Forget/>
-              </p>
             </div>
 
             <div className="logBtn">
               <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw'}}>
-                Login
+                Reset
               </Button>
             </div>
-            <div className="signUpBtn">
-              <p>Don't have account, </p>
-              {/* <Button color="primary">Sign Up Here</Button> */}
-              <p><Signup/></p>
-            </div>
+
           </div>
         </Fade>
       </Modal>
