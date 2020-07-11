@@ -1,4 +1,4 @@
-.QuesCard, .PopularPosts{
+.QuesCard, .PopularPosts, .BookPdf{
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 20px #c2c0c0;
@@ -68,7 +68,7 @@
     height: 100px;
 }
 
-.QuesCard .btmQues{
+.QuesCard .btmQues, .BookPdf .btmQues{
     position: relative;
     /* bottom: 2rem; */
     display: flex;
@@ -78,22 +78,22 @@
 }
 
 
-.QuesCard .btmQues .btmQues2{
+.QuesCard .btmQues .btmQues2, .BookPdf .btmQues .btmQues2{
     display: flex;
     align-items: center;
 }
 
-.QuesCard .btmQues .btmQues1 {
+.QuesCard .btmQues .btmQues1, .BookPdf .btmQues .btmQues1 {
     display: flex;
     align-items: center;
 }
 
-.QuesCard .btmQues .btmQues1 .cardIcons{
+.QuesCard .btmQues .btmQues1 .cardIcons, .BookPdf .btmQues .btmQues1 .cardIcons{
     display: flex;
     align-items: center;
 }
 
-.QuesCard .btmQues .btmQues1 .cardIcons p{
+.QuesCard .btmQues .btmQues1 .cardIcons p, .BookPdf .btmQues .btmQues1 .cardIcons p {
     color: rgb(38, 0, 176);
 }
 
@@ -139,4 +139,45 @@
 .PopularPosts .allPosts .post p:nth-child(2){
     color: rgb(38, 0, 176);
     font-size: 16px;
+}
+
+.BookPdf .bpHead{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px 20px
+}
+
+.BookPdf .bpHead h3{
+    margin-left: 20px;
+}
+
+.BookPdf .body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -moz-overflow-scrolling: touch;
+}
+
+.BookPdf .body::-webkit-scrollbar {
+    display: none;
+  }
+.BookPdf .body::-moz-scrollbar {
+    display: none;
+  }  
+
+.BookPdf .body .body1{
+    margin: 5px;
+    width: 260px;
+    border: 5px solid #EFEAEA;
+    padding: 5px;
+    line-height: normal;
+    border-radius: 7px;
+}
+
+.BookPdf .body1 img{
+    width: 250px;
 }

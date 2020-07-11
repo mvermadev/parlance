@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -21,6 +22,9 @@ export default function BottomNav() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
+  const history = useHistory();
+
+
   return (
     <BottomNavigation
       value={value}
@@ -30,12 +34,15 @@ export default function BottomNav() {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction label="HOME" icon={<HomeIcon style={{color: '#fff'}} />}  style={{color: '#fff'}} >
-        <p>gkhjkh</p>
-      </BottomNavigationAction>
-      <BottomNavigationAction label="COMMUNITY" icon={<ForumIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
-      <BottomNavigationAction label="SUPPORT" icon={<LiveHelpIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
-      <BottomNavigationAction label="PROFILE" icon={<PersonIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
+     
+      <BottomNavigationAction onClick={()=>history.push('/')} label="HOME" icon={<HomeIcon style={{color: '#fff'}} />}  style={{color: '#fff'}} />
+  
+      <BottomNavigationAction onClick={()=>history.push('/community')} label="COMMUNITY" icon={<ForumIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} ></BottomNavigationAction>
+  
+      <BottomNavigationAction onClick={()=>history.push('/support')} label="SUPPORT" icon={<LiveHelpIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
+  
+      <BottomNavigationAction onClick={()=>history.push('/profile')} label="PROFILE" icon={<PersonIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
+  
     </BottomNavigation>
   );
 }

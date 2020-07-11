@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
-import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';import ShareIcon from '@material-ui/icons/Share';
+import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
+import ShareIcon from '@material-ui/icons/Share';
 import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
 import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -14,6 +15,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PopularPosts from '../PopularPosts'
+import BookPdf from './BookPdf'
 import '../QnA.css'
  
 function QuesCard() {
@@ -198,6 +200,7 @@ function QuesCard() {
     return (
         <div>
             {titleCardCompo()}
+            <BookPdf/>
             {urlCardCompo()}
             {titleCardCompo()}
             {urlCardCompo()}
