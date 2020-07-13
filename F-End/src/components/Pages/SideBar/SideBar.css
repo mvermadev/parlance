@@ -1,0 +1,27 @@
+.Library .libraryHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    position: relative;
+    bottom: 20px;
+    margin: 0px 10px;
+}
+
+.Library .libraryHead .libraryHead1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+
+}
+
+.Library .libraryHead .btmFilter{
+    display: inline;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 7px;
+    box-shadow: 1px 1px 10px silver;
+    position: relative;
+    top: 20px;
+    transition:0.5s;
+}
+

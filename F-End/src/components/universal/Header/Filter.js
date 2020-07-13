@@ -27,10 +27,7 @@ function Filter() {
                  <p>My Feed</p>
                  <TuneIcon size="small" onClick={click == 'false' ? showList : hideList} style={{color:'#000'}}/>
             </div>
-            {click == 'true' ? <div className="btmFilter">
-                                    <p>Category</p>
-                                    <p>Last Week</p>
-                                </div> : hideList}
+            {click == 'true' ? displayItem() : hideList}
         </div>
     )
 }

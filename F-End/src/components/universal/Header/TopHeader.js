@@ -1,4 +1,5 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -8,13 +9,12 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../../img/logo.png'
 import '../universal.css'
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
-import MovieIcon from '@material-ui/icons/Movie';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import Sign from '../../Authentication/GetIn/Sign';
 
 const useStyles = makeStyles({
@@ -31,6 +31,8 @@ export default function TopHeader() {
   const [state, setState] = React.useState({
     left: false,
   });
+
+  const history = useHistory();
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -58,9 +60,9 @@ export default function TopHeader() {
                 <ListItemIcon> <MailIcon style={{color : '#b32800'}}/> </ListItemIcon>
                 <ListItemText primary='FellowMont - Bot'  style={{color : '#b32800'}}/>
         </ListItem>
-        <ListItem button>
-                <ListItemIcon> <MovieIcon style={{color : '#b32800'}} /> </ListItemIcon>
-                <ListItemText primary='Videos'  style={{color : '#b32800'}}/>
+        <ListItem button onClick={()=>history.push('/library')}>
+                <ListItemIcon> <LibraryBooksIcon style={{color : '#b32800'}} /> </ListItemIcon>
+                <ListItemText primary='Library'  style={{color : '#b32800'}}/>
         </ListItem>
             
       </List>
@@ -90,7 +92,7 @@ export default function TopHeader() {
 
   const logoImg = () =>{
       return(
-          <div className="logo">
+          <div className="logo" onClick={()=>history.push('/')}>
               <img src={logo}></img>
           </div>
       )

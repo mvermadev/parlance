@@ -3,25 +3,19 @@ import MainHeader from './universal/Header/MainHeader'
 import BottomNav from './universal/Footer/BottomNav'
 import QuesCard from './QnA/Question/QuesCard'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Sign from './Authentication/GetIn/Sign'
 import Community from './Pages/Community'
+import Filter from './universal/Header/Filter'
+import Library from './Pages/SideBar/Libraries/Library'
 
 const MainCompo =()=> {
     return(
         <div>
+            <Filter/>
             <QuesCard/>
         </div>
     );
 }
 
-
-function Support() {
-    return (
-        <div>
-            <h4>Support</h4>
-        </div>
-    )
-}
 
 function Profile() {
     return (
@@ -39,8 +33,8 @@ function Collector() {
                     <Switch>
                         <Route exact path='/' component={MainCompo}/>
                         <Route path='/community' component={Community}/>
-                        <Route path='/support' component={Support}/>
                         <Route path='/profile' component={Profile}/>
+                        <Route path='/library' component={Library}/>
                     </Switch>
                 <BottomNav/>
             </div>

@@ -39,8 +39,6 @@ export default function BottomNav() {
   
       <BottomNavigationAction onClick={()=>history.push('/community')} label="COMMUNITY" icon={<ForumIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} ></BottomNavigationAction>
   
-      <BottomNavigationAction onClick={()=>history.push('/support')} label="SUPPORT" icon={<LiveHelpIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
-  
       <BottomNavigationAction onClick={()=>history.push('/profile')} label="PROFILE" icon={<PersonIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
   
     </BottomNavigation>

@@ -14,7 +14,6 @@ function BottomHeader() {
                 </button>
             </form>
         </div>
-            <Filter/>
         </div>
     )
 }
