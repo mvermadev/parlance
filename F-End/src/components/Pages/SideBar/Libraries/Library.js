@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -6,8 +7,12 @@ import Select from '@material-ui/core/Select';
 import DescriptionIcon from '@material-ui/icons/Description';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import MovieIcon from '@material-ui/icons/Movie';
+import Menu from '@material-ui/core/Menu';
 import TuneIcon from '@material-ui/icons/Tune';
 import '../SideBar.css'
+import Articles from './Articles';
+import BookPdf from '../../../QnA/Question/BookPdf';
+import Videos from './Videos';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -19,35 +24,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Library() {
+function Library(props) {
   const classes = useStyles();
-  const [content, setContent] = React.useState('Articles');
+  const [content, setContent] = useState(props.content);
+
+  const history = useHistory();
 
   const handleChange = (event) => {
     setContent(event.target.value);
   };
 
-    //   Filter ops:
-    const [click, setClick] = useState('false');
+    // Filter style
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const showList = () =>{
-        setClick('true');
-    }
-    const hideList =()=>{
-        setClick('false')
-    }
-
-    const displayItem = (e)=>{
-        return(
-            <div className="btmFilter">
-                <p>Category</p>
-                <p>Last Week</p>
-            </div>
-        )
-    }
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
 
   return (
-    <div className="Library">
+    <div className="LibraryHeader">
         <div className="libraryHead">
           <div className="libraryHead1">
               <p>Library</p>
@@ -59,24 +58,37 @@ export default function Library() {
                     className={classes.selectEmpty}
                     inputProps={{ 'aria-label': 'Without label' }}
                     >
-                    <MenuItem value="Articles"> 
+                    <MenuItem value='Articles' onClick={()=>history.push('/articles')}> 
                         <DescriptionIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/> Articles
                     </MenuItem>
-                    <MenuItem value="BookPdf">
-                        <MenuBookIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/>BookPdf
+                    <MenuItem value='BookPdfs' onClick={()=>history.push('/bookpdf')}>
+                        <MenuBookIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/>BookPdfs
                         </MenuItem>
-                    <MenuItem value="Videos">
+                    <MenuItem value='Videos' onClick={()=>history.push('/videos')}>
                         <MovieIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/>Videos
                         </MenuItem>
                     </Select>
                 </FormControl>
         </div>  
-                {click == 'true' ? displayItem() : hideList}
-               <div className="topFilter">
-                    <TuneIcon size="small" onClick={click == 'false' ? showList : hideList} style={{color:'#000'}}/>
-                </div>
+                    <TuneIcon  aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}
+                                style={{color: '#000', margin: '0px 10px'}}/>
+    
+                    <Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handleClose}>Category</MenuItem>
+                        <MenuItem onClick={handleClose}>Last Week</MenuItem>
+                    </Menu>
              
         </div>
     </div>
   );
 }
+
+
+
+export default Library

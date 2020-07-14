@@ -1,4 +1,4 @@
-.Library .libraryHead{
+.LibraryHeader .libraryHead{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -7,14 +7,14 @@
     margin: 0px 10px;
 }
 
-.Library .libraryHead .libraryHead1{
+.LibraryHeader .libraryHead .libraryHead1{
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
 
 }
 
-.Library .libraryHead .btmFilter{
+.LibraryHeader .libraryHead .btmFilter{
     display: inline;
     background-color: #fff;
     padding: 10px;

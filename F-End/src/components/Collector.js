@@ -6,6 +6,9 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Community from './Pages/Community'
 import Filter from './universal/Header/Filter'
 import Library from './Pages/SideBar/Libraries/Library'
+import Articles from './Pages/SideBar/Libraries/Articles'
+import Videos from './Pages/SideBar/Libraries/Videos'
+import BookPdf from './Pages/SideBar/Libraries/BookPdf'
 
 const MainCompo =()=> {
     return(
@@ -35,6 +38,9 @@ function Collector() {
                         <Route path='/community' component={Community}/>
                         <Route path='/profile' component={Profile}/>
                         <Route path='/library' component={Library}/>
+                        <Route path='/articles' component={Articles}/>
+                        <Route path='/bookpdf' component={BookPdf}/>
+                        <Route path='/videos' component={Videos}/>
                     </Switch>
                 <BottomNav/>
             </div>

@@ -60,7 +60,7 @@ export default function TopHeader() {
                 <ListItemIcon> <MailIcon style={{color : '#b32800'}}/> </ListItemIcon>
                 <ListItemText primary='FellowMont - Bot'  style={{color : '#b32800'}}/>
         </ListItem>
-        <ListItem button onClick={()=>history.push('/library')}>
+        <ListItem button onClick={()=>history.push('/articles')}>
                 <ListItemIcon> <LibraryBooksIcon style={{color : '#b32800'}} /> </ListItemIcon>
                 <ListItemText primary='Library'  style={{color : '#b32800'}}/>
         </ListItem>

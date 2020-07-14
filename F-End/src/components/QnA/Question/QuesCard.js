@@ -8,10 +8,10 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import profile from '../../../img/profile.jpeg'
-import bannerLogo from '../../../img/logo.png'
-import { withStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import bannerLogo from '../../../img/logo.png'
+import { withStyles } from '@material-ui/core/styles';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PopularPosts from '../PopularPosts'
