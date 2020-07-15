@@ -11,17 +11,18 @@
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
-
 }
 
-.LibraryHeader .libraryHead .btmFilter{
-    display: inline;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 7px;
-    box-shadow: 1px 1px 10px silver;
-    position: relative;
-    top: 20px;
-    transition:0.5s;
+.LibraryHeader .btmFilter{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: -2rem;
 }
 
+.LibraryHeader .btmFilter p{
+    background: #fff;
+    padding: 5px 15px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px silver;
+}

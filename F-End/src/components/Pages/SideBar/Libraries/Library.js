@@ -33,17 +33,24 @@ function Library(props) {
   const handleChange = (event) => {
     setContent(event.target.value);
   };
-
-    // Filter style
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
   
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
+  const [click, setClick] = useState('false');
+
+  const showList = () =>{
+      setClick('true');
+  }
+  const hideList =()=>{
+      setClick('false')
+  }
+
+  const displayItem = (e)=>{
+      return(
+          <div className="btmFilter">
+              <p>Category</p>
+              <p>Last Week</p>
+          </div>
+      )
+  }
 
   return (
     <div className="LibraryHeader">
@@ -59,7 +66,7 @@ function Library(props) {
                     inputProps={{ 'aria-label': 'Without label' }}
                     >
                     <MenuItem value='Articles' onClick={()=>history.push('/articles')}> 
-                        <DescriptionIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/> Articles
+                        <DescriptionIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/>Articles
                     </MenuItem>
                     <MenuItem value='BookPdfs' onClick={()=>history.push('/bookpdf')}>
                         <MenuBookIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/>BookPdfs
@@ -70,21 +77,15 @@ function Library(props) {
                     </Select>
                 </FormControl>
         </div>  
-                    <TuneIcon  aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}
-                                style={{color: '#000', margin: '0px 10px'}}/>
-    
-                    <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <MenuItem onClick={handleClose}>Category</MenuItem>
-                        <MenuItem onClick={handleClose}>Last Week</MenuItem>
-                    </Menu>
+          <div className="Filter" container>
+              <div className="topFilter">
+                    <TuneIcon size="small" onClick={click == 'false' ? showList : hideList} style={{color:'#000'}}/>
+              </div>
+
+          </div>
              
         </div>
+        {click == 'true' ? displayItem() : hideList}
     </div>
   );
 }
