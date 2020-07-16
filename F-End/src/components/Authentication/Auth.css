@@ -23,6 +23,8 @@
     justify-content: center;
     flex-direction: column;
     width: 75vw;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .apiBtn Button{
@@ -46,8 +48,12 @@
 }
 
 .signinModal .inputFields{
-    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: auto;
+    margin-left: auto;
+
 }
 
 .separator {

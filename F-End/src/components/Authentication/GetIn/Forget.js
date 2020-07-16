@@ -83,8 +83,10 @@ export default function Forget() {
         }}
       >
         <Fade in={open} className="signinModal" id="siginModalId">
+          
           <div className={classes.paper}>
 
+        <div className="inputFields">
               <div className={classes.margin}>
               <Grid container spacing={1} alignItems="flex-end">
                 <Grid item>
@@ -96,9 +98,9 @@ export default function Forget() {
               </Grid>
 
             </div>
-
+        </div>
             <div className="logBtn">
-              <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw'}}>
+              <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '.5rem'}}>
                 Reset
               </Button>
             </div>

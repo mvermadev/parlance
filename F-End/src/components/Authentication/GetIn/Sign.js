@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import '../Auth.css'
 import { Button, Divider, FormGroup, withStyles } from '@material-ui/core';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -17,6 +16,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Signup from './Signup';
 import Forget from './Forget';
+import '../Auth.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -92,7 +92,9 @@ export default function Sign() {
 
             <div class="separator">or use</div>
 
-              <div className={classes.margin} className="inputFields">
+            <div className="inputFields">
+              
+              <div className={classes.margin} >
                 <div>
               <Grid container spacing={1} alignItems="flex-end">
                 <Grid item>
@@ -114,6 +116,7 @@ export default function Sign() {
                 </Grid>
               </Grid>
               </div>
+            </div>
             </div>
 
             <div className="addtnlLogTool">

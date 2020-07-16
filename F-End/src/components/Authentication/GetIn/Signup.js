@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import '../Auth.css'
 import { Button, Divider, FormGroup, withStyles } from '@material-ui/core';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -18,6 +17,7 @@ import {useHistory} from 'react-router-dom'
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Sign from './Sign';
+import '../Auth.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -97,6 +97,7 @@ export default function Signup() {
 
             <div class="separator">or use</div>
 
+            <div className="inputFields">
               <div className={classes.margin}>
               
               <Grid container spacing={1} alignItems="flex-end">
@@ -135,9 +136,10 @@ export default function Signup() {
                 </Grid>
               </Grid>
             </div>
+            </div>
 
             <div className="logBtn">
-              <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw'}}>
+              <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '0.5rem'}}>
                 Signup
               </Button>
             </div>
