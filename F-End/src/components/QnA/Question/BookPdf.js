@@ -22,7 +22,7 @@ function BookPdf() {
                 img: '', //use it when we fetching it from the server.
                 vote: '3',
                 views: '40',
-              comments: '23'
+                comments: '23'
             },
             {
                 id:2,
@@ -31,7 +31,7 @@ function BookPdf() {
                 img: '', //use it when we fetching it from the server.
                 vote: '5',
                 views: '20',
-              comments: '63'
+                comments: '63'
             },
             {
                 id:3,
@@ -40,7 +40,7 @@ function BookPdf() {
                 img: '', //use it when we fetching it from the server.
                 vote: '13',
                 views: '60',
-              comments: '53'
+                comments: '53'
             },
             {
                 id:4,
@@ -49,10 +49,12 @@ function BookPdf() {
                 img: '', //use it when we fetching it from the server.
                 vote: '19',
                 views: '88',
-              comments: '66'
+                comments: '66'
             }
         ]
     })
+
+  
 
 
     //logic: Here, we will use state to fetch the popular posts to display.
@@ -79,22 +81,22 @@ function BookPdf() {
                             <div className="btmQues">
                             <div className="btmQues1">
                                 <div className="cardIcons">
-                                    <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px'}} />
+                                    <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
                                     <p>{info.comments}</p>
                                 </div>
                                 <div className="cardIcons">
-                                    <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px'}}/>
+                                    <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px'}}/>
                                     <p>{info.views}</p>
                                 </div>
-                                    <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px'}}/>
-                                    
+                                    <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+
                             </div>
                             <div className="btmQues2">
-                                    <ArrowDropUpIcon fontSize="large" style={{color: '#797979'}}/>
+                                    <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                                     <p style={{color: '#B0343C', fontWeight: 'bold'}}>
                                         {info.vote}
                                     </p>
-                                    <ArrowDropDownIcon fontSize="large" style={{color: '#797979'}}/>
+                                    <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                             </div>
                         </div>
                             </div>

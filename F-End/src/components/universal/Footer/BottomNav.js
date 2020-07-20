@@ -7,6 +7,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ForumIcon from '@material-ui/icons/Forum';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import PersonIcon from '@material-ui/icons/Person';
+import '../universal.css'
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +27,7 @@ export default function BottomNav() {
 
 
   return (
+    <div id="bottomNav">
     <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
@@ -42,5 +44,6 @@ export default function BottomNav() {
       <BottomNavigationAction onClick={()=>history.push('/profile')} label="PROFILE" icon={<PersonIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
   
     </BottomNavigation>
+    </div>
   );
 }

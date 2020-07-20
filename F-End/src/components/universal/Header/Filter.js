@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import TuneIcon from '@material-ui/icons/Tune';
+import '../universal.css'
 
 function Filter() {
 
@@ -25,7 +26,7 @@ function Filter() {
         <div className="Filter" container>
             <div className="topFilter">
                  <p>My Feed</p>
-                 <TuneIcon size="small" onClick={click == 'false' ? showList : hideList} style={{color:'#000'}}/>
+                 <TuneIcon size="small" onClick={click == 'false' ? showList : hideList} style={{color:'#000', cursor: 'pointer'}}/>
             </div>
             {click == 'true' ? displayItem() : hideList}
         </div>

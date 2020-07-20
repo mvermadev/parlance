@@ -31,7 +31,7 @@ function Profile() {
 function Collector() {
     return (
         <Router>
-            <div style={{backgroundColor: '#f0f0f0', height: '100vh' }}>
+            <div style={{backgroundColor: '#f0f0f0', height: '100%' }}>
                 <MainHeader/>
                     <Switch>
                         <Route exact path='/' component={MainCompo}/>

@@ -7,6 +7,7 @@ import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import profile from '../../../img/profile.jpeg'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -97,7 +98,7 @@ function QuesCard() {
                                 aria-controls="customized-menu"
                                 aria-haspopup="true"
                                 onClick={handleClick}
-                                style={{color: '#707070', margin: '0px 10px'}}/>
+                                style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
                 
                     <StyledMenu
                                 id="customized-menu"
@@ -131,7 +132,8 @@ function QuesCard() {
                 {cardHead()}
                 {titleCard}
             <div className="btmQues">
-                <div className="btmQues1">
+               
+                <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
                     <div className="cardIcons">
                         <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px'}} />
                         <p>23</p>
@@ -143,12 +145,13 @@ function QuesCard() {
                         <ShareIcon style={{color: '#707070', margin: '0px 10px'}}/>
                         
                 </div>
+                {deskCardHandles()}
                 <div className="btmQues2">
-                        <ArrowDropUpIcon fontSize="large" style={{color: '#797979'}}/>
+                        <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                         <p style={{color: '#B0343C', fontWeight: 'bold'}}>
                             3
                         </p>
-                        <ArrowDropDownIcon fontSize="large" style={{color: '#797979'}}/>
+                        <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                 </div>
             </div>
         </div>
@@ -172,39 +175,67 @@ function QuesCard() {
             {cardHead()}
             {UrlCard}
         <div className="btmQues">
-            <div className="btmQues1">
+            
+            <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
                 <div className="cardIcons">
-                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px'}} />
+                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
                     <p>23</p>
                 </div>
                 <div className="cardIcons">
-                    <VisibilityOutlinedIcon style={{color: '#707070', margin: '0px 10px'}}/>
+                    <VisibilityOutlinedIcon style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
                     <p>34</p>
                 </div>
-                    <ShareIcon style={{color: '#707070', margin: '0px 10px'}}/>
+                    <ShareIcon style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
                    
             </div>
+            {deskCardHandles()}
             <div className="btmQues2">
-                    <ArrowDropUpIcon fontSize="large" style={{color: '#797979'}}/>
+                    <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                     <p style={{color: '#B0343C', fontWeight: 'bold'}}>
                         3
                     </p>
-                    <ArrowDropDownIcon fontSize="large" style={{color: '#797979'}}/>
+                    <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
             </div>
         </div>
     </div>
         )
     }
 
+    const deskCardHandles=()=>{
+        return(
+            <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
+                                <div className="cardIcons">
+                                    <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
+                                    <p>Answers: 23</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Views: 59</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Share</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <BookmarkBorderIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Bookmark</p>
+                                </div>
+                            </div>
+        )
+    }
 
     return (
-        <div>
+        <div className="mainQuesCard">
+            <div>
             {titleCardCompo()}
             <BookPdf/>
             {urlCardCompo()}
             {titleCardCompo()}
             {urlCardCompo()}
+            </div>
+            <div>
             <PopularPosts/>
+            </div>
         </div>
     )
 

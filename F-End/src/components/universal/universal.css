@@ -21,6 +21,7 @@
 .BottomHeader{
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 10px 10px 10px 10px;
     position: relative;
     top: 0px;
@@ -77,8 +78,39 @@
     padding-left: 15px;
     font-size: 15px;
     color: #353535;
+    cursor: pointer;
+}
+
+.Filter .btmFilter p{
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 10px silver;
+    border-radius: 25px;
 }
 
 .Filter .btmFilter p:nth-child(2){
     margin-left: 20px;
+}
+
+@media only screen and (min-width: 800px){
+   
+        .Filter{
+            margin: 0px 3rem
+        }
+ 
+        .BottomHeader form input{
+            padding: 25px 10px;
+            font-size: 17px;
+        }
+
+        .BottomHeader form button{
+            height: 55px;
+            font-weight: bold;
+            width: 100px;
+        }
+
+        #bottomNav{
+            display: none ;
+        }
+
 }

@@ -10,10 +10,6 @@
     z-index: 1;
 }
 
-.QuesCard:nth-last-child(1){
-    /* margin-bottom: 70px; */
-}
-
 .QuesCard .topQues{
     display: flex;
     align-items: center;
@@ -180,4 +176,43 @@
 
 .BookPdf .body1 img{
     width: 250px;
+}
+
+#deskBtmQeus1{
+    display: none;
+}
+
+
+@media only screen and (min-width: 800px)
+{
+    .QuesCard, .BookPdf{
+        max-width: 40vw;
+        padding: 10px;
+        margin-right: 3rem;
+    }
+    .PopularPosts{
+        max-width: 20vw;
+        padding: 20px;
+    }
+    .PopularPosts .allPosts .post p{
+        margin-left:  10px;
+        margin-right:  10px;
+    }
+    .mainQuesCard{
+        display: flex;
+        justify-content: center;
+        margin-right: 3rem
+        
+    }
+    #mobBtmQeus1{
+        display: none;
+    }
+    #deskBtmQeus1{
+        display: block;
+        display: flex;
+    }
+    
+    .QuesCard .middleQues img{
+        height: 300px;
+    }
 }
