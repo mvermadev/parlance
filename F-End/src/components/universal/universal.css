@@ -92,10 +92,22 @@
     margin-left: 20px;
 }
 
+#deskTopHeader{
+    display: none;
+}
+
+
 @media only screen and (min-width: 800px){
    
         .Filter{
-            margin: 0px 3rem
+            margin: 0px 20vw
+        }
+
+        .BottomHeader .myForm{
+            width: 65vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
  
         .BottomHeader form input{
@@ -113,4 +125,53 @@
             display: none ;
         }
 
+       .TopHead #deskTopHeader{
+            display: block;
+            height: 100px;
+            width: auto;
+            background-color: #fff;
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+
+        }
+
+        .TopHeader #deskTopHeader #subTopHead{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        
+        }
+
+      .subTopHead2{
+          display: flex;
+          position: absolute;
+          bottom: 1.5rem;
+          left: 16rem;
+        }
+
+        .subTopHead2 Button{
+          color: rgba(0, 0, 0, 0.54);
+        }
+
+      .logo img{
+            position: relative;
+            top: auto;
+            left:70px;
+            width: 177px;
+            height: 68px;
+        }
+
+        #hamburger{
+            position: relative;
+            top: 1rem
+        }
+
+
+        #mobTopHeader{
+            display: none;
+        }
 }

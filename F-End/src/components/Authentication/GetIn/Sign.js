@@ -67,8 +67,8 @@ export default function Sign() {
       // }
 
   return (
-    <div>
-      <Button style={{color: '#B0343C', fontWeight: 'bold', position: 'absolute', top: '8px', right: '16px'}} type="button" onClick={handleOpen}>
+    <div className="Sign">
+      <Button className="signBtn" style={{color: '#B0343C', fontWeight: 'bold', position: 'absolute', top: '8px', right: '16px'}} type="button" onClick={handleOpen}>
         Sign in
       </Button>
       <Modal

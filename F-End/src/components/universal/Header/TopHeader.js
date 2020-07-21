@@ -46,7 +46,7 @@ export default function TopHeader() {
     <div
       className={clsx(classes.list, {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
+      })} 
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -74,7 +74,7 @@ export default function TopHeader() {
       return(
         ['left'].map((anchor) => (
             <React.Fragment key={anchor}>
-              <Button onClick={toggleDrawer(anchor, true)}>
+              <Button id="hamburger" onClick={toggleDrawer(anchor, true)}>
                   <MenuIcon style={{ color: '#b32800', position: 'absolute', top: '12px', left: '19px' }} fontSize="medium" />
               </Button>
               <SwipeableDrawer
@@ -107,13 +107,33 @@ export default function TopHeader() {
   }
 
   return (
-    <div className="TopHeader">
+    <div className="TopHead">
+
+    <div className="TopHeader" id="mobTopHeader">
         {sideBar()}
 
         {logoImg()}
 
         {signin()}
+    </div>
+        
+    <div id="deskTopHeader">
+      <div id="subTopHead">
+      {sideBar()}
+
+      {logoImg()}
+      <div className="subTopHead2">
+      <Button>Home</Button>
+      <Button>Community</Button>
+      </div>
+      </div>
+      
+      <div>
+      {signin()}
+      </div>
 
     </div>
+    </div>
+
   );
 }

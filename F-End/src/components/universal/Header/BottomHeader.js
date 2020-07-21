@@ -7,7 +7,7 @@ function BottomHeader() {
     return (
         <div>
         <div className="BottomHeader">
-            <form>
+            <form className="myForm">
                 <input type="search" name="search" placeholder="Question monk's wisdom, you seek!" />
                 <button type="submit">
                     ASK

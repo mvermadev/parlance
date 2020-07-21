@@ -188,7 +188,6 @@
     .QuesCard, .BookPdf{
         max-width: 40vw;
         padding: 10px;
-        margin-right: 3rem;
     }
     .PopularPosts{
         max-width: 20vw;
@@ -201,7 +200,6 @@
     .mainQuesCard{
         display: flex;
         justify-content: center;
-        margin-right: 3rem
         
     }
     #mobBtmQeus1{
@@ -210,6 +208,9 @@
     #deskBtmQeus1{
         display: block;
         display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
     }
     
     .QuesCard .middleQues img{
