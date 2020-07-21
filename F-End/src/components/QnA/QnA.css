@@ -158,12 +158,12 @@
     -moz-overflow-scrolling: touch;
 }
 
-.BookPdf .body::-webkit-scrollbar {
+/* .BookPdf .body::-webkit-scrollbar {
     display: none;
   }
 .BookPdf .body::-moz-scrollbar {
     display: none;
-  }  
+  }   */
 
 .BookPdf .body .body1{
     margin: 5px;
@@ -215,5 +215,25 @@
     
     .QuesCard .middleQues img{
         height: 300px;
+    }
+    .BookPdf .body{
+        overflow: scroll;
+    }
+
+    .BookPdf .body::-webkit-scrollbar {
+        display: block;
+    }
+    .BookPdf .body::-moz-scrollbar {
+        display: block;
+    }  
+
+    .BookPdf .body::-webkit-scrollbar:horizontal {
+        height: 11px;
+    }
+
+    .BookPdf .body::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 2px solid white; /* should match background, can't be transparent */
+        background-color: rgba(0, 0, 0, .5);
     }
 }
