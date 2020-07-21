@@ -123,8 +123,8 @@ export default function TopHeader() {
 
       {logoImg()}
       <div className="subTopHead2">
-      <Button>Home</Button>
-      <Button>Community</Button>
+      <Button onClick={()=>history.push('/')}>Home</Button>
+      <Button onClick={()=>history.push('community')}>Community</Button>
       </div>
       </div>
       

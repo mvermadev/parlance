@@ -78,10 +78,12 @@ function BookPdf(){
     return(
         <div>
             <Library content='BookPdfs'/>
+          <div className="Cards">
             <BookPdfCode/>
             <BookPdfCode/>
             <BookPdfCode/>
             <BookPdfCode/>
+         </div>
         </div>
     )
 }
