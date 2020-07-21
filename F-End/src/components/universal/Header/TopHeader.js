@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -92,7 +92,7 @@ export default function TopHeader() {
 
   const logoImg = () =>{
       return(
-          <div className="logo" onClick={()=>history.push('/')}>
+          <div className="logo" onClick={()=>history.push('/')} style={{cursor: 'pointer'}}>
               <img src={logo}></img>
           </div>
       )
@@ -104,6 +104,21 @@ export default function TopHeader() {
             <p><Sign/> </p>
         </div>
     )
+  }
+
+  const [homeStyle, setHomeStyle] = useState('#B0343C')
+  const [comStyle, setComStyle] = useState('')
+
+  const btnHome = ()=>{
+    history.push('/');
+    setHomeStyle('#B0343C')
+    setComStyle('#757575')
+  }
+
+  const btnCom = ()=>{
+    history.push('/community');
+    setComStyle('#B0343C')
+    setHomeStyle('#757575')
   }
 
   return (
@@ -123,8 +138,8 @@ export default function TopHeader() {
 
       {logoImg()}
       <div className="subTopHead2">
-      <Button onClick={()=>history.push('/')}>Home</Button>
-      <Button onClick={()=>history.push('community')}>Community</Button>
+      <Button className="btnHome" style={{color: `${homeStyle}`}} onClick={btnHome}>Home</Button>
+      <Button className="btnCom" onClick={btnCom} style={{color: `${comStyle}`}}>Community</Button>
       </div>
       </div>
       

@@ -11,6 +11,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
+    margin-right: 300px;
 }
 
 .LibraryHeader .btmFilter{
