@@ -191,7 +191,7 @@
     }
     .PopularPosts{
         max-width: 20vw;
-        padding: 20px;
+        padding: 10px 20px;
     }
     .PopularPosts .allPosts .post p{
         margin-left:  10px;

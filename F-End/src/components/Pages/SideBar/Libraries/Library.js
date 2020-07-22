@@ -56,7 +56,7 @@ function Library(props) {
     <div className="LibraryHeader">
         <div className="libraryHead">
           <div className="libraryHead1">
-              <p>Library</p>
+              <p style={{fontWeight:'bold'}}>Library</p>
                 <FormControl className={classes.formControl} style={{marginLeft: '10px'}}>
                     <Select
                     value={content}
@@ -79,7 +79,7 @@ function Library(props) {
         </div>  
           <div className="Filter" container>
               <div className="topFilter">
-                    <TuneIcon size="small" onClick={click == 'false' ? showList : hideList} style={{color:'#000'}}/>
+                    <TuneIcon size="small" onClick={click == 'false' ? showList : hideList} style={{color:'#000', cursor: 'pointer'}}/>
               </div>
 
           </div>

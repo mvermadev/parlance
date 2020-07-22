@@ -11,19 +11,19 @@
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
-    margin-right: 300px;
+    position: relative;
+    left: 19vw;
 }
 
 .LibraryHeader .btmFilter{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin-top: -2rem;
+    
 }
 
 .LibraryHeader .btmFilter p{
-    background: #fff;
-    padding: 5px 15px;
-    border-radius: 25px;
-    box-shadow: 0px 0px 10px silver;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
