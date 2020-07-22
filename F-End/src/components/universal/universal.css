@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 35px;
+    background-color: #fff;
 }
 
 
@@ -19,7 +21,18 @@
 .BottomHeader{
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
     padding: 10px;
+=======
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    border-top: 3px solid #f0f0f0;
+    background-color: #fff;
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
 }
 
 .BottomHeader form input{
@@ -29,6 +42,10 @@
     border-radius: none;
     border-radius: 5px 0px 0px 5px;
     padding: 5px 10px;
+}
+
+.BottomHeader form input{
+    background-color: #F5F5F5;
 }
 
 .BottomHeader form button{
@@ -44,4 +61,115 @@
     width: '100vw';
     position: absolute;
     bottom: 0px;
+}
+
+.Filter{
+    background-color: #f0f0f0;
+}
+
+.Filter .topFilter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+    font-weight: bold;
+}
+
+.Filter .btmFilter{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 15px;
+    color: #353535;
+    cursor: pointer;
+}
+
+.Filter .btmFilter p:nth-child(2){
+    margin-left: 20px;
+}
+
+#deskTopHeader{
+    display: none;
+}
+
+
+@media only screen and (min-width: 800px){
+   
+        .Filter{
+            margin: 0px 19vw
+        }
+
+        .BottomHeader .myForm{
+            width: 61vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+ 
+        .BottomHeader form input{
+            padding: 25px 10px;
+            font-size: 17px;
+        }
+
+        .BottomHeader form button{
+            height: 55px;
+            font-weight: bold;
+            width: 100px;
+        }
+
+        #bottomNav{
+            display: none ;
+        }
+
+       .TopHead #deskTopHeader{
+            display: block;
+            height: 100px;
+            width: auto;
+            background-color: #fff;
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+
+        }
+
+        .TopHeader #deskTopHeader #subTopHead{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        
+        }
+
+      .subTopHead2{
+          display: flex;
+          position: absolute;
+          bottom: 1.5rem;
+          left: 16rem;
+        }
+
+        .subTopHead2 Button{
+          color: rgba(0, 0, 0, 0.54);
+          font-weight: bold;
+        }
+
+      .logo img{
+            position: relative;
+            top: auto;
+            left:70px;
+            width: 177px;
+            height: 68px;
+        }
+
+        #hamburger{
+            position: relative;
+            top: 1rem
+        }
+
+
+        #mobTopHeader{
+            display: none;
+        }
 }

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -8,13 +9,12 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../../img/logo.png'
 import '../universal.css'
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
-import MovieIcon from '@material-ui/icons/Movie';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import Sign from '../../Authentication/GetIn/Sign';
 
 const useStyles = makeStyles({
@@ -32,6 +32,8 @@ export default function TopHeader() {
     left: false,
   });
 
+  const history = useHistory();
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -44,7 +46,7 @@ export default function TopHeader() {
     <div
       className={clsx(classes.list, {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
+      })} 
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -58,9 +60,9 @@ export default function TopHeader() {
                 <ListItemIcon> <MailIcon style={{color : '#b32800'}}/> </ListItemIcon>
                 <ListItemText primary='FellowMont - Bot'  style={{color : '#b32800'}}/>
         </ListItem>
-        <ListItem button>
-                <ListItemIcon> <MovieIcon style={{color : '#b32800'}} /> </ListItemIcon>
-                <ListItemText primary='Videos'  style={{color : '#b32800'}}/>
+        <ListItem button onClick={()=>history.push('/articles')}>
+                <ListItemIcon> <LibraryBooksIcon style={{color : '#b32800'}} /> </ListItemIcon>
+                <ListItemText primary='Library'  style={{color : '#b32800'}}/>
         </ListItem>
             
       </List>
@@ -72,8 +74,13 @@ export default function TopHeader() {
       return(
         ['left'].map((anchor) => (
             <React.Fragment key={anchor}>
+<<<<<<< HEAD
               <Button onClick={toggleDrawer(anchor, true)}>
                   <MenuIcon style={{ color: '#b32800' }} fontSize="medium" />
+=======
+              <Button id="hamburger" onClick={toggleDrawer(anchor, true)}>
+                  <MenuIcon style={{ color: '#b32800', position: 'absolute', top: '12px', left: '19px' }} fontSize="medium" />
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
               </Button>
               <SwipeableDrawer
                 anchor={anchor}
@@ -90,7 +97,7 @@ export default function TopHeader() {
 
   const logoImg = () =>{
       return(
-          <div className="logo">
+          <div className="logo" onClick={()=>history.push('/')} style={{cursor: 'pointer'}}>
               <img src={logo}></img>
           </div>
       )
@@ -104,14 +111,49 @@ export default function TopHeader() {
     )
   }
 
+  const [homeStyle, setHomeStyle] = useState('#B0343C')
+  const [comStyle, setComStyle] = useState('')
+
+  const btnHome = ()=>{
+    history.push('/');
+    setHomeStyle('#B0343C')
+    setComStyle('#757575')
+  }
+
+  const btnCom = ()=>{
+    history.push('/community');
+    setComStyle('#B0343C')
+    setHomeStyle('#757575')
+  }
+
   return (
-    <div className="TopHeader">
+    <div className="TopHead">
+
+    <div className="TopHeader" id="mobTopHeader">
         {sideBar()}
 
         {logoImg()}
 
         {signin()}
+    </div>
+        
+    <div id="deskTopHeader">
+      <div id="subTopHead">
+      {sideBar()}
+
+      {logoImg()}
+      <div className="subTopHead2">
+      <Button className="btnHome" style={{color: `${homeStyle}`}} onClick={btnHome}>Home</Button>
+      <Button className="btnCom" onClick={btnCom} style={{color: `${comStyle}`}}>Community</Button>
+      </div>
+      </div>
+      
+      <div>
+      {signin()}
+      </div>
 
     </div>
+    </div>
+
   );
 }
