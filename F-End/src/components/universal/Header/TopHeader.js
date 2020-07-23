@@ -16,6 +16,7 @@ import '../universal.css'
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import Sign from '../../Authentication/GetIn/Sign';
+import SideBar from './DeskSideBar/SideBar';
 
 const useStyles = makeStyles({
   list: {
@@ -134,7 +135,7 @@ export default function TopHeader() {
         
     <div id="deskTopHeader">
       <div id="subTopHead">
-      {sideBar()}
+      <SideBar/>
 
       {logoImg()}
       <div className="subTopHead2">
