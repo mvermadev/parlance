@@ -12,8 +12,13 @@ import '../universal.css'
 const useStyles = makeStyles({
   root: {
     width: '100vw',
+<<<<<<< HEAD
+    backgroundColor: '#B0343C',
+    position: 'absolute',
+=======
     backgroundColor: '#b32800',
     position: 'fixed',
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
     bottom: '0px',
     zIndex: '99'
 },

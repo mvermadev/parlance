@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+.signin{
+=======
 .signinModal{
     width: 80vw;
     background-color: #fff;
@@ -11,12 +14,14 @@
 }
 
 /* .signin{
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
     padding-right: 15px;
-    color: #b32800;
+    color: #B0343C;
     font-weight: bold;
     background-color: transparent;
+    border: none;
     font-size: 17px;
-} */
+}
 
 .apiBtn{
     display: flex;
@@ -31,6 +36,8 @@
     margin: 5px;
     font-size: 15px;
     line-height: 0;
+<<<<<<< HEAD
+=======
 }
 
 .addtnlLogTool{
@@ -105,4 +112,5 @@
         margin-left: auto;
         margin-right: auto;
     }
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
 }

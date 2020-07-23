@@ -3,6 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+<<<<<<< HEAD
+import '../Auth.css'
+import { Button, Divider } from '@material-ui/core';
+=======
 import { Button, Divider, FormGroup, withStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -14,6 +18,7 @@ import Signup from './Signup';
 import Forget from './Forget';
 import '../Auth.css'
 
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -27,13 +32,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
     borderRadius: '7px'
   },
-  margin: {
-    margin: theme.spacing(1),
-  },
-
 }));
 
+<<<<<<< HEAD
+=======
  
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
 export default function Sign() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -46,6 +50,11 @@ export default function Sign() {
     setOpen(false);
   };
 
+<<<<<<< HEAD
+  return (
+    <div>
+      <button className="signin" type="button" onClick={handleOpen}>
+=======
   // For hanlding the remember user.
       const [state, setState] = React.useState({
         checkedMe: true,
@@ -65,8 +74,9 @@ export default function Sign() {
   return (
     <div className="Sign">
       <Button className="signBtn" style={{color: '#B0343C', fontWeight: 'bold', position: 'absolute', top: '8px', right: '16px'}} type="button" onClick={handleOpen}>
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
         Sign in
-      </Button>
+      </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -79,12 +89,20 @@ export default function Sign() {
           timeout: 500,
         }}
       >
+<<<<<<< HEAD
+        <Fade in={open}>
+=======
         <Fade in={open} className="signinModal" id="siginModalId">
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
           <div className={classes.paper}>
             <div className="apiBtn" id="transition-modal-title">
                 <Button id="transition-modal-description" variant="contained" color="secondary">Continue with <p style={{fontWeight: 'bold'}}>&nbsp;Google</p></Button>
                 <Button id="transition-modal-description" variant="contained" color="primary">Continue with <p style={{fontWeight: 'bold'}}>&nbsp;LinkedIn</p></Button>
             </div>
+<<<<<<< HEAD
+            <Divider/>
+
+=======
 
             <div class="separator">or use</div>
 
@@ -140,6 +158,7 @@ export default function Sign() {
               {/* <Button color="primary">Sign Up Here</Button> */}
               <p><Signup/></p>
             </div>
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
           </div>
         </Fade>
       </Modal>

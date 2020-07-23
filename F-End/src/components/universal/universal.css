@@ -9,11 +9,11 @@
 
 
 .logo img{
-    width: 71.45px;
-    height: 28px;
-    position: absolute;
-    left: calc(50% - 71.45px/2 - 2.78px);
-    top: 14px;
+    width: 100px;
+    height: 40px;
+    position: relative;
+    top: 5px;
+    color: '#B0343C'
 }
 
 
@@ -21,6 +21,9 @@
 .BottomHeader{
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
+    padding: 10px;
+=======
     align-items: center;
     padding: 10px 10px 10px 10px;
     position: relative;
@@ -29,12 +32,13 @@
     right: 0px;
     border-top: 3px solid #f0f0f0;
     background-color: #fff;
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
 }
 
 .BottomHeader form input{
-    border: 2px solid #b32800;
+    border: 2px solid #B0343C;
     height: 36px;
-    width: 75vw;
+    width: 60vw;
     border-radius: none;
     border-radius: 5px 0px 0px 5px;
     padding: 5px 10px;
@@ -46,7 +50,7 @@
 
 .BottomHeader form button{
     height: 36px;
-    background-color: #b32800;
+    background-color: #B0343C;
     color: #ffffff;
     width: 60px;
     border: none;
