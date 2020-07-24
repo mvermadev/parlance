@@ -21,7 +21,9 @@
 .BottomHeader{
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
     padding: 10px;
+=======
     align-items: center;
     padding: 10px 10px 10px 10px;
     position: relative;
@@ -30,6 +32,7 @@
     right: 0px;
     border-top: 3px solid #f0f0f0;
     background-color: #fff;
+>>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
 }
 
 .BottomHeader form input{
