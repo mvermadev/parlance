@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-.signin{
-=======
 .signinModal{
     width: 80vw;
     background-color: #fff;
@@ -13,8 +10,7 @@
     display: block;
 }
 
-/* .signin{
->>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
+ .signin{
     padding-right: 15px;
     color: #B0343C;
     font-weight: bold;
@@ -36,8 +32,6 @@
     margin: 5px;
     font-size: 15px;
     line-height: 0;
-<<<<<<< HEAD
-=======
 }
 
 .addtnlLogTool{
@@ -112,5 +106,4 @@
         margin-left: auto;
         margin-right: auto;
     }
->>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
 }

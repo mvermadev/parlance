@@ -75,13 +75,8 @@ export default function TopHeader() {
       return(
         ['left'].map((anchor) => (
             <React.Fragment key={anchor}>
-<<<<<<< HEAD
-              <Button onClick={toggleDrawer(anchor, true)}>
-                  <MenuIcon style={{ color: '#b32800' }} fontSize="medium" />
-=======
               <Button id="hamburger" onClick={toggleDrawer(anchor, true)}>
                   <MenuIcon style={{ color: '#b32800', position: 'absolute', top: '12px', left: '19px' }} fontSize="medium" />
->>>>>>> 799a354b441f12a16fdd54f30811f19e99ce4904
               </Button>
               <SwipeableDrawer
                 anchor={anchor}
