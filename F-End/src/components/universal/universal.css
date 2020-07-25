@@ -1,21 +1,20 @@
-.TopHeader{
+#mobTopHeader{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 35px;
     background-color: #fff;
+    z-index: 99;
+    margin-top: 5px;
 }
-
-
 
 .logo img{
     width: 100px;
     height: 40px;
+    color: '#B0343C';
+    cursor: pointer;
     position: relative;
-    top: 5px;
-    color: '#B0343C'
+    right: 7vw;
 }
-
 
 
 .BottomHeader{
@@ -92,80 +91,65 @@
 
 @media only screen and (min-width: 800px){
    
-        .Filter{
-            margin: 0px 19vw
-        }
+    .Filter{
+        margin: 0px 19vw
+    }
 
-        .BottomHeader .myForm{
-            width: 61vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
- 
-        .BottomHeader form input{
-            padding: 25px 10px;
-            font-size: 17px;
-        }
+    .BottomHeader .myForm{
+        width: 61vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .BottomHeader form button{
-            height: 55px;
-            font-weight: bold;
-            width: 100px;
-        }
+    .BottomHeader form input{
+        padding: 25px 10px;
+        font-size: 17px;
+    }
 
-        #bottomNav{
-            display: none ;
-        }
+    .BottomHeader form button{
+        height: 55px;
+        font-weight: bold;
+        width: 100px;
+    }
 
-       .TopHead #deskTopHeader{
-            display: block;
-            height: 100px;
-            width: auto;
-            background-color: #fff;
-            position: relative;
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: row;
-            align-items: center;
+    #bottomNav{
+        display: none ;
+    }
 
-        }
+    .TopHead #deskTopHeader{
+        display: block;
+        height: 100px;
+        width: auto;
+        background-color: #fff;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: center;
+    }
 
-        .TopHeader #deskTopHeader #subTopHead{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: row;
-        
-        }
+    .subTopHead2{
+        display: flex;
+        position: absolute;
+        bottom: 1.5rem;
+        left: 16rem;
+    }
 
-      .subTopHead2{
-          display: flex;
-          position: absolute;
-          bottom: 1.5rem;
-          left: 16rem;
-        }
+    .subTopHead2 Button{
+        color: rgba(0, 0, 0, 0.54);
+        font-weight: bold;
+    }
 
-        .subTopHead2 Button{
-          color: rgba(0, 0, 0, 0.54);
-          font-weight: bold;
-        }
+    .logo img{
+        position: relative;
+        top: auto;
+        left: 70px;
+        width: 177px;
+        height: 68px;
+    }
 
-      .logo img{
-            position: relative;
-            top: auto;
-            left:70px;
-            width: 177px;
-            height: 68px;
-        }
-
-        #hamburger{
-            position: relative;
-            top: 1rem
-        }
-
-
-        #mobTopHeader{
-            display: none;
-        }
+    #mobTopHeader{
+         display: none;
+    }
 }

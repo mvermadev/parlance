@@ -12,18 +12,24 @@
     justify-content: flex-start;
     align-items: baseline;
     position: relative;
-    left: 19vw;
+    left: 10px;
 }
 
 .LibraryHeader .btmFilter{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -2rem;
-    
+    margin-top: -2rem;    
 }
 
 .LibraryHeader .btmFilter p{
     margin-left: 2rem;
     margin-right: 2rem;
+}
+
+@media only screen and (min-width: 800px){
+    .LibraryHeader .libraryHead .libraryHead1{
+        position: relative;
+        left: 19vw;
+    }
 }
