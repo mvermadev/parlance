@@ -9,10 +9,11 @@ import Library from './Pages/SideBar/Libraries/Library'
 import Articles from './Pages/SideBar/Libraries/Articles'
 import Videos from './Pages/SideBar/Libraries/Videos'
 import BookPdf from './Pages/SideBar/Libraries/BookPdf'
+import './universal/universal.css'
 
 const MainCompo =()=> {
     return(
-        <div>
+        <div className="MainCompo">
             <Filter/>
             <QuesCard/>
         </div>
@@ -31,7 +32,7 @@ function Profile() {
 function Collector() {
     return (
         <Router>
-            <div style={{backgroundColor: '#f0f0f0', height: '100%' }}>
+            <div style={{backgroundColor: '#f0f0f0', Height:'100%' }}>
                 <MainHeader/>
                     <Switch>
                         <Route exact path='/' component={MainCompo}/>

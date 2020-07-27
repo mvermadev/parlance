@@ -8,6 +8,7 @@
     height: auto;
     padding: 0px;
     z-index: 1;
+    background-color: '#f0f0f0';
 }
 
 .QuesCard .topQues{

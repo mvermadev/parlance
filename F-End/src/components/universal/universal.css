@@ -28,6 +28,7 @@
     right: 0px;
     border-top: 3px solid #f0f0f0;
     background-color: #fff;
+    box-shadow: 0px 2px 5px silver;
 }
 
 .BottomHeader form input{
@@ -92,7 +93,8 @@
 @media only screen and (min-width: 800px){
    
     .Filter{
-        margin: 0px 19vw
+        margin: auto 19vw;
+     
     }
 
     .BottomHeader .myForm{
@@ -152,4 +154,16 @@
     #mobTopHeader{
          display: none;
     }
+    
+    .MainHeader{
+        position: fixed;
+        width: 100vw;
+        z-index: 99;
+   }
+
+   .MainCompo{
+    position: relative;
+    top: 11rem;
+   }
+
 }
