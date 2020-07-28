@@ -1,0 +1,13 @@
+@media only screen and (min-width: 800px){
+    .Community{
+        position: relative;
+        top: 13rem;
+        display: flex;
+        justify-content:space-evenly;
+        flex-flow: column wrap;
+        margin-right: auto;
+        margin-left: auto;
+        width: 50vw;
+    }
+
+}

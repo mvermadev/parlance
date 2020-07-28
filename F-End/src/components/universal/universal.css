@@ -89,6 +89,9 @@
     display: none;
 }
 
+#DeskFooter{
+    display: none;
+}
 
 @media only screen and (min-width: 800px){
    
@@ -165,5 +168,39 @@
     position: relative;
     top: 11rem;
    }
+
+   #DeskFooter{
+       display: block;
+   }
+   
+   .DeskFooter{
+       z-index: 99;
+       background-color: #fff;
+       margin-top: 250px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       width: 65vw;
+       margin-right: auto;
+       margin-left: auto;
+   }
+
+   .DeskFooter .footer-top,
+   .DeskFooter .footer-bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    /* padding-top: 50px; */
+   }
+
+   .DeskFooter .footer-top{
+       border-bottom: 1px solid silver;
+    }
+
+    .DeskFooter .footer-bottom{
+        padding: 20px;
+        /* margin:10px; */
+    }
 
 }

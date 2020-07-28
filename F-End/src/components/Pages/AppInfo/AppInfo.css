@@ -1,0 +1,24 @@
+@media only screen and (min-width: 800px){
+    .AboutUs, .ContactUs{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        margin-right: auto;
+        margin-left: auto;
+        position: relative;
+        top: 12rem;
+        border-radius: 7px;
+    }
+
+    .ContactUs form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+    }
+
+    .ContactUs form .field{
+        margin: 5px;
+    }
+}
