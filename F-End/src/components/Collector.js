@@ -14,6 +14,7 @@ import AboutUs from './Pages/AppInfo/AboutUs'
 import ContactUs from './Pages/AppInfo/ContactUs'
 import UserProfile from './Pages/Profile/UserProfile'
 import Community from './Pages/Community/Community'
+import ReplyDesign from './Pages/Answers/Reply/ReplyDesign'
 
 const MainCompo =()=> {
     return(
@@ -41,6 +42,7 @@ function Collector() {
                         <Route path='/aboutus' component={AboutUs}/>
                         <Route path='/contactus' component={ContactUs}/>
                         <Route path='/profile' component={UserProfile}/>
+                        <Route path='/reply' component={ReplyDesign}/>
                     </Switch>
                 <BottomNav/>
                 <DeskFooter/>
