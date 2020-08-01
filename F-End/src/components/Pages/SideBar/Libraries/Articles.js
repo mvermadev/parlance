@@ -5,7 +5,7 @@ import './Library.css'
 
 function Articles(props) {
     return (
-        <div>
+        <div className="LibCards">
             <Library content='Articles'/>
             <div className="Cards">
                 <UrlCard title="How to search profiles on linkedIn, what is the usage of Xray Seach?" author="Contributor: Ashfaq" comments="15" views="45" votes="23" className="card" />

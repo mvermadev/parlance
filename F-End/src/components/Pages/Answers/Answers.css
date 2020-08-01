@@ -1,0 +1,63 @@
+.topReply{
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    line-height: 0;
+}
+
+.topReply1{
+    padding-left: 10px;
+}
+
+.topReply2{
+    display: flex;
+}
+
+.topReply2 p{
+    padding-left: 10px;
+    font-size: 14px;
+    color: #333333;
+    position: relative;
+    bottom: 5px;
+}
+
+.topReplyHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ReplyDesign{
+    max-width: 40vw;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px silver;
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    top: 12rem;
+}
+
+
+
+.btmReply, .btmReply1, .btmReply2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.cardIcons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.cardIcons p{
+    color: rgb(38, 0, 176);
+}

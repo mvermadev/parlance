@@ -53,6 +53,10 @@ body {
     min-width: 200px;
 }
   
+.sidenav .nav img{
+  width: 21px;
+  height: 21px;
+}
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}

@@ -25,15 +25,15 @@ function SideBar() {
             <div id="mySidenav" className="sidenav" onMouseOver={OpenNav} onMouseOut={CloseNav}>
            
             <div className="nav">
-            <LiveHelpIcon style={{color: '#b32800'}} />
+            <LiveHelpIcon style={{color: '#b32800'}} fontSize="medium" />
             <p onClick={()=>history.push('')}>Question</p>
             </div>
             <div className="nav">
-            <MailIcon style={{color: '#b32800'}}/>
+            <MailIcon style={{color: '#b32800'}} fontSize="medium"/>
             <p onClick={()=>history.push('')}>FellowMont - Bot</p>
             </div>
             <div className="nav" >
-            <LibraryBooksIcon style={{color: '#b32800'}}/>
+            <img src={require('../../../../img/study.jpeg')} alt="study" />
             <p onClick={()=>history.push('/articles')}>Library</p>
             </div>
             </div>

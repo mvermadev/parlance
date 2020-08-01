@@ -16,6 +16,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import bannerLogo from '../../../../img/logo.png'
 import '../../../QnA/QnA.css'
+import './Library.css'
 
 function BookPdfCode() {
     const titleCard =
@@ -76,7 +77,7 @@ function BookPdfCode() {
 
 function BookPdf(){
     return(
-        <div>
+        <div className="LibCards">
             <Library content='BookPdfs'/>
           <div className="Cards">
             <BookPdfCode/>

@@ -76,7 +76,7 @@ export default function TopHeader() {
         ['left'].map((anchor) => (
             <React.Fragment key={anchor}>
               <Button id="hamburger" onClick={toggleDrawer(anchor, true)}>
-                  <MenuIcon style={{ color: '#b32800', position: 'absolute', top: '12px', left: '19px' }} fontSize="medium" />
+                  <MenuIcon style={{ color: '#b32800', position: 'absolute', left: '19px' }} fontSize="medium" />
               </Button>
               <SwipeableDrawer
                 anchor={anchor}
@@ -93,8 +93,8 @@ export default function TopHeader() {
 
   const logoImg = () =>{
       return(
-          <div className="logo" onClick={()=>history.push('/')} style={{cursor: 'pointer'}}>
-              <img src={logo}></img>
+          <div className="logo" onClick={()=>history.push('/')}>
+              <img src={logo} alt="Logo"></img>
           </div>
       )
   }
@@ -126,12 +126,17 @@ export default function TopHeader() {
     <div className="TopHead">
 
     <div className="TopHeader" id="mobTopHeader">
+        <div>
         {sideBar()}
-
+        </div>
+        <div>
         {logoImg()}
-
+        </div>
+        <div>
         {signin()}
+        </div>
     </div>
+
         
     <div id="deskTopHeader">
       <div id="subTopHead">
