@@ -5,9 +5,14 @@ import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ReplyRoundedIcon from '@material-ui/icons/ReplyRounded';
+import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
+import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
 import ShareIcon from '@material-ui/icons/Share';
 import ReplyCompo from './ReplyCompo';
 import '../Answers.css'
+import '../../../QnA/QnA.css'
 
 /* Header for reply */
 function ReplyHeader() {
@@ -78,12 +83,24 @@ function ReplyFooter() {
     return (
         <div>
             <div className="btmReply">
-                <div className="btmReply1">
-                    <div>
-                        <Button onClick={handleReply}><ReplyRoundedIcon fontSize="large" style={{ color: '#707070', cursor: 'pointer' }} /><span style={{ marginLeft: '5px' }}>Reply</span></Button>
-                    </div>
-                    <Button><ShareIcon style={{ color: '#707070', cursor: 'pointer' }} /><span style={{ marginLeft: '5px' }}>Share</span></Button>
-                </div>
+            <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
+                                <div className="cardIcons" onClick={handleReply}  >
+                                    <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', }} />
+                                    <p>Answers: 23</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Views: 59</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Share</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <BookmarkBorderIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Bookmark</p>
+                                </div>
+                            </div>
                 <div className="btmReply2">
                     <ArrowDropUpIcon fontSize="large" style={{ color: '#797979', cursor: 'pointer' }} />
                     <p style={{ color: '#B0343C', fontWeight: 'bold' }}>5</p>
