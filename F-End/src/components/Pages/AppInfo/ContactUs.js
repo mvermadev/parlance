@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, TextField, Button, Typography } from '@material-ui/core';
+import './AppInfo.css'
 
 class ContactUs extends Component {
 

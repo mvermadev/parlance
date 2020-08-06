@@ -4,7 +4,7 @@ import AttachmentIcon from '@material-ui/icons/Attachment';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import '../Answers.css'
+import '../Answers.css';
 
 class ReplyCompo extends Component {
 

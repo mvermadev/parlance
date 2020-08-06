@@ -4,6 +4,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import './community.css';
+import '../Page.css';
 
 function Monks() {
     return(
@@ -11,7 +13,7 @@ function Monks() {
             <Grid item xs={3} sm={2} md={1}>
                 <Avatar style={{ width:'60px', height:'60px'}} src="" />
             </Grid>
-            <Grid item xs={9} sm={8} md={4} style={{ marginTop: '-5px'}}>
+            <Grid item xs={9} sm={8} md={4} style={{ marginTop: '-5px', marginLeft: '20px'}}>
                 <Typography variant="h6">Monk Username<span><img alt="Verified" title="Verified" src="assets/images/verified.png" /></span></Typography>
                 <Typography variant="caption">Engagement Score: 100</Typography>
             </Grid>
@@ -25,7 +27,7 @@ function Users() {
             <Grid item xs={3} sm={2} md={1}>
                 <Avatar style={{ width:'60px', height:'60px'}} src="" />
             </Grid>
-            <Grid item xs={9} sm={8} md={4} style={{ marginTop: '-5px'}}>
+            <Grid item xs={9} sm={8} md={4} style={{ marginTop: '-5px', marginLeft: '20px' }}>
                 <Typography variant="h6">Monk Username</Typography>
                 <Typography variant="caption">Engagement Score: 45</Typography>
             </Grid>

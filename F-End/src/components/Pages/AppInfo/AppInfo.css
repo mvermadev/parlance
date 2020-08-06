@@ -22,3 +22,18 @@
         margin: 5px;
     }
 }
+
+/* Contact Component CSS */
+
+.contact-form-field {
+    margin-bottom: 20px !important;
+}
+
+.contact-form-submit {
+    background-color: #B32800 !important;
+    color: #FFFFFF !important;
+}
+
+.contact-form-submit:hover {
+    background-color: #f99c38 !important;
+}

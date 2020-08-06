@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Avatar, Button, Menu, MenuItem, Typography } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ReplyRoundedIcon from '@material-ui/icons/ReplyRounded';
-import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
-import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
-import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
 import ShareIcon from '@material-ui/icons/Share';
-import ReplyCompo from './ReplyCompo';
-import '../Answers.css'
-import '../../../QnA/QnA.css'
+import Reply from './ReplyCompo';
+import '../Answers.css';
 
 /* Header for reply */
 function ReplyHeader() {
@@ -66,41 +61,19 @@ function ReplyFooter() {
 
     const [dis, setDis] = React.useState('none');
 
-    const [replyDisplay, setReplyDisplay] = useState('close');
-
     const handleReply = (event) => {
-        
-        if(replyDisplay == 'open')
-        {
-            setDis('none')
-        }
-        if(replyDisplay == 'close')
-        {
-            setDis('block');
-        }
+        setDis('block');
     };
 
     return (
         <div>
             <div className="btmReply">
-            <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
-                                <div className="cardIcons" onClick={handleReply}  >
-                                    <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', }} />
-                                    <p>Answers: 23</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Views: 59</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Share</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <BookmarkBorderIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
+                <div className="btmReply1">
+                    <div>
+                        <Button onClick={handleReply}><ReplyRoundedIcon fontSize="large" style={{ color: '#707070', cursor: 'pointer' }} /><span style={{ marginLeft: '5px' }}>Reply</span></Button>
+                    </div>
+                    <Button><ShareIcon style={{ color: '#707070', cursor: 'pointer' }} /><span style={{ marginLeft: '5px' }}>Share</span></Button>
+                </div>
                 <div className="btmReply2">
                     <ArrowDropUpIcon fontSize="large" style={{ color: '#797979', cursor: 'pointer' }} />
                     <p style={{ color: '#B0343C', fontWeight: 'bold' }}>5</p>
@@ -108,7 +81,7 @@ function ReplyFooter() {
                 </div>
             </div>
             <div style={{ display: dis }}>
-                <ReplyCompo login={true} />
+                <Reply login={true} />
             </div>
         </div>
     );
@@ -118,7 +91,7 @@ function ReplyFooter() {
 /* Complete Reply Component */
 function ReplyDesign() {
     return (
-        <div className="ReplyDesign" >
+        <div className="ReplyBody-Container" style={{ padding: '10px' }}>
             <div className="ReplyBody">
                 <ReplyHeader />
                 <div>
