@@ -20,30 +20,30 @@ const useStyles = makeStyles({
 });
 
 export default function BottomNav() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
 
-  const history = useHistory();
+    const history = useHistory();
 
 
-  return (
-    <div id="bottomNav">
-    <BottomNavigation
-      value={value}
-      onChange={(event, newValue) => {
+    return (
+        <div id="bottomNav">
+        <BottomNavigation
+    value={value}
+    onChange={(event, newValue) => {
         setValue(newValue);
-      }}
-      showLabels
-      className={classes.root}
-    >
-     
-      <BottomNavigationAction onClick={()=>history.push('/')} label="HOME" icon={<HomeIcon style={{color: '#fff'}} />}  style={{color: '#fff'}} />
-  
-      <BottomNavigationAction onClick={()=>history.push('/community')} label="COMMUNITY" icon={<ForumIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} ></BottomNavigationAction>
-  
-      <BottomNavigationAction onClick={()=>history.push('/profile')} label="PROFILE" icon={<PersonIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
-  
+    }}
+    showLabels
+    className={classes.root}
+        >
+
+        <BottomNavigationAction onClick={()=>history.push('/')} label="HOME" icon={<HomeIcon style={{color: '#fff'}} />}  style={{color: '#fff'}} />
+
+    <BottomNavigationAction onClick={()=>history.push('/community')} label="COMMUNITY" icon={<ForumIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} ></BottomNavigationAction>
+
+    <BottomNavigationAction onClick={()=>history.push('/profile')} label="PROFILE" icon={<PersonIcon style={{color: '#fff'}}  />} style={{color: '#fff'}} />
+
     </BottomNavigation>
     </div>
-  );
+);
 }
