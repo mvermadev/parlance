@@ -2,7 +2,7 @@ import React from 'react'
 import MenuIcon from '@material-ui/icons/Menu';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import MailIcon from '@material-ui/icons/Mail';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import {useHistory} from 'react-router-dom'
 import './DeskSide.css'
 
@@ -33,7 +33,7 @@ function SideBar() {
             <p onClick={()=>history.push('')}>FellowMont - Bot</p>
             </div>
             <div className="nav" >
-            <img src={require('../../../../img/study.jpeg')} alt="study" />
+            <LocalLibraryIcon style={{color: '#b32800'}} fontSize="medium" />
             <p onClick={()=>history.push('/articles')}>Library</p>
             </div>
             </div>
