@@ -18,6 +18,7 @@ import ReplyDesign from './Pages/Answers/Reply/ReplyDesign'
 import Post from './QnPostnPoll/AddComponent'
 import InformationGathering from './Pages/InformationGathering/InformationGatheringComponent'
 
+
 const MainCompo =()=> {
     return(
         <div className="MainCompo">
