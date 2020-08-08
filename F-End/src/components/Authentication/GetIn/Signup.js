@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -17,6 +17,7 @@ import {useHistory} from 'react-router-dom'
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Sign from './Sign';
+import {userRegister} from '../../UserFunction'
 import '../Auth.css'
 
 
@@ -62,6 +63,40 @@ export default function Signup() {
         checkedG: true,
       });
 
+    // default empty values of the input fields 
+      const [form, setForm] = useState({
+        name: '',
+        username: '',
+        password: '',
+        password2: '',
+      })
+
+      // enter the input key in the field.
+      const updateField=e=>{
+        setForm({
+          ...form, [e.target.name]: e.target.value
+        })
+      }
+
+      // step for transferring the data.
+      const finalStep=e=>{
+        e.preventDefault();
+        
+        const allData = {
+          username: form.username,
+          password: form.password,
+          password2: form.password2,
+          name: form.name
+        }
+
+       userRegister(allData).then(()=>{
+         console.log('user has registered')
+         history.push('/')
+       })
+       .catch(err=>console.log(err))
+
+      }
+
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
@@ -96,16 +131,16 @@ export default function Signup() {
             </div>
 
             <div class="separator">or use</div>
-
+              
+              <form method="POST" onSubmit={finalStep}>
             <div className="inputFields">
               <div className={classes.margin}>
-              
               <Grid container spacing={1} alignItems="flex-end">
                 <Grid item>
                   <AccountCircle style={{color: '#767676'}} />
                 </Grid>
                 <Grid item>
-                  <TextField id="input-with-icon-grid" label="Username" type="text" requireds/>
+                  <TextField id="input-with-icon-grid" label="name" type="text" name="name" value={form.name} onChange={updateField} required/>
                 </Grid>
               </Grid>
               
@@ -114,7 +149,7 @@ export default function Signup() {
                   <MailIcon style={{color: '#767676'}} />
                 </Grid>
                 <Grid item>
-                  <TextField id="input-with-icon-grid" label="Email" type="email" requireds/>
+                  <TextField id="input-with-icon-grid" label="Email" name="username" value={form.username} onChange={updateField} type="email" required/>
                 </Grid>
               </Grid>
 
@@ -123,7 +158,7 @@ export default function Signup() {
                   <LockIcon style={{color: '#767676'}} />
                 </Grid>
                 <Grid item>
-                  <TextField id="input-with-icon-grid" label="Password" type="password" requireds/>
+                  <TextField id="input-with-icon-grid" label="Password" name="password" value={form.password} onChange={updateField} type="password" required/>
                 </Grid>
               </Grid>
 
@@ -132,18 +167,20 @@ export default function Signup() {
                   <LockIcon style={{color: '#767676'}} />
                 </Grid>
                 <Grid item>
-                  <TextField id="input-with-icon-grid" label="Confirm Password" type="password" requireds/>
+                  <TextField id="input-with-icon-grid" label="Confirm Password" name="password2" onChange={updateField} value={form.password2} type="password" required/>
                 </Grid>
               </Grid>
+              
             </div>
             </div>
 
             <div className="logBtn">
-              <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '0.5rem'}}>
+              <Button type="submit" variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '0.5rem'}}>
                 Signup
               </Button>
             </div>
 
+          </form>
           </div>
         </Fade>
       </Modal>

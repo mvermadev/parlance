@@ -18,7 +18,6 @@ router.get('/get', function (req, res) {
   })
 });
 
-
 router.post('/download/:id', function (req, res) {
   var type = req.query.type;
   var id = req.params.id;
