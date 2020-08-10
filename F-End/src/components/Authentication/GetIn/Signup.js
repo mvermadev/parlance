@@ -17,7 +17,7 @@ import {useHistory} from 'react-router-dom'
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Sign from './Sign';
-import {userRegister} from '../../UserFunction'
+// import {userRegister} from '../../UserFunction'
 import '../Auth.css'
 
 
@@ -97,6 +97,55 @@ export default function Signup() {
 
       }
 
+      //Main logic of signing up.
+      const userRegister = newUser=>{
+
+        var raw = JSON.stringify({
+            "username": newUser.username,
+            "password": newUser.password,
+            "password2": newUser.password2,
+            "name": newUser.name
+        });
+    
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+    
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+    
+        return fetch("https://recmonk.herokuapp.com/register", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            
+            // creating red alert to the user from their consequences.
+            for(var prop in result)
+            {
+                console.log('objProp: '+prop+' propVal: '+result[prop]);
+                if(result[prop] == '0')
+                {
+                  // If successfully registered.
+                  document.getElementById('conseq').style.color = "green"
+                  document.getElementById('conseq').innerHTML = "Successfully registered."
+                }
+                else
+                {
+                  // if any issue in signup.
+                  document.getElementById('conseq').style.color = "red"
+                  document.getElementById('conseq').innerHTML = result[prop];
+                }
+
+            }
+
+        })
+        .catch(error => console.log('error', error));
+    }
+    
+
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
@@ -173,7 +222,9 @@ export default function Signup() {
               
             </div>
             </div>
-
+            <div className="conseq">
+              <p id="conseq"></p>
+            </div>
             <div className="logBtn">
               <Button type="submit" variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '0.5rem'}}>
                 Signup

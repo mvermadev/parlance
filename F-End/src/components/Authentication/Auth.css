@@ -77,6 +77,17 @@
     margin-left: .25em;
 }
 
+.conseq{
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.conseq p{
+    color: red;
+}
+
 
 
 @media only screen and (min-width: 800px){
