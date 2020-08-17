@@ -43,6 +43,7 @@ export default function Sign() {
     setOpen(false);
   };
 
+
   // For hanlding the remember user.
 
   const [checked, setChecked] = React.useState(true);
@@ -99,8 +100,25 @@ export default function Sign() {
 
       .then(result => {
         console.log(result)
-      })
+        
+          //to update the state 
+          store.subscribe(()=>{
+            console.warn('my redux: ', store.getState())
+            console.log('user: ', store.getState().authUser.authUser)
+        })
 
+            //Action for state
+        const addUser = text=>{
+            return{
+                type: "SET_AUTH_TOKEN",
+                payload: {auth: text}
+            }
+        }
+
+            //assigning the new value to the state
+        store.dispatch(addUser(result.token))
+      
+      })
       .catch(error => {
         console.log('Error', error.message)
         Swal.fire({
@@ -109,7 +127,6 @@ export default function Sign() {
           text: error.message
         })
       });
-
   }
 
   // const doSignUp =()=>{
@@ -117,7 +134,7 @@ export default function Sign() {
   // }
 
   return (
-    <div className="Sign">
+    <div className="Sign" id="idSign">
       <Button className="signBtn" style={{ color: '#B0343C', fontWeight: 'bold', position: 'absolute', top: '8px', right: '16px' }} type="button" onClick={handleOpen}>
         Sign in
       </Button>
@@ -154,7 +171,7 @@ export default function Sign() {
                       <TextField id="input-with-icon-grid" label="Email" name="username"
                         value={state.username}
                         onChange={handleChange}
-                        type="email" requireds />
+                        type="email" required />
                     </Grid>
                   </Grid>
                 </div>
@@ -169,7 +186,7 @@ export default function Sign() {
                         name="password"
                         value={state.password}
                         onChange={handleChange}
-                        type="password" requireds />
+                        type="password" required />
                     </Grid>
                   </Grid>
                 </div>

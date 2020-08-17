@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -15,6 +15,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Swal from 'sweetalert2'
 import Signup from './Signup';
 
 
@@ -57,6 +58,10 @@ export default function Forget() {
         checkedG: true,
       });
 
+      const [form, setForm] = useState({
+        username: ''
+      });
+
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
@@ -64,6 +69,43 @@ export default function Forget() {
       // const doSignUp =()=>{
       //   document.getElementById('siginModalId').style.display = 'none';
       // }
+
+      // Main Logic of recovering the password.
+      const updateField=e=>{
+        setForm({
+          ...form, [e.target.name]: e.target.value
+        })
+      }
+
+      const finalStep = e=>{
+        e.preventDefault();
+
+
+        forgotPass()
+
+      }
+      
+      const forgotPass = e =>{
+        e.preventDefault();
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({"username":"manish@gmail.com"});
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow',
+          // mode:'no-cors'
+        };
+
+       return fetch("https://recmonk.herokuapp.com/forgot", requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+      }
 
   return (
     <div>
@@ -85,7 +127,7 @@ export default function Forget() {
         <Fade in={open} className="signinModal" id="siginModalId">
           
           <div className={classes.paper}>
-
+        <form method="POST" onSubmit={forgotPass} >
         <div className="inputFields">
               <div className={classes.margin}>
               <Grid container spacing={1} alignItems="flex-end">
@@ -93,18 +135,24 @@ export default function Forget() {
                   <AccountCircle style={{color: '#767676'}} />
                 </Grid>
                 <Grid item>
-                  <TextField id="input-with-icon-grid" label="Email" type="email" requireds/>
+                  <TextField id="input-with-icon-grid" label="Email" name="username"
+                        value={form.username}
+                        onChange={updateField}
+                        type="email" required/>
                 </Grid>
               </Grid>
 
             </div>
         </div>
+        <div className="conseq">
+              <p id="conseq"></p>
+            </div>
             <div className="logBtn">
-              <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '.5rem'}}>
+              <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '.5rem'}} type="submit">
                 Reset
               </Button>
             </div>
-
+          </form>
           </div>
         </Fade>
       </Modal>
