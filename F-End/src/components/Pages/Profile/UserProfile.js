@@ -11,6 +11,7 @@ import Tab from '@material-ui/core/Tab';
 import './profile.css';
 
 function About() {
+
     return(
         <div style={{ paddingRight: '20px'}}>
             <p style={{ paddingLeft: '16px'}}>User about section info will come here. 
@@ -117,12 +118,60 @@ function TabPanel(props) {
 
 function UserProfile () {
 
+  const [state, setState] = React.useState({
+    id: '',
+    name: '',
+    username:''
+  })
+
+  const fetching = () => {
+
+    var myHeaders = ({
+        'authorization': localStorage.token,
+        'Accept' : 'application/json',
+        'Content-Type': 'application/json'
+    });
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+  return fetch("https://recmonk.herokuapp.com/current", requestOptions)
+        .then(response => {
+            if(response.ok) {
+                return response;
+            }
+            else {
+                var error = new Error("Error " + response.status + ": " + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        }, 
+        error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then( (result) => {
+          setState({
+            id: result.id,
+            name: result.name,
+            username: result.username
+          })
+        } )
+        .catch(error => {
+          console.log('Error', error.message)});
+}
+
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
 
+      fetching();
         return(
         <div className="profile-page">
 
@@ -131,7 +180,7 @@ function UserProfile () {
                     <Avatar style={{ width:'75px', height:'75px'}} alt="" src="" />
                 </Grid>
                 <Grid align="center" className="username" item xs={12} style={{ marginBottom: '8px' }}>
-                    Monk Username
+                    {state.name}
                 </Grid>
                 <Grid item align="center" xs={12}>
                 <ButtonGroup size="small" aria-label="small outlined button group">
