@@ -10,6 +10,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { store } from '../../../redux/reducers/index'
 import Signup from './Signup';
 import Forget from './Forget';
 import '../Auth.css'
