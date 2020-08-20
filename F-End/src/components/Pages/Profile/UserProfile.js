@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Grid, Avatar, Button, ButtonGroup, List, ListItem, ListItemText } from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -9,50 +9,53 @@ import Hidden from '@material-ui/core/Hidden';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import './profile.css';
+import { fetchProfile } from '../../../redux/dataFetchers/ProfileApi'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 function About() {
 
-    return(
-        <div style={{ paddingRight: '20px'}}>
-            <p style={{ paddingLeft: '16px'}}>User about section info will come here. 
-              dfkhdsfjsdf secondarydfdsghfds   sdfhfds dsff
-                'require',
-                'dfifdiufhd jfjdf dfdofd '
-               fdsfdsf dfkjdsf sdfh sdfhdsfi dsfihdsfi ss.
-               dfgsdfids fshdsdfidis fdshf.
+  return (
+    <div style={{ paddingRight: '20px' }}>
+      <p style={{ paddingLeft: '16px' }}>User about section info will come here.
+      dfkhdsfjsdf secondarydfdsghfds   sdfhfds dsff
+      'require',
+      'dfifdiufhd jfjdf dfdofd '
+      fdsfdsf dfkjdsf sdfh sdfhdsfi dsfihdsfi ss.
+      dfgsdfids fshdsdfidis fdshf.
             </p>
-            <List>
-                <ListItem>
-                    <ListItemText primary="DESIGNATION" secondary="HR Admin" />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary="COMPANY" secondary="Company Name" />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary="INDUSTRY" secondary="Technology" />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary="EXPERIENCE" secondary="1 year" />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary="LOCATION" secondary="Mumbai" />
-                </ListItem>
-            </List>
+      <List>
+        <ListItem>
+          <ListItemText primary="DESIGNATION" secondary="HR Admin" />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary="COMPANY" secondary="Company Name" />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary="INDUSTRY" secondary="Technology" />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary="EXPERIENCE" secondary="1 year" />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary="LOCATION" secondary="Mumbai" />
+        </ListItem>
+      </List>
     </div>
-    );
+  );
 }
 
 function Contributions() {
 
-    const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(false);
 
-    const handleChange = (panel) => (event, isExpanded) => {
-        setExpanded(isExpanded ? panel : false);
-    };
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
-    return(
+  return (
     <div className="contribute-section">
-        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
@@ -76,7 +79,7 @@ function Contributions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          data will load here.
+            data will load here.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -90,12 +93,12 @@ function Contributions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          data will load here.
+            data will load here.
           </Typography>
         </AccordionDetails>
       </Accordion>
-      </div>
-    );
+    </div>
+  );
 }
 
 function TabPanel(props) {
@@ -116,118 +119,97 @@ function TabPanel(props) {
   );
 }
 
-function UserProfile () {
+class UserProfile extends Component {
 
-  const [state, setState] = React.useState({
-    id: '',
-    name: '',
-    username:''
-  })
+  constructor(props) {
+    super(props);
 
-  const fetching = () => {
+    this.state = {
+      info: {},
+      value: 0
+  }
 
-    var myHeaders = ({
-        'authorization': localStorage.token,
-        'Accept' : 'application/json',
-        'Content-Type': 'application/json'
-    });
-
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
-
-  return fetch("https://recmonk.herokuapp.com/current", requestOptions)
-        .then(response => {
-            if(response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error("Error " + response.status + ": " + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        }, 
-        error => {
-            var errmess = new Error(error.message);
-            throw errmess;
-        })
-        .then(response => response.json())
-        .then( (result) => {
-          setState({
-            id: result.id,
-            name: result.name,
-            username: result.username
-          })
-        } )
-        .catch(error => {
-          console.log('Error', error.message)});
+  this.handleChange = this.handleChange.bind(this);
 }
 
-    const [value, setValue] = React.useState(0);
+  handleChange = (event, index) => {
+    this.setState({
+      value: index
+    })
+  };
 
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
+  componentDidMount() {
+    this.props.fetchProfile();
+    console.log(this.props.info.info);
+  }
 
-      fetching();
-        return(
-        <div className="profile-page">
+  render() {
 
-            <Grid container className="profile-bg">
-                <Grid align="center" item xs={12} style={{ marginBottom: '8px' }}>
-                    <Avatar style={{ width:'75px', height:'75px'}} alt="" src="" />
-                </Grid>
-                <Grid align="center" className="username" item xs={12} style={{ marginBottom: '8px' }}>
-                    {state.name}
-                </Grid>
-                <Grid item align="center" xs={12}>
-                <ButtonGroup size="small" aria-label="small outlined button group">
-                    <Button className="profile-buttons follow">Follow</Button>
-                    <Button className="profile-buttons message">Message</Button>
-                    <Button className="profile-buttons ask">Ask</Button>
-                </ButtonGroup>
-                </Grid>
+    return (
+      <div className="profile-page">
 
-                {/* Profile Mobile Tabs */}
-                
-                <Hidden mdUp>
-                <Grid item xs={12}>
-                    <Tabs value={value} onChange={handleChange} aria-label="profile tabs" className="profile-mob-tabs">
-                      <Tab label="Contributions" className="profile-mob-tabs-heading" />
-                      <Tab label="About" className="profile-mob-tabs-heading" />
-                    </Tabs>
-                </Grid>
-                </Hidden>
+        <Grid container className="profile-bg">
+          <Grid align="center" item xs={12} style={{ marginBottom: '8px' }}>
+            <Avatar style={{ width: '75px', height: '75px' }} alt="" src="" />
+          </Grid>
+          <Grid align="center" className="username" item xs={12} style={{ marginBottom: '8px' }}>
+            {this.props.info.info.name}
+          </Grid>
+          <Grid item align="center" xs={12}>
+            <ButtonGroup size="small" aria-label="small outlined button group">
+              <Button className="profile-buttons follow">Follow</Button>
+              <Button className="profile-buttons message">Message</Button>
+              <Button className="profile-buttons ask">Ask</Button>
+            </ButtonGroup>
+          </Grid>
+
+          {/* Profile Mobile Tabs */}
+
+          <Hidden mdUp>
+            <Grid item xs={12}>
+              <Tabs value={this.state.value} onChange={this.handleChange} aria-label="profile tabs" className="profile-mob-tabs">
+                <Tab label="Contributions" className="profile-mob-tabs-heading" />
+                <Tab label="About" className="profile-mob-tabs-heading" />
+              </Tabs>
             </Grid>
+          </Hidden>
+        </Grid>
 
-            {/* Profile Mobile Panels */}
-            <Hidden mdUp>
-            <TabPanel value={value} index={0}>
-                <Contributions />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <About />
-            </TabPanel>
-            </Hidden>
+        {/* Profile Mobile Panels */}
+        <Hidden mdUp>
+          <TabPanel value={this.state.value} index={0}>
+            <Contributions />
+          </TabPanel>
+          <TabPanel value={this.state.value} index={1}>
+            <About />
+          </TabPanel>
+        </Hidden>
 
-            {/* Profile Tabs for medium to xl screens */}
-            <Hidden smDown>
-            <Grid container className="profile-info-bg profile-desktop">
-                <Grid className="profile-info-contributions" item xs={12} md={6}>
-                    <h3>Contributions</h3>
-                    <Contributions />
-                </Grid>
-                <Grid className="profile-info-about" item xs={12} md={6}>
-                    <h3>About</h3>
-                    <About />
-                </Grid>
+        {/* Profile Tabs for medium to xl screens */}
+        <Hidden smDown>
+          <Grid container className="profile-info-bg profile-desktop">
+            <Grid className="profile-info-contributions" item xs={12} md={6}>
+              <h3>Contributions</h3>
+              <Contributions />
             </Grid>
-            </Hidden>
+            <Grid className="profile-info-about" item xs={12} md={6}>
+              <h3>About</h3>
+              <About />
+            </Grid>
+          </Grid>
+        </Hidden>
 
-        </div>
-        );
-    }
+      </div>
+    );
+  }
+}
 
-export default UserProfile;
+const mapStateToProps = state => ({
+  info: state.info
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchProfile: () => {dispatch(fetchProfile())}
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserProfile));
