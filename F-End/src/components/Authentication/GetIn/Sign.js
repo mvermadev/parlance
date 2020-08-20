@@ -112,14 +112,14 @@ export default function Sign() {
         const addUser = text=>{
             return{
                 type: "SET_AUTH_TOKEN",
-                payload: text
+                payload: {auth: text}
             }
         }
 
         localStorage.setItem("token", result.token);
 
             //assigning the new value to the state
-        store.dispatch(addUser(result.user));
+        store.dispatch(addUser(result.token));
       
       })
       .catch(error => {

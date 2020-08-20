@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useLayoutEffect} from 'react'
 import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import ShareIcon from '@material-ui/icons/Share';
@@ -16,22 +16,26 @@ import { withStyles } from '@material-ui/core/styles';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PopularPosts from '../PopularPosts'
+import {store} from '../../../redux/reducers/index'
 import BookPdf from './BookPdf'
+import {connect} from 'react-redux'
+import axios from 'axios'
 import '../QnA.css'
  
-function QuesCard() {
+function QuesCard(props) {
 
-    const titleCard =
-    ( 
-    <div className="middleQues">
-        <p style={{fontWeight: 'bold'}}>
-            How to search profiles on linkedIn, what is the usage of Xray Seach?
-        </p>
-        <p>
-            I would like to know the differenc between these two seaches, will I get...<span style={{color: 'rgb(38, 0, 176)'}}>show more</span>
-        </p>
-    </div>
-    )
+    const titleCard = (text)=>{
+        return(
+            <div className="middleQues">
+            <p style={{fontWeight: 'bold'}}>
+                How to search profiles on linkedIn, what is the usage of Xray Seach?
+            </p>
+            <p>
+                I would like to know the differenc between these two seaches, will I get...<span style={{color: 'rgb(38, 0, 176)'}}>show more</span>
+            </p>
+        </div>
+        )
+    }
 
     // 3Dots style
     const StyledMenu = withStyles({
@@ -125,18 +129,18 @@ function QuesCard() {
             )
         }
 
-    const titleCardCompo = ()=>{
+    const titleCardCompo = (name, text, avatar, likes, comments)=>{
         return (
 
             <div className="QuesCard">
-                {cardHead()}
-                {titleCard}
+                {cardHead(name)}
+                {titleCard(text)}
             <div className="btmQues">
                
                 <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
                     <div className="cardIcons">
                         <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px'}} />
-                        <p>23</p>
+                        <p>{comments}</p>
                     </div>
                     <div className="cardIcons">
                         <VisibilityOutlinedIcon style={{color: '#707070', margin: '0px 10px'}}/>
@@ -149,7 +153,7 @@ function QuesCard() {
                 <div className="btmQues2">
                         <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                         <p style={{color: '#B0343C', fontWeight: 'bold'}}>
-                            3
+                            {likes}
                         </p>
                         <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                 </div>
@@ -224,10 +228,44 @@ function QuesCard() {
         )
     }
 
+    const [postData, setPostData] = useState({data: {}})
+
+    const fetchPosts = ()=>{
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", localStorage.getItem('token'));
+        
+        var raw = "";
+        
+        var requestOptions = {
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow'
+        };
+
+        fetch("https://recmonk.herokuapp.com/posts", requestOptions)
+        .then(response => response.json())
+        .then(result =>{
+            console.log("result: ", result)
+            setPostData({data: result})
+            console.log("postData: ", postData)
+        })
+        .catch(error => console.log('error from QuesCard: ', error));         
+
+    }
+
+    useEffect(() => {
+        fetchPosts();
+        store.subscribe(()=>{
+            console.log('user: ', store.getState().authUser.authUser)
+        })
+        console.log('questCard redux val: ', props.authVal)
+        console.log('questCard redux val: ', localStorage.getItem('token'))
+    }, [])
+
     return (
         <div className="mainQuesCard">
             <div>
-            {titleCardCompo()}
+            {titleCardCompo("manish", "text", "avatar", "likes", "comments")}
             <BookPdf/>
             {urlCardCompo()}
             {titleCardCompo()}
@@ -241,12 +279,10 @@ function QuesCard() {
 
 }
 
+function mapStateToProps(state){
+    return{
+        authVal: state.authUser.authUser
+    }
+}
 
-
-
-
-
-
-
-
-export default QuesCard
+export default connect(mapStateToProps)(QuesCard)
