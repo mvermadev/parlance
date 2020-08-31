@@ -1,0 +1,120 @@
+.signinModal{
+    width: 80vw;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: none;
+    border-radius: 7px;
+    display: block;
+}
+
+ .signin{
+    padding-right: 15px;
+    color: #B0343C;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+}
+
+.apiBtn{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 75vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.apiBtn Button{
+    margin: 5px;
+    font-size: 15px;
+    line-height: 0;
+}
+
+.addtnlLogTool{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.signinModal .signUpBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -15px;
+}
+
+.signinModal .inputFields{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    color: rgb(109, 109, 109);
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgb(180, 176, 176);
+}
+.separator::before {
+    margin-right: .25em;
+}
+.separator::after {
+    margin-left: .25em;
+}
+
+.conseq{
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.conseq p{
+    color: red;
+}
+
+
+
+@media only screen and (min-width: 800px){
+   .Sign{
+    position: absolute;
+    right: 10px;
+    width: 100%;
+    top: 1.5rem;
+   
+}
+    .Sign .signBtn{
+        font-size: 17px;
+    }
+
+    .signinModal{
+        max-width: 30vw;
+    }
+
+    .apiBtn{
+        max-width: 25vw;
+    }
+
+    .logBtn Button{
+        max-width: 25vw;
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

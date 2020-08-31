@@ -10,6 +10,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {Link, useHistory} from 'react-router-dom'
 import { store } from '../../../redux/reducers/index'
 import Signup from './Signup';
 import Forget from './Forget';
@@ -35,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Sign() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
+  const history = useHistory();
   const handleOpen = () => {
     setOpen(true);
   };
@@ -145,6 +147,8 @@ export default function Sign() {
         Sign in
         </Button>
       }
+
+      
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

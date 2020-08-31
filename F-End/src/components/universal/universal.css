@@ -1,0 +1,297 @@
+#mobTopHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    z-index: 99;
+    margin-top: 5px;
+}
+
+.logo img{
+    width: 100px;
+    height: 40px;
+    color: '#B0343C';
+    cursor: pointer;
+    position: relative;
+    right: 7vw;
+}
+
+
+.BottomHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    border-top: 3px solid #f0f0f0;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px silver;
+}
+
+.BottomHeader form input{
+    border: 2px solid #B0343C;
+    height: 36px;
+    width: 60vw;
+    border-radius: none;
+    border-radius: 5px 0px 0px 5px;
+    padding: 5px 10px;
+}
+
+.BottomHeader form input{
+    background-color: #F5F5F5;
+}
+
+.BottomHeader form button{
+    height: 36px;
+    background-color: #B0343C;
+    color: #ffffff;
+    width: 60px;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.BottomNav{
+    width: '100vw';
+    position: absolute;
+    bottom: 0px;
+}
+
+.Filter{
+    background-color: #f0f0f0;
+}
+
+.Filter .topFilter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+    font-weight: bold;
+}
+
+.Filter .btmFilter{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 15px;
+    color: #353535;
+    cursor: pointer;
+}
+
+.Filter .btmFilter p:nth-child(2){
+    margin-left: 20px;
+}
+
+#deskTopHeader{
+    display: none;
+}
+
+#DeskFooter{
+    display: none;
+}
+
+@media only screen and (min-width: 800px){
+   
+    .Filter{
+        margin: auto 19vw;
+     
+    }
+
+    .BottomHeader .myForm{
+        width: 61vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .BottomHeader form input{
+        padding: 25px 10px;
+        font-size: 17px;
+    }
+
+    .BottomHeader form button{
+        height: 55px;
+        font-weight: bold;
+        width: 100px;
+    }
+
+    #bottomNav{
+        display: none ;
+    }
+
+    .TopHead #deskTopHeader{
+        display: block;
+        height: 100px;
+        width: auto;
+        background-color: #fff;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .subTopHead2{
+        display: flex;
+        position: absolute;
+        bottom: 1.5rem;
+        left: 16rem;
+    }
+
+    .subTopHead2 Button{
+        color: rgba(0, 0, 0, 0.54);
+        font-weight: bold;
+    }
+
+    .logo img{
+        position: relative;
+        top: auto;
+        left: 70px;
+        width: 177px;
+        height: 68px;
+    }
+
+    #mobTopHeader{
+         display: none;
+    }
+    
+    .MainHeader{
+        position: fixed;
+        width: 100vw;
+        z-index: 99;
+   }
+
+   .MainCompo{
+    position: relative;
+    /* top: 11rem; */
+   }
+
+   #DeskFooter{
+       display: block;
+   }
+   
+   .DeskFooter{
+       z-index: 99;
+       background-color: #fff;
+       margin-top: 250px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin-right: auto;
+       margin-left: auto;
+   }
+
+   .DeskFooter .footer-top,
+   .DeskFooter .footer-bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    /* padding-top: 50px; */
+   }
+
+   .DeskFooter .footer-top{
+       border-bottom: 1px solid silver;
+    }
+
+    .DeskFooter .footer-bottom{
+        padding: 20px;
+        /* margin:10px; */
+    }
+
+}
+
+/* Footer Component CSS */
+
+.footer-top {
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+    background: white;
+    padding-top: 50px;
+    font-family: Montserrat !important;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.footer-bottom {
+    background: white;
+    color: #000;
+    font-weight: 300;
+    padding-top: 10px;
+    font-size: 13px;
+    font-family: Montserrat !important;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.footer-logo {
+    margin-right: 15px;
+    float: left;
+}
+
+.footer-logo-text {
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: -18px !important;
+}
+
+.footer-item {
+    padding: 0px 20px 30px 18px;
+}
+
+.footer-item-other {
+    padding: 0px 20px 30px 18px;
+    margin-top: 0px !important;
+}
+
+.list-item, .footer-links {
+    font-weight: 300;
+    font-size: 16px !important;
+    text-decoration: none !important;
+    color: #000 !important;
+    padding: 0 !important;
+    padding-bottom: 2px !important;
+}
+
+.footer-headings {
+    margin: 0px !important;
+    font-size: 16px !important;
+    margin-bottom: 15px !important;
+}
+
+.footer-social-icon {
+    color: #fff;
+}
+
+.footer-social-icon .fa {
+    padding-top: 4px;
+}
+
+.footer-links:hover {
+    color: #b32800 !important;
+}
+
+.social-list {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.social-list-item {
+    padding: 0px !important;
+    margin-right: 10px;
+}
+
+.footer-social-links {
+    background-color: #b32800;
+    width: 27px;
+    height: 27px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.footer-social-links:hover {
+    background-color: #f99c38 !important;
+}

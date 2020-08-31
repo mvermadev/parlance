@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useLayoutEffect} from 'react'
+import React, {useState, useEffect, useLayoutEffect, Component} from 'react'
 import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import ShareIcon from '@material-ui/icons/Share';
@@ -22,21 +22,89 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import '../QnA.css'
  
-function QuesCard(props) {
+var globData = [];
 
-    const titleCard = (text)=>{
-        return(
-            <div className="middleQues">
-            <p style={{fontWeight: 'bold'}}>
-                How to search profiles on linkedIn, what is the usage of Xray Seach?
-            </p>
-            <p>
-                I would like to know the differenc between these two seaches, will I get...<span style={{color: 'rgb(38, 0, 176)'}}>show more</span>
-            </p>
+class QuesCard extends Component {
+    constructor(props)
+    {
+        super(props)
+        this.state={data: [], load: true}
+    }
+
+    componentDidMount()
+    {
+        this._getData();
+    }
+
+    _getData = ()=>{
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", localStorage.getItem('token'));
+        
+        var raw = "";
+        
+        var requestOptions = {
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow'
+        };
+
+        fetch("https://recmonk.herokuapp.com/posts", requestOptions)
+        .then(response => {
+            if (response.ok) {
+                    return response;
+            } else {
+                let errorMessage = `${response.status(response.statusText)}`
+                let error = new Error(errorMessage);
+                throw(error);
+            }
+        })
+        .then(response => response.json())
+        .then(result =>{
+            console.log("result: ", result)
+           this.setState({data: result})
+            this.setState({load: false})
+           //    globData = result;
+        console.log('globData: ', globData);
+        
+        console.log("postData: ", this.state.data)
+    })
+    .catch(error => console.log('error from QuesCard: ', error));         
+    
+}
+
+    render() {
+    globData = this.state.data;
+        return (
+            <div className="mainQuesCard">
+            <div>
+            {/* {titleCardCompo("manish", "text", "avatar", "likes", "comments")} */}
+           
+                {this.state.load || !this.state.data ? 
+                    <h4 style={{textAlign: 'center'}}>Fetching Posts...</h4> :
+                    this.state.data.map((item, index)=>
+                        <div key={index} className="QuesCard">
+                                <CardHead name={item.name} />
+                                <TextCard text={item.text} />
+                                <Handles/>
+                        </div>
+                    )
+                }   
+            <BookPdf/>
+            {/* {urlCardCompo()} */}
+            {/* {titleCardCompo()} */}
+            {/* {urlCardCompo()} */}
+            </div>
+            <div>
+            <PopularPosts/>
+           
+            </div>
         </div>
         )
     }
+}
 
+//Header of the card.
+function CardHead(props){
     // 3Dots style
     const StyledMenu = withStyles({
         paper: {
@@ -80,8 +148,9 @@ function QuesCard(props) {
           setAnchorEl(null);
         };
 
-        const cardHead=()=>{
+    
             return(
+                
                 <div className="topQuesHead">
                 <div className="topQues">
                 <div>
@@ -89,7 +158,7 @@ function QuesCard(props) {
                 </div>
                 <div>
                 <div className="topQues1">
-                    <p style={{fontWeight: 'bold'}}>Kingsten Jones</p>
+                    <p style={{fontWeight: 'bold'}}>{props.name}</p>
                 </div>
                 <div className="topQues2">
                         <p>Posted: 21 July</p> 
@@ -127,157 +196,168 @@ function QuesCard(props) {
                 </div>
             </div>
             )
-        }
-
-    const titleCardCompo = (name, text, avatar, likes, comments)=>{
-        return (
-
-            <div className="QuesCard">
-                {cardHead(name)}
-                {titleCard(text)}
-            <div className="btmQues">
-               
-                <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
-                    <div className="cardIcons">
-                        <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px'}} />
-                        <p>{comments}</p>
-                    </div>
-                    <div className="cardIcons">
-                        <VisibilityOutlinedIcon style={{color: '#707070', margin: '0px 10px'}}/>
-                        <p>34</p>
-                    </div>
-                        <ShareIcon style={{color: '#707070', margin: '0px 10px'}}/>
-                        
-                </div>
-                {deskCardHandles()}
-                <div className="btmQues2">
-                        <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
-                        <p style={{color: '#B0343C', fontWeight: 'bold'}}>
-                            {likes}
-                        </p>
-                        <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
-                </div>
-            </div>
-        </div>
-        );
         
-    }
 
-    const UrlCard = 
-    (
+}
+
+// text Card.
+function TextCard(props){
+        return(
+            <div className="middleQues">
+            <p style={{fontWeight: 'bold'}}>
+                {props.text}
+            </p>
+            <p>
+                {props.text}
+                {/* <span style={{color: 'rgb(38, 0, 176)'}}>show more</span> */}
+            </p>
+        </div>
+        )
+
+}
+
+// url card.
+function UrlCard(){
+    return(
+        
         <div className="middleQues">
             <p>
                 I would like to know the differenc between these two seaches, will I get good profiles
             </p>
             <img src={bannerLogo} alt="thumbnail image"/>
         </div>
-    );
-    const urlCardCompo =()=>{
-        
-        return(
-            <div className="QuesCard">
-            {cardHead()}
-            {UrlCard}
+    )
+}
+
+// handles of the card.
+function Handles(){
+    return (
+
+      
         <div className="btmQues">
-            
+           
             <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
                 <div className="cardIcons">
-                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
-                    <p>23</p>
+                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px'}} />
+                    <p>Comments</p>
                 </div>
                 <div className="cardIcons">
-                    <VisibilityOutlinedIcon style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                    <VisibilityOutlinedIcon style={{color: '#707070', margin: '0px 10px'}}/>
                     <p>34</p>
                 </div>
-                    <ShareIcon style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                   
+                    <ShareIcon style={{color: '#707070', margin: '0px 10px'}}/>
+                    
             </div>
-            {deskCardHandles()}
+            <DeskCardHandles/>
             <div className="btmQues2">
                     <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                     <p style={{color: '#B0343C', fontWeight: 'bold'}}>
-                        3
+                        Likes
                     </p>
                     <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
             </div>
         </div>
-    </div>
-        )
-    }
-
-    const deskCardHandles=()=>{
-        return(
-            <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
-                                <div className="cardIcons">
-                                    <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
-                                    <p>Answers: 23</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Views: 59</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Share</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <BookmarkBorderIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-        )
-    }
-
-    const [postData, setPostData] = useState({data: {}})
-
-    const fetchPosts = ()=>{
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", localStorage.getItem('token'));
-        
-        var raw = "";
-        
-        var requestOptions = {
-          method: 'GET',
-          headers: myHeaders,
-          redirect: 'follow'
-        };
-
-        fetch("https://recmonk.herokuapp.com/posts", requestOptions)
-        .then(response => response.json())
-        .then(result =>{
-            console.log("result: ", result)
-            setPostData({data: result})
-            console.log("postData: ", postData)
-        })
-        .catch(error => console.log('error from QuesCard: ', error));         
-
-    }
-
-    useEffect(() => {
-        fetchPosts();
-        store.subscribe(()=>{
-            console.log('user: ', store.getState().authUser.authUser)
-        })
-        console.log('questCard redux val: ', props.authVal)
-        console.log('questCard redux val: ', localStorage.getItem('token'))
-    }, [])
-
-    return (
-        <div className="mainQuesCard">
-            <div>
-            {titleCardCompo("manish", "text", "avatar", "likes", "comments")}
-            <BookPdf/>
-            {urlCardCompo()}
-            {titleCardCompo()}
-            {urlCardCompo()}
-            </div>
-            <div>
-            <PopularPosts/>
-            </div>
-        </div>
-    )
-
+    );
 }
+
+// Desktop view Handles of the card
+function DeskCardHandles(){
+    return(
+        <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
+                            <div className="cardIcons">
+                                <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
+                                <p>Answers: 23</p>
+                            </div>
+                            <div className="cardIcons">
+                                <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                <p>Views: 59</p>
+                            </div>
+                            <div className="cardIcons">
+                                <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                <p>Share</p>
+                            </div>
+                            <div className="cardIcons">
+                                <BookmarkBorderIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                <p>Bookmark</p>
+                            </div>
+                        </div>
+    )
+}
+
+// function QuesCard(props) {
+
+//     const [postData, setPostData] = useState({data: []})
+
+//     // const loadData = ()=>{
+//     //     return(
+//     //         <Demo/>
+//     //     )
+//     // }
+   
+//     var localData = [];
+
+//     const fetchPosts=()=>{
+//         var myHeaders = new Headers();
+//         myHeaders.append("Authorization", localStorage.getItem('token'));
+        
+//         var raw = "";
+        
+//         var requestOptions = {
+//           method: 'GET',
+//           headers: myHeaders,
+//           redirect: 'follow'
+//         };
+
+//         fetch("https://recmonk.herokuapp.com/posts", requestOptions)
+//         .then(response => {
+//             if (response.ok) {
+//                     return response;
+//             } else {
+//                 let errorMessage = `${response.status(response.statusText)}`
+//                 let error = new Error(errorMessage);
+//                 throw(error);
+//             }
+//         })
+//         .then(response => response.json())
+//         .then(result =>{
+//             console.log("result: ", result)
+//         //    this.setState({data: result})
+//             // globData = result
+//             localData = result
+//             setPostData({data: result})
+//            globData = result;
+//         // console.log('globData: ', globData);
+        
+//         console.log("postData from func: ", postData.data)
+//         console.log("globData from func: ", globData)
+//         console.log("localData from func: ", localData)
+//     })
+//     .catch(error => console.log('error from QuesCard: ', error));         
+    
+//     }
+
+//     useEffect(() => {
+//         fetchPosts();
+//         // loadData();
+//         store.subscribe(()=>{
+//             console.log('user: ', store.getState().authUser.authUser)
+//         })
+//         console.log('questCard redux val: ', props.authVal)
+//         console.log('questCard redux val: ', localStorage.getItem('token'))
+//         console.log('globdata: ', globData);
+//         console.log('localData: ', localData);
+        
+//     }, [])
+
+//     return (
+//         <div>
+
+//         </div>
+//     )
+// }
+
+
+
 
 function mapStateToProps(state){
     return{
