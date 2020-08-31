@@ -138,9 +138,13 @@ export default function Sign() {
 
   return (
     <div className="Sign" id="idSign">
-      <Button className="signBtn" style={{ color: '#B0343C', fontWeight: 'bold', position: 'absolute', top: '8px', right: '16px' }} type="button" onClick={handleOpen}>
+      {
+        localStorage.getItem('token') ? 
+        <AccountCircleIcon onClick={()=>history.push('/profile')} fontSize='large'  style={{color: '#b32800', position: 'absolute', top: '8px', right: '16px', cursor: 'pointer'}}/> :
+        <Button className="signBtn" style={{ color: '#B0343C', fontWeight: 'bold', position: 'absolute', top: '8px', right: '16px' }} type="button" onClick={handleOpen}>
         Sign in
-      </Button>
+        </Button>
+      }
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
