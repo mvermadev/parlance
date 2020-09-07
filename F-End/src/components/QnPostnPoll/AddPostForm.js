@@ -4,7 +4,7 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 
-function AddPost() {
+function AddPost(props) {
 
     const [state, setState] = React.useState({
         postTitle: '',
@@ -21,6 +21,8 @@ function AddPost() {
     const handleSubmit = () => {
         alert("Curent State is : " + JSON.stringify(state));
     }
+
+   
 
     return(
         <form onSubmit={handleSubmit}>
@@ -88,5 +90,6 @@ function AddPost() {
         </form>
     );
 }
+
 
 export default AddPost;

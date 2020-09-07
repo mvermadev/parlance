@@ -19,6 +19,7 @@ import PopularPosts from '../PopularPosts'
 import {store} from '../../../redux/reducers/index'
 import BookPdf from './BookPdf'
 import {connect} from 'react-redux'
+import ReplyCompo from '../../Pages/Answers/Reply/ReplyCompo'
 import axios from 'axios'
 import '../QnA.css'
  
@@ -64,9 +65,10 @@ class QuesCard extends Component {
            this.setState({data: result})
             this.setState({load: false})
            //    globData = result;
-        console.log('globData: ', globData);
+        // console.log('globData: ', globData);
         
         console.log("postData: ", this.state.data)
+        console.log('comment data: ', this.state.data.comments)
     })
     .catch(error => console.log('error from QuesCard: ', error));         
     
@@ -85,10 +87,14 @@ class QuesCard extends Component {
                         <div key={index} className="QuesCard">
                                 <CardHead name={item.name} />
                                 <TextCard text={item.text} />
-                                <Handles/>
+                                <Handles cardId={item._id} />
+                                {item.comments.map((item, index)=>
+                                item ? <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} commentON={true}/> : ''
+
+                                )}
                         </div>
                     )
-                }   
+                }
             <BookPdf/>
             {/* {urlCardCompo()} */}
             {/* {titleCardCompo()} */}
@@ -230,10 +236,105 @@ function UrlCard(){
 }
 
 // handles of the card.
-function Handles(){
-    return (
+function Handles(props){
 
-      
+    const likeBtn = ()=>{
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", localStorage.getItem('token'));
+
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        fetch(`https://recmonk.herokuapp.com/posts/like/${props.cardId}`, requestOptions)
+        .then(response => {
+            if (response.ok) {
+                    return response;
+            } else {
+                let errorMessage = `${response.status(response.statusText)}`
+                let error = new Error(errorMessage);
+                throw(error);
+            }
+        })
+        .then(response => response.json())
+        .then(result =>{
+            console.log("result like: ", result)
+        })
+        .catch(error => console.log('error from QuesCard: ', error));       
+    }
+
+    const dislikeBtn = ()=>{
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", localStorage.getItem('token'));
+
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        fetch(`https://recmonk.herokuapp.com/posts/unlike/${props.cardId}`, requestOptions)
+        .then(response => {
+            if (response.ok) {
+                    return response;
+            } else {
+                let errorMessage = `${response.status(response.statusText)}`
+                let error = new Error(errorMessage);
+                throw(error);
+            }
+        })
+        .then(response => response.json())
+        .then(result =>{
+            console.log("result like: ", result)
+        })
+        .catch(error => console.log('error from QuesCard: ', error));       
+    }
+
+    const [click, setClick] = useState(false);    
+    
+        const ShowComment = () =>{
+            setClick(true)
+        }
+    
+        const HideComment = ()=>{
+            setClick(false)
+        }
+    
+       
+
+    const DeskCardHandles=()=>{
+
+        return(
+            <div>
+            <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
+                                <div className="cardIcons" onClick={click == false ? ShowComment : HideComment}>
+                                    <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
+                                    <p>Answers: 23</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Views: 59</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Share</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <BookmarkBorderIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Bookmark</p>
+                                </div>
+                            </div>
+                            
+                            </div>
+        )
+    }
+
+    return (
+        <div>
         <div className="btmQues">
            
             <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
@@ -250,37 +351,39 @@ function Handles(){
             </div>
             <DeskCardHandles/>
             <div className="btmQues2">
+                    <div onClick={likeBtn}>
                     <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
+                    </div>
                     <p style={{color: '#B0343C', fontWeight: 'bold'}}>
                         Likes
                     </p>
+                    <div onClick={dislikeBtn}>
                     <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
+                    </div>
             </div>
+        </div>
+            {click == true ? <DisplayComment cardId={props.cardId}/> : HideComment}
         </div>
     );
 }
 
-// Desktop view Handles of the card
-function DeskCardHandles(){
+function DisplayComment(props){
     return(
-        <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
-                            <div className="cardIcons">
-                                <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
-                                <p>Answers: 23</p>
-                            </div>
-                            <div className="cardIcons">
-                                <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                <p>Views: 59</p>
-                            </div>
-                            <div className="cardIcons">
-                                <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                <p>Share</p>
-                            </div>
-                            <div className="cardIcons">
-                                <BookmarkBorderIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                <p>Bookmark</p>
-                            </div>
-                        </div>
+    <div>
+             <ReplyCompo CName={props.CName} CText={props.CText} CId={props.CId} CImg={props.CImg} commentON={props.commentON} cardId={props.cardId}/>
+             
+    </div>
+    )
+}
+
+// Desktop view Handles of the card
+
+
+function CommentBox(){
+    return(
+        <div className="CommentBox">
+            <ReplyCompo/>
+        </div>
     )
 }
 

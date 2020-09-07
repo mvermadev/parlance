@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, Component } from 'react';
 import { Grid, InputBase, Typography, FormControlLabel, InputLabel, NativeSelect, Button } from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -8,8 +8,12 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Checkbox from '@material-ui/core/Checkbox';
+import { withRouter } from 'react-router-dom';
+import {fetchProfile} from '../../redux/dataFetchers/ProfileApi'
+import Swal from 'sweetalert2'
+import { connect } from 'react-redux';
 
-function AddQuestion() {
+function LoadAddQuestion(props) {
     
     const [expanded, setExpanded] = React.useState(false);
 
@@ -43,8 +47,58 @@ function AddQuestion() {
         alert("Curent State is : " + JSON.stringify(state));
     }
 
+    const sendPost = e=>{
+        e.preventDefault();
+        
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", localStorage.getItem('token'));
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("text", state.title);
+        urlencoded.append("name", props.name);
+        urlencoded.append("avatar", "abc");
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+        };
+
+        fetch("https://recmonk.herokuapp.com/posts", requestOptions)
+        .then(response => {
+            if(response.ok) {
+                return response;
+            }
+            else {
+                var error = new Error("Error " + response.status + ": " + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        }, 
+        error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            Swal.fire({
+                icon: 'success',
+                title: 'Done...',
+                text: result.message
+              })
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    useEffect(()=>{
+        console.log("name: ", props.name)
+    }, [])
+
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={sendPost}>
         <Grid container>
             <Grid item xs={12} style={{background: 'white', padding: '15px'}}> 
                 <InputBase
@@ -145,4 +199,29 @@ function AddQuestion() {
     );
 }
 
-export default AddQuestion;
+class AddQuestion extends Component {
+    
+    componentDidMount(){
+        this.props.fetchProfile()
+        console.log('className: ', this.props.info.info.name)
+    }
+
+    render() {
+        return (
+            <div>
+                <LoadAddQuestion name={this.props.info.info.name}/>
+            </div>
+        )
+    }
+}
+
+
+const mapStateToProps = state => ({
+    info: state.info
+  })
+  
+  const mapDispatchToProps = (dispatch) => ({
+    fetchProfile: () => {dispatch(fetchProfile())}
+  });
+  
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddQuestion));

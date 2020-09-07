@@ -31,7 +31,10 @@ export const fetchProfile = () => (dispatch) => {
             throw errmess;
         })
         .then(response => response.json())
-        .then(data => dispatch(addProfile(data)))
+        .then(data => {
+            console.log('profileData: ', data);
+            dispatch(addProfile(data))
+        })
         .catch(error => Swal.fire({
             icon: 'error',
             title: 'Oops...',
