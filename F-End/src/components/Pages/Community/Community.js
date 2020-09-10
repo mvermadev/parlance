@@ -10,10 +10,10 @@ import '../Page.css';
 function Monks() {
     return(
         <Grid container style={{ marginBottom: '20px'}} >
-            <Grid item xs={3} sm={2} md={1}>
+            <Grid item>
                 <Avatar style={{ width:'60px', height:'60px'}} src="" />
             </Grid>
-            <Grid item xs={9} sm={8} md={4} style={{ marginTop: '-5px', marginLeft: '20px'}}>
+            <Grid item style={{ marginTop: '-5px', marginLeft: '20px'}}>
                 <Typography variant="h6">Monk Username<span><img alt="Verified" title="Verified" src="assets/images/verified.png" /></span></Typography>
                 <Typography variant="caption">Engagement Score: 100</Typography>
             </Grid>
@@ -24,10 +24,10 @@ function Monks() {
 function Users() {
     return(
         <Grid container style={{ marginBottom: '20px'}} >
-            <Grid item xs={3} sm={2} md={1}>
+            <Grid item>
                 <Avatar style={{ width:'60px', height:'60px'}} src="" />
             </Grid>
-            <Grid item xs={9} sm={8} md={4} style={{ marginTop: '-5px', marginLeft: '20px' }}>
+            <Grid item style={{ marginTop: '-5px', marginLeft: '20px' }}>
                 <Typography variant="h6">Monk Username</Typography>
                 <Typography variant="caption">Engagement Score: 45</Typography>
             </Grid>
@@ -62,7 +62,7 @@ function Community() {
 
 
     return(
-        <div className="Community" style={{background: '#f2f2f2', paddingBottom: '50px'}}>
+        <div className="Community" style={{paddingBottom: '50px'}}>
             <Tabs value={value} onChange={handleChange} aria-label="community-tabs" className="community-tabs" >
                 <Tab label="Members" />
                 <Tab label="Enlighteners" />

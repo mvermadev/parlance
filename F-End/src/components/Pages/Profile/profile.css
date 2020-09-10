@@ -71,11 +71,3 @@
         padding-right: 20px;
     }
 }
-
-@media only screen and (min-width: 800px) {
-.MainHeader {
-    position: relative;
-    width: 99vw;
-    z-index: 99;
-}
-}

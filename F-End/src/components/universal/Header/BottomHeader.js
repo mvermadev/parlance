@@ -10,7 +10,7 @@ function BottomHeader() {
             <form className="myForm">
                 <input type="search" name="search" placeholder="Question monk's wisdom, you seek!" />
                 <button type="submit">
-                    ASK
+                    Ask
                 </button>
             </form>
         </div>

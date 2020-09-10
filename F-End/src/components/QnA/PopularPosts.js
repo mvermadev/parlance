@@ -47,7 +47,7 @@ function PopularPosts() {
             </div>
             <div className="allPosts">
                 <div className="post">
-                    <p>245 k</p>
+                    <p>245k</p>
                     <p>What are the best tools for hiring</p>
                 </div>
                 <div className="post">

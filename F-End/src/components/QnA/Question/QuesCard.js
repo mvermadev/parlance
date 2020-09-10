@@ -7,7 +7,6 @@ import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import profile from '../../../img/profile.jpeg'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -323,10 +322,6 @@ function Handles(props){
                                     <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
                                     <p>Share</p>
                                 </div>
-                                <div className="cardIcons">
-                                    <BookmarkBorderIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Bookmark</p>
-                                </div>
                             </div>
                             
                             </div>
@@ -340,7 +335,7 @@ function Handles(props){
             <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
                 <div className="cardIcons">
                     <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px'}} />
-                    <p>Comments</p>
+                    <p>23</p>
                 </div>
                 <div className="cardIcons">
                     <VisibilityOutlinedIcon style={{color: '#707070', margin: '0px 10px'}}/>
@@ -355,7 +350,7 @@ function Handles(props){
                     <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                     </div>
                     <p style={{color: '#B0343C', fontWeight: 'bold'}}>
-                        Likes
+                        0
                     </p>
                     <div onClick={dislikeBtn}>
                     <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>

@@ -114,7 +114,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 20px
 }
 
 .PopularPosts .postTitle h3{
@@ -187,12 +186,15 @@
 @media only screen and (min-width: 800px)
 {
     .QuesCard, .BookPdf{
-        max-width: 40vw;
+        max-width: 42vw;
         padding: 10px;
     }
     .PopularPosts{
-        max-width: 20vw;
+        max-width: 24vw;
         padding: 10px 20px;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 25%;
     }
     .PopularPosts .allPosts .post p{
         margin-left:  10px;
