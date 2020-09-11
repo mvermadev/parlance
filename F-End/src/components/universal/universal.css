@@ -1,3 +1,7 @@
+.MuiButton-text {
+    text-transform: none !important;
+}
+
 #mobTopHeader{
     display: flex;
     justify-content: space-between;
@@ -5,6 +9,14 @@
     background-color: #fff;
     z-index: 99;
     margin-top: 5px;
+}
+
+.MainHeader{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    width: 100vw;
+    z-index: 99;
 }
 
 .logo img{
@@ -32,12 +44,11 @@
 }
 
 .BottomHeader form input{
-    border: 2px solid #B0343C;
+    border: 1px solid #B0343C;
     height: 36px;
     width: 60vw;
-    border-radius: none;
-    border-radius: 5px 0px 0px 5px;
-    padding: 5px 10px;
+    padding: 11px;
+    border-radius: 8px 0px 0px 8px;
 }
 
 .BottomHeader form input{
@@ -48,9 +59,10 @@
     height: 36px;
     background-color: #B0343C;
     color: #ffffff;
+    font-size: 13px;
     width: 60px;
     border: none;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 8px 8px 0px;
 }
 
 .BottomNav{
@@ -67,7 +79,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 15px;
     font-weight: bold;
 }
 
@@ -96,8 +107,11 @@
 @media only screen and (min-width: 800px){
    
     .Filter{
-        margin: auto 19vw;
-     
+        margin: auto 15vw;
+    }
+
+    .BottomHeader form button{
+        font-size: 16px;
     }
 
     .BottomHeader .myForm{
@@ -105,17 +119,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    .BottomHeader form input{
-        padding: 25px 10px;
-        font-size: 17px;
-    }
-
-    .BottomHeader form button{
-        height: 55px;
-        font-weight: bold;
-        width: 100px;
     }
 
     #bottomNav{
@@ -142,8 +145,13 @@
     }
 
     .subTopHead2 Button{
-        color: rgba(0, 0, 0, 0.54);
         font-weight: bold;
+    }
+
+    .subTopHead2 Button:hover{
+        color: #b32800 !important;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0) !important;
     }
 
     .logo img{
@@ -159,8 +167,10 @@
     }
     
     .MainHeader{
-        position: fixed;
-        width: 100vw;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        width: 99vw;
         z-index: 99;
    }
 

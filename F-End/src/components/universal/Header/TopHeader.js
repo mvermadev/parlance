@@ -102,24 +102,24 @@ export default function TopHeader() {
   const signin = () =>{
     return(
         <div className="signin">
-            <p><Sign/> </p>
+          <Sign/>
         </div>
     )
   }
 
-  const [homeStyle, setHomeStyle] = useState('#B0343C')
+  const [homeStyle, setHomeStyle] = useState('#B32800')
   const [comStyle, setComStyle] = useState('')
 
   const btnHome = ()=>{
     history.push('/');
-    setHomeStyle('#B0343C')
-    setComStyle('#757575')
+    setHomeStyle('#B32800')
+    setComStyle('#000000')
   }
 
   const btnCom = ()=>{
     history.push('/community');
-    setComStyle('#B0343C')
-    setHomeStyle('#757575')
+    setComStyle('#B32800')
+    setHomeStyle('#000000')
   }
 
   return (
@@ -144,8 +144,8 @@ export default function TopHeader() {
 
       {logoImg()}
       <div className="subTopHead2">
-      <Button className="btnHome" style={{color: `${homeStyle}`}} onClick={btnHome}>Home</Button>
-      <Button className="btnCom" onClick={btnCom} style={{color: `${comStyle}`}}>Community</Button>
+      <Button className="btnHome" style={{color: `${homeStyle}`}} onClick={btnHome}><span>Home</span></Button>
+      <Button className="btnCom" onClick={btnCom} style={{color: `${comStyle}`, marginLeft: '10px'}}><span>Community</span></Button>
       </div>
       </div>
       

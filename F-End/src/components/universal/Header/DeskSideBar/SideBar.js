@@ -36,7 +36,7 @@ function SideBar() {
             </div>
             <div className="nav">
             <MailIcon style={{color: '#b32800'}} fontSize="medium"/>
-            <p onClick={()=>history.push('')}>FellowMont - Bot</p>
+            <p onClick={()=>history.push('')}>FellowMonk - Bot</p>
             </div>
             <div className="nav" >
             <LocalLibraryIcon style={{color: '#b32800'}} fontSize="medium" />

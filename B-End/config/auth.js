@@ -22,8 +22,5 @@ module.exports = {
         'clientID': '817qcs4o6awr3u',
         'clientSecret': 'pzaBFyEGEvCmtQLO',
         'callbackURL': 'http://localhost:3000/auth/linkedin/callback'
-    },
-    'sendgrid': {
-        'apiKey': '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'
     }
 };
