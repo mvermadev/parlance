@@ -366,21 +366,11 @@ function DisplayComment(props){
     return(
     <div>
              <ReplyCompo CName={props.CName} CText={props.CText} CId={props.CId} CImg={props.CImg} commentON={props.commentON} cardId={props.cardId}/>
-             
     </div>
     )
 }
 
 // Desktop view Handles of the card
-
-
-function CommentBox(){
-    return(
-        <div className="CommentBox">
-            <ReplyCompo/>
-        </div>
-    )
-}
 
 // function QuesCard(props) {
 
