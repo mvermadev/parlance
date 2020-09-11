@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Avatar, Button, Menu, MenuItem, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import AttachmentIcon from '@material-ui/icons/Attachment';
@@ -10,9 +10,38 @@ import { connect } from 'react-redux';
 import Swal from 'sweetalert2'
 import '../Answers.css';
 
-
 var cId = '';
 var cName = '';
+
+function ReplyCompoData(props){
+
+  useEffect(()=>{
+        console.log('id: ', props.cardId)
+        cId = props.cardId;
+        console.log('idByVar: ', cId);
+        console.log('nameByVar: ', cName);
+  }, [])
+
+  return(
+    <div>
+           {props.commentON == true ? <div className="comments">
+                  <div className="commentAvatar">
+                    <Avatar style={{ width: '35px', height: '35px' }} />
+                  </div>
+                  <div className="commentTexts">
+                    <div className="commentName">
+                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{props.CName} ·</p>
+                      <p>21 July</p>
+                    </div>
+                    <div className="commetAns">
+                    <p>{props.CText}</p>
+                    </div>
+                  </div>
+                </div> : ''}
+    </div>
+  )
+}
+
 
 class ReplyCompo extends Component {
 
@@ -116,15 +145,9 @@ class ReplyCompo extends Component {
       }
 
       componentDidMount(){
+      
         console.log("User name: ", this.props.info.info.name);
-        console.log('id: ', this.props.cardId)
-        cId = this.props.cardId;
         cName = this.props.info.info.name
-        this.setState({commentId: this.props.cardId});
-        console.log('idByState: ', this.state.commentId);
-        console.log('idByVar: ', cId);
-        console.log('nameByVar: ', cName);
-        
       }
 
 
@@ -163,20 +186,7 @@ class ReplyCompo extends Component {
                         </div>            
                 </form>
                 </div>
-                {this.props.commentON == true ? <div className="comments">
-                  <div className="commentAvatar">
-                    <Avatar style={{ width: '35px', height: '35px' }} />
-                  </div>
-                  <div className="commentTexts">
-                    <div className="commentName">
-                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{this.props.CName} ·</p>
-                      <p>21 July</p>
-                    </div>
-                    <div className="commetAns">
-                    <p>{this.props.CText}</p>
-                    </div>
-                  </div>
-                </div> : ''}
+                      <ReplyCompoData/>
             </div>
             );
         }
@@ -187,6 +197,8 @@ class ReplyCompo extends Component {
         }
     }
 }
+
+
 
 const mapStateToProps = state => ({
   info: state.info
