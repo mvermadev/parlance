@@ -13,34 +13,6 @@ import '../Answers.css';
 var cId = '';
 var cName = '';
 
-function ReplyCompoData(props){
-
-  useEffect(()=>{
-        console.log('id: ', props.cardId)
-        cId = props.cardId;
-        console.log('idByVar: ', cId);
-        console.log('nameByVar: ', cName);
-  }, [])
-
-  return(
-    <div>
-           {props.commentON == true ? <div className="comments">
-                  <div className="commentAvatar">
-                    <Avatar style={{ width: '35px', height: '35px' }} />
-                  </div>
-                  <div className="commentTexts">
-                    <div className="commentName">
-                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{props.CName} ·</p>
-                      <p>21 July</p>
-                    </div>
-                    <div className="commetAns">
-                    <p>{props.CText}</p>
-                    </div>
-                  </div>
-                </div> : ''}
-    </div>
-  )
-}
 
 
 class ReplyCompo extends Component {
@@ -144,7 +116,10 @@ class ReplyCompo extends Component {
       }
 
       componentDidMount(){
-      
+        console.log('id: ', this.props.cardId)
+        cId = this.props.cardId;
+        console.log('idByVar: ', cId);
+        console.log('nameByVar: ', cName);
         console.log("User name: ", this.props.info.info.name);
         cName = this.props.info.info.name
       }
@@ -184,8 +159,23 @@ class ReplyCompo extends Component {
                         </div>            
                 </form>
                 </div>
-                      <ReplyCompoData/>
-            </div>
+                <div>
+                          {props.commentON == true ? <div className="comments">
+                                  <div className="commentAvatar">
+                                    <Avatar style={{ width: '35px', height: '35px' }} />
+                                  </div>
+                                  <div className="commentTexts">
+                                    <div className="commentName">
+                                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{props.CName} ·</p>
+                                      <p>21 July</p>
+                                    </div>
+                                    <div className="commetAns">
+                                    <p>{props.CText}</p>
+                                    </div>
+                                  </div>
+                                </div> : ''}
+                </div>  
+          </div>
             );
         }
         else {
