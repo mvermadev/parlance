@@ -160,17 +160,17 @@ class ReplyCompo extends Component {
                 </form>
                 </div>
                 <div>
-                          {props.commentON == true ? <div className="comments">
+                          {this.props.commentON == true ? <div className="comments">
                                   <div className="commentAvatar">
                                     <Avatar style={{ width: '35px', height: '35px' }} />
                                   </div>
                                   <div className="commentTexts">
                                     <div className="commentName">
-                                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{props.CName} ·</p>
+                                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{this.props.CName} ·</p>
                                       <p>21 July</p>
                                     </div>
                                     <div className="commetAns">
-                                    <p>{props.CText}</p>
+                                    <p>{this.props.CText}</p>
                                     </div>
                                   </div>
                                 </div> : ''}
