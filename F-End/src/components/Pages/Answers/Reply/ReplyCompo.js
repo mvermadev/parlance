@@ -90,8 +90,9 @@ class ReplyCompo extends Component {
             display: "none"
           });
       }
-      
-      sendComment = e=>{
+
+      sendComment = e=> {
+
         e.preventDefault();
         var myHeaders = new Headers();
         myHeaders.append("Authorization", localStorage.getItem('token'));
@@ -110,8 +111,6 @@ class ReplyCompo extends Component {
         };
         
         var url = `https://recmonk.herokuapp.com/posts/comment/${cId}`;
-
-        
 
         fetch(url, requestOptions)
           .then(response => {
@@ -150,9 +149,8 @@ class ReplyCompo extends Component {
         cName = this.props.info.info.name
       }
 
-
     render() {
-            
+           
         if( this.props.login === true || localStorage.getItem('token')) {   
             return(
             <div className="reply-container" style={{display: this.state.display}}>
@@ -191,14 +189,12 @@ class ReplyCompo extends Component {
             );
         }
         else {
-            return(
-                <div align="center">You must be logged in to reply to an answer.</div>
+          return(
+            <div align="center">You must be logged in to reply to an answer.</div>
             );
         }
     }
 }
-
-
 
 const mapStateToProps = state => ({
   info: state.info
