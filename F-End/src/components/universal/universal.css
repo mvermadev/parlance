@@ -1,4 +1,4 @@
-.MuiButton-text {
+.MuiButton-text, Button {
     text-transform: none !important;
 }
 
