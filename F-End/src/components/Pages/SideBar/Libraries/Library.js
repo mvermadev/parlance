@@ -13,6 +13,7 @@ import Articles from './Articles';
 import BookPdf from '../../../QnA/Question/BookPdf';
 import Videos from './Videos';
 import '../SideBar.css'
+import './Library.css'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {

@@ -15,7 +15,6 @@ import profile from '../../../../img/profile.jpeg'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import bannerLogo from '../../../img/logo.png'
-import '../../QnA/QnA.css'
 
 function TitleCard() {
     const titleCard =

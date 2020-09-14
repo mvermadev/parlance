@@ -1,7 +1,6 @@
 import React from 'react'
 import Library from './Library'
 import UrlCard from '../../card/UrlCard'
-import './Library.css'
 
 function Videos() {
     return (
