@@ -1,4 +1,4 @@
-.QuesCard, .PopularPosts, .BookPdf{
+.mainQuesCard .QuesCard,.mainQuesCard .PopularPosts,.mainQuesCard .BookPdf{
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 20px #c2c0c0;
@@ -11,28 +11,28 @@
     background-color: '#f0f0f0';
 }
 
-.QuesCard .topQues{
+.mainQuesCard .QuesCard .topQues{
     display: flex;
     align-items: center;
     padding: 5px 10px;
     line-height: 0;
 }
 
-.QuesCard .topQues img{
+.mainQuesCard .QuesCard .topQues img{
     width: 48px;
     height: 48px;
     border-radius: 100%;
 }
 
-.QuesCard .topQues .topQues1{
+.mainQuesCard .QuesCard .topQues .topQues1{
     padding-left: 10px;
 }
 
-.QuesCard .topQues .topQues2{
+.mainQuesCard .QuesCard .topQues .topQues2{
     display: flex;
 }
 
-.QuesCard .topQues .topQues2 p{
+.mainQuesCard .QuesCard .topQues .topQues2 p{
     padding-left: 10px;
     font-size: 14px;
     color: #333333;
@@ -40,13 +40,13 @@
     bottom: 5px;
 }
 
-.QuesCard .topQuesHead{
+.mainQuesCard .QuesCard .topQuesHead{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.QuesCard .middleQues{
+.mainQuesCard .QuesCard .middleQues{
    display: flex;
    flex-flow: column wrap;
     padding: 0px 10px;
@@ -54,18 +54,18 @@
     /* bottom: 15px; */
 }
 
-.QuesCard .middleQues p:nth-child(2){
+.mainQuesCard .QuesCard .middleQues p:nth-child(2){
     position: relative;
     /* bottom: 10px; */
     color: #333333
 }
 
-.QuesCard .middleQues img {
+.mainQuesCard .QuesCard .middleQues img {
     width: 100%;
     height: 150px;
 }
 
-.QuesCard .btmQues, .BookPdf .btmQues{
+.mainQuesCard .QuesCard .btmQues,.mainQuesCard .BookPdf .btmQues{
     position: relative;
     /* bottom: 2rem; */
     display: flex;
@@ -75,80 +75,80 @@
 }
 
 
-.QuesCard .btmQues .btmQues2, .BookPdf .btmQues .btmQues2{
+.mainQuesCard .QuesCard .btmQues .btmQues2,.mainQuesCard .BookPdf .btmQues .btmQues2{
     display: flex;
     align-items: center;
 }
 
-.QuesCard .btmQues .btmQues1, .BookPdf .btmQues .btmQues1 {
+.mainQuesCard .QuesCard .btmQues .btmQues1,.mainQuesCard .BookPdf .btmQues .btmQues1 {
     display: flex;
     align-items: center;
 }
 
-.QuesCard .btmQues .btmQues1 .cardIcons, .BookPdf .btmQues .btmQues1 .cardIcons{
+.mainQuesCard .QuesCard .btmQues .btmQues1 .cardIcons,.mainQuesCard .BookPdf .btmQues .btmQues1 .cardIcons{
     display: flex;
     align-items: center;
 }
 
-.QuesCard .btmQues .btmQues1 .cardIcons p, .BookPdf .btmQues .btmQues1 .cardIcons p {
+.mainQuesCard .QuesCard .btmQues .btmQues1 .cardIcons p,.mainQuesCard .BookPdf .btmQues .btmQues1 .cardIcons p {
     color: rgb(38, 0, 176);
 }
 
-.PopularPosts{
+.mainQuesCard .PopularPosts{
     margin-bottom: 70px;
     line-height: 15px;
 }
 
-.PopularPosts .allPosts{
+.mainQuesCard .PopularPosts .allPosts{
     display: flex;
     flex-flow: column wrap;
 }
 
-.PopularPosts .postTitle .postTitle1{
+.mainQuesCard .PopularPosts .postTitle .postTitle1{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.PopularPosts .postTitle{
+.mainQuesCard .PopularPosts .postTitle{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.PopularPosts .postTitle h3{
+.mainQuesCard .PopularPosts .postTitle h3{
     margin-left: 10px;
     color: #545454
 } 
 
-.PopularPosts .allPosts .post{
+.mainQuesCard .PopularPosts .allPosts .post{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.PopularPosts .allPosts .post p:nth-child(1){
+.mainQuesCard .PopularPosts .allPosts .post p:nth-child(1){
     color: #B0343C;
     font-size: 18px;
 }
 
-.PopularPosts .allPosts .post p:nth-child(2){
+.mainQuesCard .PopularPosts .allPosts .post p:nth-child(2){
     color: rgb(38, 0, 176);
     font-size: 16px;
 }
 
-.BookPdf .bpHead{
+.mainQuesCard .BookPdf .bpHead{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin: 0px 20px
 }
 
-.BookPdf .bpHead h3{
+.mainQuesCard .BookPdf .bpHead h3{
     margin-left: 20px;
 }
 
-.BookPdf .body{
+.mainQuesCard .BookPdf .body{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -158,14 +158,14 @@
     -moz-overflow-scrolling: touch;
 }
 
-.BookPdf .body::-webkit-scrollbar {
+.mainQuesCard .BookPdf .body::-webkit-scrollbar {
     display: none;
   }
-.BookPdf .body::-moz-scrollbar {
+.mainQuesCard .BookPdf .body::-moz-scrollbar {
     display: none;
   }  
 
-.BookPdf .body .body1{
+.mainQuesCard .BookPdf .body .body1{
     margin: 5px;
     width: 260px;
     border: 5px solid #EFEAEA;
@@ -174,29 +174,30 @@
     border-radius: 7px;
 }
 
-.BookPdf .body1 img{
+.mainQuesCard .BookPdf .body1 img{
     width: 250px;
 }
 
-#deskBtmQeus1{
+.mainQuesCard #deskBtmQeus1{
     display: none;
 }
 
 
 @media only screen and (min-width: 800px)
 {
-    .QuesCard, .BookPdf{
+    .mainQuesCard .QuesCard,.mainQuesCard .BookPdf{
         max-width: 42vw;
         padding: 10px;
     }
-    .PopularPosts{
+    
+    .mainQuesCard .PopularPosts{
         max-width: 24vw;
         padding: 10px 20px;
         position: -webkit-sticky; /* Safari */
         position: sticky;
         top: 25%;
     }
-    .PopularPosts .allPosts .post p{
+    .mainQuesCard .PopularPosts .allPosts .post p{
         margin-left:  10px;
         margin-right:  10px;
     }
@@ -205,10 +206,10 @@
         justify-content: center;
         
     }
-    #mobBtmQeus1{
+    .mainQuesCard #mobBtmQeus1{
         display: none;
     }
-    #deskBtmQeus1{
+    .mainQuesCard #deskBtmQeus1{
         display: block;
         display: flex;
         justify-content: flex-start;
@@ -216,25 +217,25 @@
         flex-wrap: wrap;
     }
     
-    .QuesCard .middleQues img{
+    .mainQuesCard .QuesCard .middleQues img{
         height: 300px;
     }
-    .BookPdf .body{
+    .mainQuesCard .BookPdf .body{
         overflow: scroll;
     }
 
-    .BookPdf .body::-webkit-scrollbar {
+    .mainQuesCard .BookPdf .body::-webkit-scrollbar {
         display: block;
     }
-    .BookPdf .body::-moz-scrollbar {
+    .mainQuesCard .BookPdf .body::-moz-scrollbar {
         display: block;
     }  
 
-    .BookPdf .body::-webkit-scrollbar:horizontal {
+    .mainQuesCard .BookPdf .body::-webkit-scrollbar:horizontal {
         height: 11px;
     }
 
-    .BookPdf .body::-webkit-scrollbar-thumb {
+    .mainQuesCard .BookPdf .body::-webkit-scrollbar-thumb {
         border-radius: 8px;
         border: 2px solid white; /* should match background, can't be transparent */
         /* background-color: rgba(0, 0, 0, .5); */

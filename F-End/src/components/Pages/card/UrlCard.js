@@ -5,7 +5,6 @@ import ShareIcon from '@material-ui/icons/Share';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import bannerLogo from '../../../img/logo.png'
-import '../../QnA/QnA.css'
 
 function UrlCard(props) {
     const titleCard =
