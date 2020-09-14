@@ -4,6 +4,7 @@ import BottomNav from './universal/Footer/BottomNav'
 import QuesCard from './QnA/Question/QuesCard'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Filter from './universal/Header/Filter'
+import Loader from './universal/Loader'
 import Library from './Pages/SideBar/Libraries/Library'
 import Articles from './Pages/SideBar/Libraries/Articles'
 import Videos from './Pages/SideBar/Libraries/Videos'
@@ -48,6 +49,7 @@ function Collector() {
                         <Route path='/reply' component={ReplyDesign}/>
                         <Route path='/add-post' component={Post}/>
                         <Route path='/information' component={InformationGathering}/>
+                        <Route path='/loader' component={Loader}/>
                     </Switch>
                 <BottomNav/>
                 <DeskFooter/>

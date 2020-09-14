@@ -305,3 +305,48 @@
 .footer-social-links:hover {
     background-color: #f99c38 !important;
 }
+
+/* Loader Component CSS */
+
+.Loader-bg, .loader-img {
+    background-color: #ffffff;
+    height: 100%;
+    width: 99vw;
+}
+
+.loader-img{
+    padding-top: 10%;
+}
+
+.loader-img img {
+    position: relative;
+    animation-name: loader;
+    animation-duration: 5s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+}
+
+.loader-shadow {
+    border-radius: 50%;
+    width: 180px;
+    height: 30px;
+    margin-top: 50px;
+    background-color: grey;
+    position: relative;
+    animation-name: shadow;
+    animation-duration: 5s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+}
+  
+  @keyframes loader {
+    0%   {top:0px;}
+    50%  {top:50px;}
+    100% {top:0px;}
+  }
+
+  @keyframes shadow {
+    0%   {background-color: lightgray;}
+    50%  {background-color: gray;}
+    100% {background-color: lightgray;}
+  }
