@@ -1,22 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import MailIcon from '@material-ui/icons/Mail';
 import '../Auth.css'
-import { Button, Divider, FormGroup, withStyles } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import { Button } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import LockIcon from '@material-ui/icons/Lock';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Swal from 'sweetalert2'
-import Signup from './Signup';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
- 
+
 export default function Forget() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -51,111 +42,104 @@ export default function Forget() {
   };
 
   // For hanlding the remember user.
-      const [state, setState] = React.useState({
-        checkedMe: true,
-        checkedB: true,
-        checkedF: true,
-        checkedG: true,
-      });
+  const [state, setState] = React.useState({
+    checkedMe: true,
+    checkedB: true,
+    checkedF: true,
+    checkedG: true,
+  });
 
-      const [form, setForm] = useState({
-        username: ''
-      });
+  const [form, setForm] = useState({
+    username: ''
+  });
 
-      const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-      };
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
 
-      // const doSignUp =()=>{
-      //   document.getElementById('siginModalId').style.display = 'none';
-      // }
+  // const doSignUp =()=>{
+  //   document.getElementById('siginModalId').style.display = 'none';
+  // }
 
-      // Main Logic of recovering the password.
-      const updateField=e=>{
-        setForm({
-          ...form, [e.target.name]: e.target.value
-        })
-      }
+  // Main Logic of recovering the password.
+  const updateField = e => {
+    setForm({
+      ...form, [e.target.name]: e.target.value
+    })
+  }
 
-      const finalStep = e=>{
-        e.preventDefault();
+  const finalStep = e => {
+    e.preventDefault();
 
 
-        forgotPass()
+    forgotPass()
 
-      }
-      
-      const forgotPass = e =>{
-        e.preventDefault();
+  }
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+  const forgotPass = e => {
+    e.preventDefault();
 
-        var raw = JSON.stringify({"username":"manish@gmail.com"});
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow',
-          // mode:'no-cors'
-        };
+    var raw = JSON.stringify({ "username": "manish@gmail.com" });
 
-       return fetch("https://recmonk.herokuapp.com/forgot", requestOptions)
-          .then(response => response.text())
-          .then(result => console.log(result))
-          .catch(error => console.log('error', error));
-      }
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+      // mode:'no-cors'
+    };
+
+    return fetch("https://recmonk.herokuapp.com/forgot", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
 
   return (
     <div>
-      <p style={{color: '#B0343C', fontSize: '16px'}} onClick={handleOpen}>
+      <p style={{ color: '#B0343C', fontSize: '16px' }} onClick={handleOpen}>
         Forget Password?
       </p>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open} className="signinModal" id="siginModalId">
-          
-          <div className={classes.paper}>
-        <form method="POST" onSubmit={forgotPass} >
-        <div className="inputFields">
-              <div className={classes.margin}>
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  <AccountCircle style={{color: '#767676'}} />
-                </Grid>
-                <Grid item>
-                  <TextField id="input-with-icon-grid" label="Email" name="username"
-                        value={form.username}
-                        onChange={updateField}
-                        type="email" required/>
-                </Grid>
-              </Grid>
 
-            </div>
-        </div>
-        <div className="conseq">
-              <p id="conseq"></p>
-            </div>
-            <div className="logBtn">
-              <Button variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '.5rem'}} type="submit">
-                Reset
+      <Dialog className="signup-popup" open={open} onClose={handleClose} aria-labelledby="form-dialog">
+        <DialogContent>
+          <Grid container justify="space-around">
+            <Grid item justify="center">
+
+              <form method="POST" onSubmit={forgotPass} >
+                <div className="inputFields">
+                  <Grid container spacing={5} style={{ padding: '7px' }}>
+                    <Grid item xs={12}>
+                      <TextField label="Email" name="username"
+                        value={form.username} onChange={updateField}
+                        type="email" required fullWidth
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <MailIcon style={{ color: '#767676' }} />
+                            </InputAdornment>
+                          ),
+                        }} />
+                    </Grid>
+                  </Grid>
+                </div>
+
+                <div className="conseq">
+                  <p id="conseq"></p>
+                </div>
+                <div className="logBtn">
+                  <Button variant="contained" container style={{ backgroundColor: '#B0343C', color: '#fff', border: 'none' }} type="submit">
+                    Reset
               </Button>
-            </div>
-          </form>
-          </div>
-        </Fade>
-      </Modal>
+                </div>
+              </form>
+            </Grid>
+          </Grid>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

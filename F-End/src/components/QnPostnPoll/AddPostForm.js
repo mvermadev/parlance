@@ -25,7 +25,7 @@ function AddPost(props) {
    
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="post-form" onSubmit={handleSubmit}>
         <Grid container>
             <Grid item xs={12} style={{background: 'white', padding: '15px'}}> 
                 <InputBase
