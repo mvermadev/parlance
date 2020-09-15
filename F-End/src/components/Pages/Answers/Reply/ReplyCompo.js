@@ -66,6 +66,13 @@ class ReplyCompo extends Component {
       sendComment = e=> {
 
         e.preventDefault();
+        if(!localStorage.getItem('token'))
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'Please Login/Signup first.'
+          })
+        }
         var myHeaders = new Headers();
         myHeaders.append("Authorization", localStorage.getItem('token'));
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -119,9 +126,9 @@ class ReplyCompo extends Component {
         console.log('id: ', this.props.cardId)
         cId = this.props.cardId;
         console.log('idByVar: ', cId);
-        console.log('nameByVar: ', cName);
         console.log("User name: ", this.props.info.info.name);
         cName = this.props.info.info.name
+        console.log('nameByVar: ', cName);
       }
 
     render() {
@@ -159,22 +166,7 @@ class ReplyCompo extends Component {
                         </div>            
                 </form>
                 </div>
-                <div>
-                          {this.props.commentON == true ? <div className="comments">
-                                  <div className="commentAvatar">
-                                    <Avatar style={{ width: '35px', height: '35px' }} />
-                                  </div>
-                                  <div className="commentTexts">
-                                    <div className="commentName">
-                                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{this.props.CName} ·</p>
-                                      <p>21 July</p>
-                                    </div>
-                                    <div className="commetAns">
-                                    <p>{this.props.CText}</p>
-                                    </div>
-                                  </div>
-                                </div> : ''}
-                </div>  
+              
           </div>
             );
         }

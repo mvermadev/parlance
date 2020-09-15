@@ -11,6 +11,7 @@ import profile from '../../../img/profile.jpeg'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import bannerLogo from '../../../img/logo.png'
+import { Avatar} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -23,6 +24,7 @@ import axios from 'axios'
 import '../QnA.css'
  
 var globData = [];
+;
 
 class QuesCard extends Component {
     constructor(props)
@@ -88,8 +90,7 @@ class QuesCard extends Component {
                                 <TextCard text={item.text} />
                                 <Handles cardId={item._id} />
                                 {item.comments.map((item, index)=>
-                                item ? <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} commentON={true}/> : ''
-
+                                item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} commentON={true}/> </div>: ''
                                 )}
                         </div>
                     )
@@ -312,7 +313,7 @@ function Handles(props){
             <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
                                 <div className="cardIcons" onClick={click == false ? ShowComment : HideComment}>
                                     <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
-                                    <p>Answers: 23</p>
+                                    <p>Answers</p>
                                 </div>
                                 <div className="cardIcons">
                                     <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
@@ -357,7 +358,11 @@ function Handles(props){
                     </div>
             </div>
         </div>
-            {click == true ? <DisplayComment cardId={props.cardId}/> : HideComment}
+            {click == true ? <div>
+                    <ReplyCompo CName={props.CName} CId={props.CId} CImg={props.CImg} cardId={props.cardId}/> 
+                    <DisplayComment cardId={props.cardId} CId={props.CId}/>
+                </div>
+                : HideComment}
         </div>
     );
 }
@@ -365,7 +370,23 @@ function Handles(props){
 function DisplayComment(props){
     return(
     <div>
-             <ReplyCompo CName={props.CName} CText={props.CText} CId={props.CId} CImg={props.CImg} commentON={props.commentON} cardId={props.cardId}/>
+         <div className='commentCont'>
+                          {props.commentON == true ? <div className="comments">
+                                  <div className="commentAvatar">
+                                    <Avatar style={{ width: '35px', height: '35px' }} />
+                                  </div>
+                                  <div className="commentTexts">
+                                    <div className="commentName">
+                                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{props.CName} ·</p>
+                                      <p>21 July</p>
+                                    </div>
+                                    <div className="commetAns">
+                                    <p>{props.CText}</p>
+                                    </div>
+                                  </div>
+                                </div> : ''}
+                </div>  
+             
     </div>
     )
 }

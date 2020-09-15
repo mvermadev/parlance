@@ -95,30 +95,3 @@
     position: relative;
     top: 12rem;
 }
-
-.reply-container .comments{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 10px;
-}
-
-.reply-container .comments .commentTexts{
-    margin-left: 10px;
-    background-color: #F3F6F8;
-    width: 100vw;
-    padding-left: 10px;
-    border-radius: 0px 15px 15px 15px;
-}
-
-.reply-container .comments .commentTexts .commentName{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.reply-container .comments .commentTexts .commentName p:last-child{
-    margin-left: 5px;
-    color: rgb(94, 94, 94);
-    font-size: 14px;
-}
