@@ -126,3 +126,49 @@
     max-width: 800px !important;
     justify-content: space-evenly;
 }
+
+/* Login-Loader Component CSS */
+
+.Login-Loader-bg, .Login-loader-img {
+    background-color: #ffffff;
+    height: 100%;
+    width: 99%;
+}
+
+.Login-loader-img{
+    padding-top: 10%;
+}
+
+.Login-loader-img img {
+    position: relative;
+    animation-name: Login-loader;
+    animation-duration: 5s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+}
+
+.Login-loader-shadow {
+    border-radius: 50%;
+    width: 180px;
+    height: 30px;
+    margin-left: -25px;
+    margin-top: 50px;
+    background-color: grey;
+    position: relative;
+    animation-name: shadow;
+    animation-duration: 5s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+}
+  
+  @keyframes Login-loader {
+    0%   {top:0px;}
+    50%  {top:50px;}
+    100% {top:0px;}
+  }
+
+  @keyframes shadow {
+    0%   {background-color: lightgray;}
+    50%  {background-color: gray;}
+    100% {background-color: lightgray;}
+  }

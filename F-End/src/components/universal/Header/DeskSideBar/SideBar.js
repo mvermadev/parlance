@@ -1,5 +1,4 @@
 import React from 'react'
-import MenuIcon from '@material-ui/icons/Menu';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import MailIcon from '@material-ui/icons/Mail';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -36,7 +35,7 @@ function SideBar() {
             </div>
             <div className="nav">
             <MailIcon style={{color: '#b32800'}} fontSize="medium"/>
-            <p onClick={()=>history.push('')}>FellowMonk - Bot</p>
+            <p onClick={()=>history.push('/fellowmonk')}>FellowMonk - Bot</p>
             </div>
             <div className="nav" >
             <LocalLibraryIcon style={{color: '#b32800'}} fontSize="medium" />

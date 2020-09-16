@@ -18,7 +18,7 @@ import Community from './Pages/Community/Community'
 import ReplyDesign from './Pages/Answers/Reply/ReplyDesign'
 import Post from './QnPostnPoll/AddComponent'
 import InformationGathering from './Pages/InformationGathering/InformationGatheringComponent'
-
+import Fellowmonk from './Pages/SideBar/Bot/Fellowmonk'
 
 const MainCompo =()=> {
     return(
@@ -50,6 +50,7 @@ function Collector() {
                         <Route path='/add-post' component={Post}/>
                         <Route path='/information' component={InformationGathering}/>
                         <Route path='/loader' component={Loader}/>
+                        <Route exact path='/fellowmonk' component={Fellowmonk}/>
                     </Switch>
                 <BottomNav/>
                 <DeskFooter/>

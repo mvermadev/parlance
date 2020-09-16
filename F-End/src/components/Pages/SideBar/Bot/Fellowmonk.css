@@ -1,0 +1,13 @@
+.chatbot {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    min-height: 700px;
+}
+
+@media only screen and (min-width: 800px){
+    .chatbot {
+        max-width: 80vw;
+        min-height: 800px;
+    }
+}

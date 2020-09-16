@@ -14,6 +14,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Sign from './Sign';
 // import {userRegister} from '../../UserFunction'
 import '../Auth.css'
+import LoginImg from './LoginImg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -158,7 +159,8 @@ export default function Signup() {
           <Grid container justify="space-around">
             <Grid item justify="center" md={5} style={{ alignSelf: 'center', marginLeft: '30px' }}>
               <Hidden smDown>
-                <img src="/assets/images/login.png" />
+                <LoginImg />
+                <img style={{ marginLeft: '-15px'}} src="/assets/images/tagline.png" />
               </Hidden>
             </Grid>
 

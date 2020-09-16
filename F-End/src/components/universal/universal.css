@@ -2,6 +2,20 @@
     text-transform: none !important;
 }
 
+.Load {
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 #deskTopHeader .signin:hover, #deskTopHeader .signup:hover {
     background-color: #f05555;
 }
@@ -152,7 +166,7 @@
 @media only screen and (min-width: 800px){
    
     .Filter{
-        margin: auto 15vw;
+        margin: auto 40vw auto 15vw;
     }
 
     .BottomHeader form button{

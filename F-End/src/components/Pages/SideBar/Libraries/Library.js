@@ -57,7 +57,7 @@ function Library(props) {
     <div className="LibraryHeader">
         <div className="libraryHead">
           <div className="libraryHead1">
-              <h3>Library</h3>
+              <h2>Library</h2>
                 <FormControl className={classes.formControl} style={{marginLeft: '10px'}}>
                     <Select
                     value={content}

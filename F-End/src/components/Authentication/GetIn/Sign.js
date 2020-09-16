@@ -17,6 +17,7 @@ import Signup from './Signup';
 import Forget from './Forget';
 import '../Auth.css'
 import Swal from 'sweetalert2'
+import LoginImg from './LoginImg';
 
 
 export default function Sign() {
@@ -138,7 +139,8 @@ export default function Sign() {
           <Grid container justify="space-around">
             <Grid item md={5} style={{ alignSelf: 'center', marginLeft: '30px' }}>
               <Hidden smDown>
-                <img src="/assets/images/login.png" />
+                <LoginImg />
+                <img style={{ marginLeft: '-15px'}} src="/assets/images/tagline.png" />
               </Hidden>
             </Grid>
 
