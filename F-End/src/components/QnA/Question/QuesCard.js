@@ -21,7 +21,9 @@ import BookPdf from './BookPdf'
 import {connect} from 'react-redux'
 import ReplyCompo from '../../Pages/Answers/Reply/ReplyCompo'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import '../QnA.css'
+import Loader from '../../universal/Loader';
  
 var globData = [];
 ;
@@ -83,7 +85,7 @@ class QuesCard extends Component {
             {/* {titleCardCompo("manish", "text", "avatar", "likes", "comments")} */}
            
                 {this.state.load || !this.state.data ? 
-                    <h4 style={{textAlign: 'center'}}>Fetching Posts...</h4> :
+                    <Loader activity="Fetching Posts..." /> :
                     this.state.data.map((item, index)=>
                         <div key={index} className="QuesCard">
                                 <CardHead name={item.name} />
@@ -239,34 +241,58 @@ function UrlCard(){
 function Handles(props){
 
     const likeBtn = ()=>{
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", localStorage.getItem('token'));
+
+        if(!localStorage.getItem('token'))
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Please Login/Signup first.',
+              })
+        }
+        else
+        {
+            
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", localStorage.getItem('token'));
 
 
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        redirect: 'follow'
-        };
+            var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            redirect: 'follow'
+            };
 
-        fetch(`https://recmonk.herokuapp.com/posts/like/${props.cardId}`, requestOptions)
-        .then(response => {
-            if (response.ok) {
-                    return response;
-            } else {
-                let errorMessage = `${response.status(response.statusText)}`
-                let error = new Error(errorMessage);
-                throw(error);
-            }
-        })
-        .then(response => response.json())
-        .then(result =>{
-            console.log("result like: ", result)
-        })
-        .catch(error => console.log('error from QuesCard: ', error));       
+            fetch(`https://recmonk.herokuapp.com/posts/like/${props.cardId}`, requestOptions)
+            .then(response => {
+                if (response.ok) {
+                        return response;
+                } else {
+                    let errorMessage = `${response.status(response.statusText)}`
+                    let error = new Error(errorMessage);
+                    throw(error);
+                }
+            })
+            .then(response => response.json())
+            .then(result =>{
+                console.log("result like: ", result)
+            })
+            .catch(error => console.log('error from QuesCard: ', error)); 
+        }      
     }
 
     const dislikeBtn = ()=>{
+
+        if(!localStorage.getItem('token'))
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Please Login/Signup first.',
+              })
+        }
+        else{
+
+        
+
         var myHeaders = new Headers();
         myHeaders.append("Authorization", localStorage.getItem('token'));
 
@@ -291,7 +317,8 @@ function Handles(props){
         .then(result =>{
             console.log("result like: ", result)
         })
-        .catch(error => console.log('error from QuesCard: ', error));       
+        .catch(error => console.log('error from QuesCard: ', error));      
+    } 
     }
 
     const [click, setClick] = useState(false);    
@@ -311,7 +338,7 @@ function Handles(props){
         return(
             <div>
             <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
-                                <div className="cardIcons" onClick={click == false ? ShowComment : HideComment}>
+                                <div className="cardIcons" onClick={click == false ? ShowComment : HideComment} style={{cursor: 'pointer'}}>
                                     <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
                                     <p>Answers</p>
                                 </div>
@@ -334,8 +361,8 @@ function Handles(props){
         <div className="btmQues">
            
             <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
-                <div className="cardIcons">
-                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px'}} />
+                <div className="cardIcons" onClick={click == false ? ShowComment : HideComment}>
+                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
                     <p>23</p>
                 </div>
                 <div className="cardIcons">

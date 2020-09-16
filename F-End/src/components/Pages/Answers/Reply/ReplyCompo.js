@@ -172,7 +172,9 @@ class ReplyCompo extends Component {
         }
         else {
           return(
-            <div align="center">You must be logged in to reply to an answer.</div>
+            <div align="center">
+              <p style={{color: '#333333'}}>You must be logged in to reply to an answer.</p>
+              </div>
             );
         }
     }

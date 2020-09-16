@@ -104,6 +104,12 @@
     display: none;
 }
 
+.Loader-bg{
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+}
+
 @media only screen and (min-width: 800px){
    
     .Filter{
