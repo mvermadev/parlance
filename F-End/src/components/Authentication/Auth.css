@@ -1,15 +1,3 @@
-.signinModal{
-    width: 80vw;
-    background-color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border: none;
-    border-radius: 7px;
-    display: block;
-}
-
  .signin{
     padding-right: 15px;
     color: #B0343C;
@@ -19,19 +7,42 @@
     font-size: 17px;
 }
 
-.apiBtn{
+.signBtn {
+    color: #B32800;
+    font-weight: bold;
+}
+
+.login-popup .apiBtn{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 75vw;
+    width: auto;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.signup-popup .apiBtn{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: auto;
     margin-right: auto;
     margin-left: auto;
 }
 
 .apiBtn Button{
     margin: 5px;
-    font-size: 15px;
     line-height: 0;
+    color: #fff;
+}
+
+.apiBtn #google {
+    background-color: #db4e40;
+}
+
+.apiBtn #linkedin {
+    background-color: #0174b4;
 }
 
 .addtnlLogTool{
@@ -39,22 +50,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
-}
-
-.signinModal .signUpBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: -15px;
-}
-
-.signinModal .inputFields{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: auto;
-    margin-left: auto;
-
+    padding: 4px;
 }
 
 .separator {
@@ -62,7 +58,8 @@
     align-items: center;
     text-align: center;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     color: rgb(109, 109, 109);
 }
 .separator::before, .separator::after {
@@ -88,33 +85,44 @@
     color: red;
 }
 
-
-
-@media only screen and (min-width: 800px){
-   .Sign{
-    position: absolute;
-    right: 10px;
-    width: 100%;
-    top: 1.5rem;
-   
+.logBtn Button{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    width: 98%;
+    margin-right: auto;
 }
-    .Sign .signBtn{
-        font-size: 17px;
-    }
 
-    .signinModal{
-        max-width: 30vw;
-    }
+.login-popup img{
+    height: fit-content;
+    width: 100%;
+    margin-left: -30px;
+}
 
-    .apiBtn{
-        max-width: 25vw;
-    }
+.login-popup {
+    justify-content: space-evenly;
+}
 
-    .logBtn Button{
-        max-width: 25vw;
-        display: flex;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
+.login-popup .MuiDialog-paperWidthSm {
+    max-width: 800px !important;
+    justify-content: space-evenly;
+}
+
+.login-popup .MuiDialogContent-root:first-child {
+    padding-top: 0px !important;
+}
+
+.signup-popup img{
+    height: fit-content;
+    width: 100%;
+    margin-left: -30px;
+}
+
+.signup-popup {
+    justify-content: space-evenly;
+}
+
+.signup-popup .MuiDialog-paperWidthSm {
+    max-width: 800px !important;
+    justify-content: space-evenly;
 }

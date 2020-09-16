@@ -1,21 +1,16 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import { Button, Divider, FormGroup, withStyles } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import { Button } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import MailIcon from '@material-ui/icons/Mail';
-import {useHistory} from 'react-router-dom'
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { useHistory } from 'react-router-dom'
+import Hidden from '@material-ui/core/Hidden';
 import Sign from './Sign';
 // import {userRegister} from '../../UserFunction'
 import '../Auth.css'
@@ -39,10 +34,10 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
- 
+
 export default function Signup() {
 
-    const history = useHistory();
+  const history = useHistory();
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -56,185 +51,208 @@ export default function Signup() {
   };
 
   // For hanlding the remember user.
-      const [state, setState] = React.useState({
-        checkedMe: true,
-        checkedB: true,
-        checkedF: true,
-        checkedG: true,
-      });
+  const [state, setState] = React.useState({
+    checkedMe: true,
+    checkedB: true,
+    checkedF: true,
+    checkedG: true,
+  });
 
-    // default empty values of the input fields 
-      const [form, setForm] = useState({
-        name: '',
-        username: '',
-        password: '',
-        password2: '',
-      })
+  // default empty values of the input fields 
+  const [form, setForm] = useState({
+    name: '',
+    username: '',
+    password: '',
+    password2: '',
+  })
 
-      // enter the input key in the field.
-      const updateField=e=>{
-        setForm({
-          ...form, [e.target.name]: e.target.value
-        })
-      }
+  // enter the input key in the field.
+  const updateField = e => {
+    setForm({
+      ...form, [e.target.name]: e.target.value
+    })
+  }
 
-      // step for transferring the data.
-      const finalStep=e=>{
-        e.preventDefault();
-        
-        const allData = {
-          username: form.username,
-          password: form.password,
-          password2: form.password2,
-          name: form.name
+  // step for transferring the data.
+  const finalStep = e => {
+    e.preventDefault();
+
+    const allData = {
+      username: form.username,
+      password: form.password,
+      password2: form.password2,
+      name: form.name
+    }
+
+    userRegister(allData).then(() => {
+      console.log('user has registered')
+      history.push('/')
+    })
+      .catch(err => console.log(err))
+
+  }
+
+  //Main logic of signing up.
+  const userRegister = newUser => {
+
+    var raw = JSON.stringify({
+      "username": newUser.username,
+      "password": newUser.password,
+      "password2": newUser.password2,
+      "name": newUser.name
+    });
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    return fetch("https://recmonk.herokuapp.com/register", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result)
+
+        // creating red alert to the user from their consequences.
+        for (var prop in result) {
+          console.log('objProp: ' + prop + ' propVal: ' + result[prop]);
+          if (result[prop] == '0') {
+            // If successfully registered.
+            document.getElementById('conseq').style.color = "green"
+            document.getElementById('conseq').innerHTML = "Successfully registered."
+          }
+          else {
+            // if any issue in signup.
+            document.getElementById('conseq').style.color = "red"
+            document.getElementById('conseq').innerHTML = result[prop];
+          }
+
         }
 
-       userRegister(allData).then(()=>{
-         console.log('user has registered')
-         history.push('/')
-       })
-       .catch(err=>console.log(err))
+      })
+      .catch(error => console.log('error', error));
+  }
 
-      }
 
-      //Main logic of signing up.
-      const userRegister = newUser=>{
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
 
-        var raw = JSON.stringify({
-            "username": newUser.username,
-            "password": newUser.password,
-            "password2": newUser.password2,
-            "name": newUser.name
-        });
-    
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-    
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-    
-        return fetch("https://recmonk.herokuapp.com/register", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result)
-            
-            // creating red alert to the user from their consequences.
-            for(var prop in result)
-            {
-                console.log('objProp: '+prop+' propVal: '+result[prop]);
-                if(result[prop] == '0')
-                {
-                  // If successfully registered.
-                  document.getElementById('conseq').style.color = "green"
-                  document.getElementById('conseq').innerHTML = "Successfully registered."
-                }
-                else
-                {
-                  // if any issue in signup.
-                  document.getElementById('conseq').style.color = "red"
-                  document.getElementById('conseq').innerHTML = result[prop];
-                }
 
-            }
-
-        })
-        .catch(error => console.log('error', error));
-    }
-    
-
-      const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-      };
-
-    
-    //   const doSignUp =()=>{
-    //     document.getElementById('siginModalId').style.display = 'none';
-    // }
+  //   const doSignUp =()=>{
+  //     document.getElementById('siginModalId').style.display = 'none';
+  // }
 
   return (
     <div>
-      <Button style={{color: '#B0343C', fontWeight: 'bold'}} type="button" onClick={handleOpen}>
+      <a className="signBtn" style={{ cursor: 'pointer' }} type="button" onClick={handleOpen}>
         Sign Up
-      </Button>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open} className="signinModal" id="siginModalId">
-          <div className={classes.paper}>
-            <div className="apiBtn" id="transition-modal-title">
-                <Button id="transition-modal-description" variant="contained" color="secondary">Continue with <p style={{fontWeight: 'bold'}}>&nbsp;Google</p></Button>
-                <Button id="transition-modal-description" variant="contained" color="primary">Continue with <p style={{fontWeight: 'bold'}}>&nbsp;LinkedIn</p></Button>
-            </div>
+      </a>
 
-            <div class="separator">or use</div>
-              
+      <Dialog className="signup-popup" open={open} onClose={handleClose} aria-labelledby="form-dialog" md={8}>
+        <DialogContent>
+          <Grid container justify="space-around">
+            <Grid item justify="center" md={5} style={{ alignSelf: 'center', marginLeft: '30px' }}>
+              <Hidden smDown>
+                <img src="/assets/images/login.png" />
+              </Hidden>
+            </Grid>
+
+            <Grid item xs={12} md={6} style={{ alignSelf: 'center' }}>
+              <div className="apiBtn">
+                <Button id="google" variant="contained"
+                  startIcon={<span className="fa fa-google"> </span>} > Continue with <p style={{ fontWeight: 'bold' }}>&nbsp;Google</p></Button>
+                <Button id="linkedin" variant="contained"
+                  startIcon={<span className="fa fa-linkedin"> </span>}> Continue with <p style={{ fontWeight: 'bold' }}>&nbsp;LinkedIn</p></Button>
+              </div>
+
+              <div class="separator">or use</div>
+
               <form method="POST" onSubmit={finalStep}>
-            <div className="inputFields">
-              <div className={classes.margin}>
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  <AccountCircle style={{color: '#767676'}} />
-                </Grid>
-                <Grid item>
-                  <TextField id="input-with-icon-grid" label="name" type="text" name="name" value={form.name} onChange={updateField} required/>
-                </Grid>
-              </Grid>
-              
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  <MailIcon style={{color: '#767676'}} />
-                </Grid>
-                <Grid item>
-                  <TextField id="input-with-icon-grid" label="Email" name="username" value={form.username} onChange={updateField} type="email" required/>
-                </Grid>
-              </Grid>
+                <div className="inputFields">
 
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  <LockIcon style={{color: '#767676'}} />
-                </Grid>
-                <Grid item>
-                  <TextField id="input-with-icon-grid" label="Password" name="password" value={form.password} onChange={updateField} type="password" required/>
-                </Grid>
-              </Grid>
+                  <Grid container spacing={3} style={{ padding: '7px' }}>
+                    <Grid item xs={12}>
+                      <TextField label="Name" type="text" name="name"
+                        value={form.name} onChange={updateField}
+                        fullWidth required
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AccountCircle style={{ color: '#767676' }} />
+                            </InputAdornment>
+                          ),
+                        }} />
+                    </Grid>
 
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  <LockIcon style={{color: '#767676'}} />
-                </Grid>
-                <Grid item>
-                  <TextField id="input-with-icon-grid" label="Confirm Password" name="password2" onChange={updateField} value={form.password2} type="password" required/>
-                </Grid>
-              </Grid>
-              
-            </div>
-            </div>
-            <div className="conseq">
-              <p id="conseq"></p>
-            </div>
-            <div className="logBtn">
-              <Button type="submit" variant="contained" container style={{backgroundColor: '#B0343C', color: '#fff', border: 'none', width: '80vw', marginTop: '0.5rem'}}>
-                Signup
+                    <Grid item xs={12}>
+                      <TextField label="Email" name="username"
+                        value={form.username} onChange={updateField} type="email"
+                        fullWidth required
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <MailIcon style={{ color: '#767676' }} />
+                            </InputAdornment>
+                          ),
+                        }} />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <TextField label="Password" name="password"
+                        value={form.password} onChange={updateField} type="password"
+                        fullWidth required
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <LockIcon style={{ color: '#767676' }} />
+                            </InputAdornment>
+                          ),
+                        }} />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <TextField label="Confirm Password" name="password2"
+                        onChange={updateField} value={form.password2} type="password"
+                        fullWidth required
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <LockIcon style={{ color: '#767676' }} />
+                            </InputAdornment>
+                          ),
+                        }} />
+                    </Grid>
+                  </Grid>
+
+                </div>
+                <div className="conseq">
+                  <p id="conseq"></p>
+                </div>
+                <div className="logBtn">
+                  <Button type="submit" variant="contained" container style={{ backgroundColor: '#B0343C', color: '#fff', border: 'none' }}>
+                    Signup
               </Button>
-            </div>
+                </div>
+              </form>
+              
+              <Grid container justify="center">
+                <Grid item>
+                  <p>Have an account, </p>
+                </Grid>
+                <Grid item style={{ marginTop: '20px', marginLeft: '5px' }}>
+                  <Sign />
+                </Grid>
+              </Grid>
 
-          </form>
-          </div>
-        </Fade>
-      </Modal>
+            </Grid>
+          </Grid>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

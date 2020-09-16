@@ -2,6 +2,46 @@
     text-transform: none !important;
 }
 
+#deskTopHeader .signin:hover, #deskTopHeader .signup:hover {
+    background-color: #f05555;
+}
+
+#deskTopHeader .signup {
+    padding: 7px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-block;
+    line-height: normal;
+    text-align: center;
+    border: none;
+    font-family: Roboto, Arial, sans-serif;
+    width: 60%;
+    letter-spacing: 0.8px;
+    background-color: #7c7f85;
+    border-radius: 2px;
+    margin-right: 20px;
+}
+
+#deskTopHeader .signin {
+    padding: 7px 18px;
+    margin-right: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    display: inline-block;
+    font-family: Roboto, Arial, sans-serif;
+    line-height: normal;
+    border: none;
+    width: 52%;
+    letter-spacing: 0.8px;
+    background-color: #B0343C;
+    border-radius: 2px;
+}
+
+#deskTopHeader .sign .signBtn {
+    color: white;
+}
+
 #mobTopHeader{
     display: flex;
     justify-content: space-between;
@@ -15,7 +55,7 @@
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    width: 100vw;
+    width: 98vw;
     z-index: 99;
 }
 
@@ -25,7 +65,6 @@
     color: '#B0343C';
     cursor: pointer;
     position: relative;
-    right: 7vw;
 }
 
 

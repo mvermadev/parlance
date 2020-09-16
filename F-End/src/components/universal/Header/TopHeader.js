@@ -16,6 +16,7 @@ import '../universal.css'
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import Sign from '../../Authentication/GetIn/Sign';
+import Signup from '../../Authentication/GetIn/Signup';
 import SideBar from './DeskSideBar/SideBar';
 
 const useStyles = makeStyles({
@@ -106,6 +107,14 @@ export default function TopHeader() {
         </div>
     )
   }
+  
+  const signup = () =>{
+    return(
+        <div className="signup">
+          <Signup />
+        </div>
+    )
+  }
 
   const [homeStyle, setHomeStyle] = useState('#B32800')
   const [comStyle, setComStyle] = useState('')
@@ -149,8 +158,14 @@ export default function TopHeader() {
       </div>
       </div>
       
+      <div className="sign" style={{ display: 'inline-flex', position: 'absolute', right: '3%' }}>
       <div>
-      {signin()}
+        {signin()}
+      </div>
+
+      <div>
+        {signup()}
+      </div>
       </div>
 
     </div>
