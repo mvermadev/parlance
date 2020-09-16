@@ -6,6 +6,7 @@ import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutline
 import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ReplyRoundedIcon from '@material-ui/icons/ReplyRounded';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import profile from '../../../img/profile.jpeg'
 import Menu from '@material-ui/core/Menu';
@@ -246,7 +247,7 @@ function Handles(props){
         {
             Swal.fire({
                 icon: 'error',
-                title: 'Please Login/Signup first.',
+                title: 'Please Sign In/Up first.',
               })
         }
         else
@@ -339,15 +340,11 @@ function Handles(props){
             <div>
             <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
                                 <div className="cardIcons" onClick={click == false ? ShowComment : HideComment} style={{cursor: 'pointer'}}>
-                                    <CommentOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
-                                    <p>Answers</p>
+                                    <ReplyRoundedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
+                                    <p>Reply</p>
                                 </div>
                                 <div className="cardIcons">
-                                    <VisibilityOutlinedIcon fontSize="small" style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Views: 59</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <ShareIcon fontSize="small"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <ShareIcon fontSize="medium"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
                                     <p>Share</p>
                                 </div>
                             </div>
