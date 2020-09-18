@@ -12,6 +12,10 @@
     font-weight: bold;
 }
 
+.login-popup .MuiDialogContent-root:first-child, .signup-popup .MuiDialogContent-root:first-child {
+    padding-top: 0px;
+}
+
 .login-popup .apiBtn{
     display: flex;
     justify-content: center;
@@ -93,10 +97,20 @@
     margin-right: auto;
 }
 
-.login-popup img{
+.login-popup img, .signup-popup img{
     height: fit-content;
-    width: 100%;
+    width: fit-content;
     margin-left: -30px;
+}
+
+.login-popup .tagline, .signup-popup .tagline{
+    height: 100%;
+    width: 90%;
+    margin-left: 2px;
+}
+
+.login-popup .Login-loader-img, .signup-popup .Login-loader-img {
+    padding-top: 3%;
 }
 
 .login-popup {
@@ -110,12 +124,6 @@
 
 .login-popup .MuiDialogContent-root:first-child {
     padding-top: 0px !important;
-}
-
-.signup-popup img{
-    height: fit-content;
-    width: 100%;
-    margin-left: -30px;
 }
 
 .signup-popup {

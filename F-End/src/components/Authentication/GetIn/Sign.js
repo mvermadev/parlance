@@ -137,14 +137,14 @@ export default function Sign() {
       <Dialog className="login-popup" open={open} onClose={handleClose} aria-labelledby="form-dialog" md={8}>
         <DialogContent>
           <Grid container justify="space-around">
-            <Grid item md={5} style={{ alignSelf: 'center', marginLeft: '30px' }}>
+            <Grid item md={6} style={{ alignSelf: 'center' }}>
               <Hidden smDown>
                 <LoginImg />
-                <img style={{ marginLeft: '-15px'}} src="/assets/images/tagline.png" />
+                <img align="center" className="tagline" src="/assets/images/tagline.png" />
               </Hidden>
             </Grid>
 
-            <Grid item xs={12} md={6} style={{ alignSelf: 'center' }}>
+            <Grid align="center" item xs={12} md={6} style={{ alignSelf: 'center', paddingLeft: '15px', paddingRight: '15px' }}>
               <div className="apiBtn">
                 <Button id="google" variant="contained"
                   startIcon={<span className="fa fa-google"> </span>} > Continue with <p style={{ fontWeight: 'bold' }}>&nbsp;Google</p></Button>
@@ -156,7 +156,7 @@ export default function Sign() {
 
               <div className="inputFields">
 
-                <Grid container spacing={3} style={{ padding: '7px'}}>
+                <Grid container spacing={2} style={{ padding: '5px'}}>
                   <Grid item xs={12}>
                     <TextField label="Email" name="username"
                       value={state.username}

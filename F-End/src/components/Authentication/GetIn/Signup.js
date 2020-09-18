@@ -157,14 +157,14 @@ export default function Signup() {
       <Dialog className="signup-popup" open={open} onClose={handleClose} aria-labelledby="form-dialog" md={8}>
         <DialogContent>
           <Grid container justify="space-around">
-            <Grid item justify="center" md={5} style={{ alignSelf: 'center', marginLeft: '30px' }}>
+            <Grid item justify="center" md={6} style={{ alignSelf: 'center' }}>
               <Hidden smDown>
                 <LoginImg />
-                <img style={{ marginLeft: '-15px'}} src="/assets/images/tagline.png" />
+                <img className="tagline" src="/assets/images/tagline.png" />
               </Hidden>
             </Grid>
 
-            <Grid item xs={12} md={6} style={{ alignSelf: 'center' }}>
+            <Grid item xs={12} md={6} align="center" style={{ alignSelf: 'center', paddingTop: '10px', paddingLeft: '15px', paddingRight: '15px' }}>
               <div className="apiBtn">
                 <Button id="google" variant="contained"
                   startIcon={<span className="fa fa-google"> </span>} > Continue with <p style={{ fontWeight: 'bold' }}>&nbsp;Google</p></Button>
