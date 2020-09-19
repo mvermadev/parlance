@@ -5,6 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import { Button } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
@@ -150,9 +151,18 @@ export default function Signup() {
 
   return (
     <div>
-      <a className="signBtn" style={{ cursor: 'pointer' }} type="button" onClick={handleOpen}>
-        Sign Up
-      </a>
+      {
+        localStorage.getItem('token') ? (
+          <div></div>)
+       :
+       (
+          <a className="signBtn" style={{ cursor: 'pointer' }} type="button" onClick={handleOpen}>
+            <div className="signup">
+            Sign Up
+            </div>
+          </a>
+       )
+      }
 
       <Dialog className="signup-popup" open={open} onClose={handleClose} aria-labelledby="form-dialog" md={8}>
         <DialogContent>
@@ -238,7 +248,7 @@ export default function Signup() {
                 <div className="logBtn">
                   <Button type="submit" variant="contained" container style={{ backgroundColor: '#B0343C', color: '#fff', border: 'none' }}>
                     Signup
-              </Button>
+                </Button>
                 </div>
               </form>
               
@@ -246,7 +256,7 @@ export default function Signup() {
                 <Grid item>
                   <p>Have an account, </p>
                 </Grid>
-                <Grid item style={{ marginTop: '20px', marginLeft: '5px' }}>
+                <Grid item style={{ marginTop: '20px', marginLeft: '5px', color: '#b32800' }}>
                   <Sign />
                 </Grid>
               </Grid>
