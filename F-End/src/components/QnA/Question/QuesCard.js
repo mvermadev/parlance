@@ -29,11 +29,14 @@ import Loader from '../../universal/Loader';
 var globData = [];
 ;
 
+var numLikes = 0;
+
+
 class QuesCard extends Component {
     constructor(props)
     {
         super(props)
-        this.state={data: [], load: true}
+        this.state={data: [], load: true, postIds: [], likesCol: []}
     }
 
     componentDidMount()
@@ -73,6 +76,7 @@ class QuesCard extends Component {
         
         console.log("postData: ", this.state.data)
         console.log('comment data: ', this.state.data.comments)
+
     })
     .catch(error => console.log('error from QuesCard: ', error));         
     
@@ -91,13 +95,14 @@ class QuesCard extends Component {
                         <div key={index} className="QuesCard">
                                 <CardHead name={item.name} />
                                 <TextCard text={item.text} />
-                                <Handles cardId={item._id} />
+                                <Handles cardId={item._id} likes={item.likes.length}/>
                                 {item.comments.map((item, index)=>
                                 item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} commentON={true}/> </div>: ''
                                 )}
                         </div>
                     )
                 }
+
             <BookPdf/>
             {/* {urlCardCompo()} */}
             {/* {titleCardCompo()} */}
@@ -332,7 +337,6 @@ function Handles(props){
             setClick(false)
         }
     
-       
 
     const DeskCardHandles=()=>{
 
@@ -375,7 +379,7 @@ function Handles(props){
                     <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
                     </div>
                     <p style={{color: '#B0343C', fontWeight: 'bold'}}>
-                        0
+                        {props.likes}
                     </p>
                     <div onClick={dislikeBtn}>
                     <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
