@@ -21,6 +21,7 @@ import {store} from '../../../redux/reducers/index'
 import BookPdf from './BookPdf'
 import {connect} from 'react-redux'
 import ReplyCompo from '../../Pages/Answers/Reply/ReplyCompo'
+import ReplyDesign from '../../Pages/Answers/Reply/ReplyDesign'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import '../QnA.css'
@@ -75,7 +76,6 @@ class QuesCard extends Component {
         // console.log('globData: ', globData);
         
         console.log("postData: ", this.state.data)
-        console.log('comment data: ', this.state.data.comments)
 
     })
     .catch(error => console.log('error from QuesCard: ', error));         
@@ -90,14 +90,14 @@ class QuesCard extends Component {
             {/* {titleCardCompo("manish", "text", "avatar", "likes", "comments")} */}
            
                 {this.state.load || !this.state.data ? 
-                    <Loader activity="Fetching Posts..." /> :
+                    <Loader activity="Monk Loading..." /> :
                     this.state.data.map((item, index)=>
                         <div key={index} className="QuesCard">
-                                <CardHead name={item.name} />
+                                <CardHead name={item.name} CDate={item.date.slice(0,10)} />
                                 <TextCard text={item.text} />
                                 <Handles cardId={item._id} likes={item.likes.length}/>
                                 {item.comments.map((item, index)=>
-                                item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} commentON={true}/> </div>: ''
+                                item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} CDate={item.date.slice(0,10)} commentON={true}/> </div>: ''
                                 )}
                         </div>
                     )
@@ -175,7 +175,7 @@ function CardHead(props){
                     <p style={{fontWeight: 'bold'}}>{props.name}</p>
                 </div>
                 <div className="topQues2">
-                        <p>Posted: 21 July</p> 
+                        <p>Posted: {props.CDate.slice(8,10)} {new Date(props.CDate.slice(0,4),props.CDate.slice(6,7),props.CDate.slice(8,10)).toLocaleString('default', {month: 'short'})}</p> 
                         <p>In: Sourcing</p> 
                     </div>
                 </div>
@@ -344,12 +344,20 @@ function Handles(props){
             <div>
             <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
                                 <div className="cardIcons" onClick={click == false ? ShowComment : HideComment} style={{cursor: 'pointer'}}>
-                                    <ReplyRoundedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
-                                    <p>Reply</p>
+                                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
+                                    <p>Answers</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <VisibilityOutlinedIcon fontSize="medium"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Views</p>
                                 </div>
                                 <div className="cardIcons">
                                     <ShareIcon fontSize="medium"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
                                     <p>Share</p>
+                                </div>
+                                <div className="cardIcons">
+                                    <BookmarkBorderOutlinedIcon fontSize="medium"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
+                                    <p>Bookmark</p>
                                 </div>
                             </div>
                             
@@ -399,7 +407,7 @@ function DisplayComment(props){
     return(
     <div>
          <div className='commentCont'>
-                          {props.commentON == true ? <div className="comments">
+                          {/* {props.commentON == true ? <div className="comments">
                                   <div className="commentAvatar">
                                     <Avatar style={{ width: '35px', height: '35px' }} />
                                   </div>
@@ -412,7 +420,8 @@ function DisplayComment(props){
                                     <p>{props.CText}</p>
                                     </div>
                                   </div>
-                                </div> : ''}
+                                </div> : ''} */}
+                          {props.commentON == true ? <ReplyDesign CName={props.CName} CText={props.CText} CDate={props.CDate} /> : ''}
                 </div>  
              
     </div>

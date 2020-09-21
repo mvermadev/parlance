@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Avatar, Button, Menu, MenuItem, Typography } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
@@ -6,11 +6,11 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ReplyRoundedIcon from '@material-ui/icons/ReplyRounded';
 import ShareIcon from '@material-ui/icons/Share';
-import Reply from './ReplyCompo';
+import ReplyCompo from './ReplyCompo';
 import '../Answers.css';
 
 /* Header for reply */
-function ReplyHeader() {
+function ReplyHeader(props) {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -30,10 +30,10 @@ function ReplyHeader() {
                 </div>
                 <div>
                     <div className="topReply1">
-                        <p style={{ fontWeight: 'bold' }}>Monk Username</p>
+                        <p style={{ fontWeight: 'bold' }}>{props.CName}</p>
                     </div>
                     <div className="topReply2" style={{ marginTop: '-5px' }}>
-                        <p>On: 29 July</p>
+                        <p>On: {props.CDate.slice(8,10)} {new Date(props.CDate.slice(0,4),props.CDate.slice(6,7),props.CDate.slice(8,10)).toLocaleString('default', {month: 'short'})}</p>
                     </div>
                 </div>
             </div>
@@ -65,12 +65,22 @@ function ReplyFooter() {
         setDis('block');
     };
 
+    const [click, setClick] = useState(false);    
+    
+    const ShowComment = () =>{
+        setClick(true)
+    }
+
+    const HideComment = ()=>{
+        setClick(false)
+    }
+
     return (
         <div>
             <div className="btmReply">
                 <div className="btmReply1">
                     <div>
-                        <Button onClick={handleReply}><ReplyRoundedIcon fontSize="large" style={{ color: '#707070', cursor: 'pointer' }} /><span style={{ marginLeft: '5px' }}>Reply</span></Button>
+                        <Button  onClick={click == false ? ShowComment : HideComment}><ReplyRoundedIcon fontSize="large" style={{ color: '#707070', cursor: 'pointer' }} /><span style={{ marginLeft: '5px' }}>Reply</span></Button>
                     </div>
                     <Button><ShareIcon style={{ color: '#707070', cursor: 'pointer' }} /><span style={{ marginLeft: '5px' }}>Share</span></Button>
                 </div>
@@ -80,26 +90,25 @@ function ReplyFooter() {
                     <ArrowDropDownIcon fontSize="large" style={{ color: '#797979', cursor: 'pointer' }} />
                 </div>
             </div>
-            <div style={{ display: dis }}>
-                <Reply login={true} />
-            </div>
+            {click == true ? <div>
+                    <ReplyCompo /> 
+                </div>
+                : HideComment}
+
         </div>
     );
 }
 
 
 /* Complete Reply Component */
-function ReplyDesign() {
+function ReplyDesign(props) {
     return (
         <div className="ReplyBody-Container" style={{ padding: '10px' }}>
             <div className="ReplyBody">
-                <ReplyHeader />
+                <ReplyHeader CName={props.CName} CDate={props.CDate}  />
                 <div>
                     <Typography style={{ padding: '16px' }}>
-                        fhl df dlfkds flsdh flldsahf hdslfh dslfh sdskfhf ldsakfh sdalfh dsal;kf
-                        dfdaskj kasnfksdajhf kdfndsa flkdsf asdafndsna ldksakf ldsklnfd slfkd
-                        df asdnf ldksksfj dskfmf dlkdsmf kdj fdslfk d;sk;fm ds;l;fld of
-                        dfh ds lkdsf dlk djf dsdfj lkdsjf ldks sdmff sdlkf jlkf j ds lkldsjf k.
+                        {props.CText}
                     </Typography>
                 </div>
                 <ReplyFooter />
