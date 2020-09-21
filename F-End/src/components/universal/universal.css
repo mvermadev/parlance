@@ -2,6 +2,12 @@
     text-transform: none !important;
 }
 
+@media only screen and (max-width: 767px) {
+    .MuiDialogContent-root {
+        padding: 0px !important;
+    }
+}
+
 .Load {
     margin: 0px;
     padding: 0px;
@@ -65,11 +71,15 @@
     margin-top: 5px;
 }
 
+#mobTopHeader .signBtn .signin {
+    color: #b32800 !important;
+}
+
 .MainHeader{
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    width: 98vw;
+    width: 100vw;
     z-index: 99;
 }
 
@@ -133,6 +143,8 @@
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .Filter .btmFilter{

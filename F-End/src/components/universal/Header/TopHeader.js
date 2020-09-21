@@ -102,18 +102,14 @@ export default function TopHeader() {
 
   const signin = () =>{
     return(
-        <div className="signin">
           <Sign/>
-        </div>
     )
   }
   
   const signup = () =>{
     return(
-        <div className="signup">
           <Signup />
-        </div>
-    )
+      )
   }
 
   const [homeStyle, setHomeStyle] = useState('#B32800')
