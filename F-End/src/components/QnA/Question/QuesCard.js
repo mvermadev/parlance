@@ -355,10 +355,7 @@ function Handles(props){
                                     <ShareIcon fontSize="medium"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
                                     <p>Share</p>
                                 </div>
-                                <div className="cardIcons">
-                                    <BookmarkBorderOutlinedIcon fontSize="medium"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Bookmark</p>
-                                </div>
+                               
                             </div>
                             
                             </div>
