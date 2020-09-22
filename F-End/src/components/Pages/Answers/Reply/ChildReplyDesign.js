@@ -46,7 +46,7 @@ function ReplyHeader(props) {
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem onClick={handleClose}><ReportOutlinedIcon fontSize="small" /><span style={{ marginLeft: '5px' }}>Report</span></MenuItem>
+                    <MenuItem onClick={handleClose}><ReportOutlinedIcon /><span style={{ marginLeft: '5px' }}>Report</span></MenuItem>
                 </Menu>
             </div>
         </div>
@@ -99,7 +99,7 @@ function ReplyFooter() {
 
 
 /* Complete Reply Component */
-function ReplyDesign(props) {
+function ChildReplyDesign(props) {
     return (
         <div className="ReplyBody-Container">
             <div className="ReplyBody">
@@ -113,4 +113,4 @@ function ReplyDesign(props) {
     );
 }
 
-export default ReplyDesign;
+export default ChildReplyDesign;

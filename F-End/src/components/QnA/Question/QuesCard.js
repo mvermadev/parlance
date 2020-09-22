@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useLayoutEffect, Component} from 'react'
+import React, { useState, useEffect, useLayoutEffect, Component } from 'react'
 import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import ShareIcon from '@material-ui/icons/Share';
@@ -6,27 +6,23 @@ import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutline
 import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ReplyRoundedIcon from '@material-ui/icons/ReplyRounded';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import profile from '../../../img/profile.jpeg'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import bannerLogo from '../../../img/logo.png'
-import { Avatar} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PopularPosts from '../PopularPosts'
-import {store} from '../../../redux/reducers/index'
 import BookPdf from './BookPdf'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import ReplyCompo from '../../Pages/Answers/Reply/ReplyCompo'
 import ReplyDesign from '../../Pages/Answers/Reply/ReplyDesign'
-import axios from 'axios'
 import Swal from 'sweetalert2'
 import '../QnA.css'
 import Loader from '../../universal/Loader';
- 
+
 var globData = [];
 ;
 
@@ -34,191 +30,189 @@ var numLikes = 0;
 
 
 class QuesCard extends Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props)
-        this.state={data: [], load: true, postIds: [], likesCol: []}
+        this.state = { data: [], load: true, postIds: [], likesCol: [] }
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         this._getData();
     }
 
-    _getData = ()=>{
+    _getData = () => {
         var myHeaders = new Headers();
         myHeaders.append("Authorization", localStorage.getItem('token'));
-        
+
         var raw = "";
-        
+
         var requestOptions = {
-          method: 'GET',
-          headers: myHeaders,
-          redirect: 'follow'
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
         };
 
         fetch("https://recmonk.herokuapp.com/posts", requestOptions)
-        .then(response => {
-            if (response.ok) {
+            .then(response => {
+                if (response.ok) {
                     return response;
-            } else {
-                let errorMessage = `${response.status(response.statusText)}`
-                let error = new Error(errorMessage);
-                throw(error);
-            }
-        })
-        .then(response => response.json())
-        .then(result =>{
-            console.log("result: ", result)
-           this.setState({data: result})
-            this.setState({load: false})
-           //    globData = result;
-        // console.log('globData: ', globData);
-        
-        console.log("postData: ", this.state.data)
+                } else {
+                    let errorMessage = `${response.status(response.statusText)}`
+                    let error = new Error(errorMessage);
+                    throw (error);
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log("result: ", result)
+                this.setState({ data: result })
+                this.setState({ load: false })
+                //    globData = result;
+                // console.log('globData: ', globData);
 
-    })
-    .catch(error => console.log('error from QuesCard: ', error));         
-    
-}
+                console.log("postData: ", this.state.data)
+
+            })
+            .catch(error => console.log('error from QuesCard: ', error));
+
+    }
 
     render() {
-    globData = this.state.data;
+        globData = this.state.data;
         return (
             <div className="mainQuesCard">
-            <div>
-            {/* {titleCardCompo("manish", "text", "avatar", "likes", "comments")} */}
-           
-                {this.state.load || !this.state.data ? 
-                    <Loader activity="Monk Loading..." /> :
-                    this.state.data.map((item, index)=>
-                        <div key={index} className="QuesCard">
-                                <CardHead name={item.name} CDate={item.date.slice(0,10)} />
-                                <TextCard text={item.text} />
-                                <Handles cardId={item._id} likes={item.likes.length}/>
-                                {item.comments.map((item, index)=>
-                                item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} CDate={item.date.slice(0,10)} commentON={true}/> </div>: ''
-                                )}
-                        </div>
-                    )
-                }
+                <div>
+                    {/* {titleCardCompo("manish", "text", "avatar", "likes", "comments")} */}
 
-            <BookPdf/>
-            {/* {urlCardCompo()} */}
-            {/* {titleCardCompo()} */}
-            {/* {urlCardCompo()} */}
+                    {this.state.load || !this.state.data ?
+                        <Loader activity="Monk Loading..." /> :
+                        this.state.data.map((item, index) =>
+                            <div key={index} className="QuesCard">
+                                <CardHead name={item.name} CDate={item.date.slice(0, 10)} />
+                                <TextCard text={item.text} />
+                                <Handles cardId={item._id} likes={item.likes.length} />
+                                {item.comments.map((item, index) =>
+                                    item ? <div style={{ display: this.state.display }}> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} CDate={item.date.slice(0, 10)} commentON={true} /> </div> : ''
+                                )}
+                            </div>
+                        )
+                    }
+
+                    <BookPdf />
+                    {/* {urlCardCompo()} */}
+                    {/* {titleCardCompo()} */}
+                    {/* {urlCardCompo()} */}
+                </div>
+                <div>
+                    <PopularPosts />
+
+                </div>
             </div>
-            <div>
-            <PopularPosts/>
-           
-            </div>
-        </div>
         )
     }
 }
 
 //Header of the card.
-function CardHead(props){
+function CardHead(props) {
     // 3Dots style
     const StyledMenu = withStyles({
         paper: {
-          border: '1px solid #d3d4d5',
-            
+            border: '1px solid #d3d4d5',
+
         },
-      })((props) => (
+    })((props) => (
         <Menu
-          elevation={0}
-          getContentAnchorEl={null}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-          }}
-          {...props}
+            elevation={0}
+            getContentAnchorEl={null}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+            }}
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+            }}
+            {...props}
         />
-      ));
+    ));
 
     const StyledMenuItem = withStyles((theme) => ({
         root: {
-          '&:focus': {
-            backgroundColor: "#B02911",
-            '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-              color: theme.palette.common.white,
+            '&:focus': {
+                backgroundColor: "#B02911",
+                '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+                    color: theme.palette.common.white,
+                },
             },
-          },
         },
-      }))(MenuItem);
+    }))(MenuItem);
 
-      const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
-        const handleClick = (event) => {
-          setAnchorEl(event.currentTarget);
-        };
-      
-        const handleClose = () => {
-          setAnchorEl(null);
-        };
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
-    
-            return(
-                
-                <div className="topQuesHead">
-                <div className="topQues">
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+
+    return (
+
+        <div className="topQuesHead">
+            <div className="topQues">
                 <div>
-                    <img src={profile} alt=""/>
+                    <img src={profile} alt="" />
                 </div>
                 <div>
-                <div className="topQues1">
-                    <p style={{fontWeight: 'bold'}}>{props.name}</p>
-                </div>
-                <div className="topQues2">
-                        <p>Posted: {props.CDate.slice(8,10)} {new Date(props.CDate.slice(0,4),props.CDate.slice(6,7),props.CDate.slice(8,10)).toLocaleString('default', {month: 'short'})}</p> 
-                        <p>In: Sourcing</p> 
+                    <div className="topQues1">
+                        <p style={{ fontWeight: 'bold' }}>{props.name}</p>
+                    </div>
+                    <div className="topQues2">
+                        <p>Posted: {props.CDate.slice(8, 10)} {new Date(props.CDate.slice(0, 4), props.CDate.slice(6, 7), props.CDate.slice(8, 10)).toLocaleString('default', { month: 'short' })}</p>
+                        <p>In: Sourcing</p>
                     </div>
                 </div>
-                </div>
-                <div>         
-                    <MoreVertIcon
-                                aria-controls="customized-menu"
-                                aria-haspopup="true"
-                                onClick={handleClick}
-                                style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                
-                    <StyledMenu
-                                id="customized-menu"
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}>
-                                <StyledMenuItem>
-                                <ListItemIcon>
-                                <BookmarkBorderOutlinedIcon style={{color: '#707070', margin: '0px 10px'}}/>
-                                </ListItemIcon>
-                                <ListItemText primary="Save post" />
-                                </StyledMenuItem>
-                                <StyledMenuItem>
-                                <ListItemIcon>
-                                <ReportOutlinedIcon style={{color: '#707070', margin: '0px 10px'}}/>
-                                </ListItemIcon>
-                                <ListItemText primary="Report post" />
-                                </StyledMenuItem>
-                     </StyledMenu>
-            
-                </div>
             </div>
-            )
-        
+            <div>
+                <MoreVertIcon
+                    aria-controls="customized-menu"
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                    style={{ color: '#707070', margin: '0px 10px', cursor: 'pointer' }} />
+
+                <StyledMenu
+                    id="customized-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}>
+                    <StyledMenuItem>
+                        <ListItemIcon>
+                            <BookmarkBorderOutlinedIcon style={{ color: '#707070', margin: '0px 10px' }} />
+                        </ListItemIcon>
+                        <ListItemText primary="Save post" />
+                    </StyledMenuItem>
+                    <StyledMenuItem>
+                        <ListItemIcon>
+                            <ReportOutlinedIcon style={{ color: '#707070', margin: '0px 10px' }} />
+                        </ListItemIcon>
+                        <ListItemText primary="Report post" />
+                    </StyledMenuItem>
+                </StyledMenu>
+
+            </div>
+        </div>
+    )
+
 
 }
 
 // text Card.
-function TextCard(props){
-        return(
-            <div className="middleQues">
-            <p style={{fontWeight: 'bold'}}>
+function TextCard(props) {
+    return (
+        <div className="middleQues">
+            <p style={{ fontWeight: 'bold' }}>
                 {props.text}
             </p>
             <p>
@@ -226,185 +220,181 @@ function TextCard(props){
                 {/* <span style={{color: 'rgb(38, 0, 176)'}}>show more</span> */}
             </p>
         </div>
-        )
+    )
 
 }
 
 // url card.
-function UrlCard(){
-    return(
-        
+function UrlCard() {
+    return (
+
         <div className="middleQues">
             <p>
                 I would like to know the differenc between these two seaches, will I get good profiles
             </p>
-            <img src={bannerLogo} alt="thumbnail image"/>
+            <img src={bannerLogo} alt="thumbnail image" />
         </div>
     )
 }
 
 // handles of the card.
-function Handles(props){
+function Handles(props) {
 
-    const likeBtn = ()=>{
+    const likeBtn = () => {
 
-        if(!localStorage.getItem('token'))
-        {
+        if (!localStorage.getItem('token')) {
             Swal.fire({
                 icon: 'error',
                 title: 'Please Sign In/Up first.',
-              })
+            })
         }
-        else
-        {
-            
+        else {
+
             var myHeaders = new Headers();
             myHeaders.append("Authorization", localStorage.getItem('token'));
 
 
             var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            redirect: 'follow'
+                method: 'POST',
+                headers: myHeaders,
+                redirect: 'follow'
             };
 
             fetch(`https://recmonk.herokuapp.com/posts/like/${props.cardId}`, requestOptions)
-            .then(response => {
-                if (response.ok) {
+                .then(response => {
+                    if (response.ok) {
                         return response;
-                } else {
-                    let errorMessage = `${response.status(response.statusText)}`
-                    let error = new Error(errorMessage);
-                    throw(error);
-                }
-            })
-            .then(response => response.json())
-            .then(result =>{
-                console.log("result like: ", result)
-            })
-            .catch(error => console.log('error from QuesCard: ', error)); 
-        }      
+                    } else {
+                        let errorMessage = `${response.status(response.statusText)}`
+                        let error = new Error(errorMessage);
+                        throw (error);
+                    }
+                })
+                .then(response => response.json())
+                .then(result => {
+                    console.log("result like: ", result)
+                })
+                .catch(error => console.log('error from QuesCard: ', error));
+        }
     }
 
-    const dislikeBtn = ()=>{
+    const dislikeBtn = () => {
 
-        if(!localStorage.getItem('token'))
-        {
+        if (!localStorage.getItem('token')) {
             Swal.fire({
                 icon: 'error',
                 title: 'Please Login/Signup first.',
-              })
+            })
         }
-        else{
-
-        
-
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", localStorage.getItem('token'));
+        else {
 
 
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        redirect: 'follow'
-        };
 
-        fetch(`https://recmonk.herokuapp.com/posts/unlike/${props.cardId}`, requestOptions)
-        .then(response => {
-            if (response.ok) {
-                    return response;
-            } else {
-                let errorMessage = `${response.status(response.statusText)}`
-                let error = new Error(errorMessage);
-                throw(error);
-            }
-        })
-        .then(response => response.json())
-        .then(result =>{
-            console.log("result like: ", result)
-        })
-        .catch(error => console.log('error from QuesCard: ', error));      
-    } 
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", localStorage.getItem('token'));
+
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            fetch(`https://recmonk.herokuapp.com/posts/unlike/${props.cardId}`, requestOptions)
+                .then(response => {
+                    if (response.ok) {
+                        return response;
+                    } else {
+                        let errorMessage = `${response.status(response.statusText)}`
+                        let error = new Error(errorMessage);
+                        throw (error);
+                    }
+                })
+                .then(response => response.json())
+                .then(result => {
+                    console.log("result like: ", result)
+                })
+                .catch(error => console.log('error from QuesCard: ', error));
+        }
     }
 
-    const [click, setClick] = useState(false);    
-    
-        const ShowComment = () =>{
-            setClick(true)
-        }
-    
-        const HideComment = ()=>{
-            setClick(false)
-        }
-    
+    const [click, setClick] = useState(false);
 
-    const DeskCardHandles=()=>{
+    const ShowComment = () => {
+        setClick(true)
+    }
 
-        return(
+    const HideComment = () => {
+        setClick(false)
+    }
+
+
+    const DeskCardHandles = () => {
+
+        return (
             <div>
-            <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
-                                <div className="cardIcons" onClick={click == false ? ShowComment : HideComment} style={{cursor: 'pointer'}}>
-                                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
-                                    <p>Answers</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <VisibilityOutlinedIcon fontSize="medium"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Views</p>
-                                </div>
-                                <div className="cardIcons">
-                                    <ShareIcon fontSize="medium"  style={{color: '#707070', margin: '0px 10px', cursor: 'pointer'}}/>
-                                    <p>Share</p>
-                                </div>
-                               
-                            </div>
-                            
-                            </div>
+                <div className="deskBtmQeus1 btmQues1" id="deskBtmQeus1">
+                    <div className="cardIcons" onClick={click == false ? ShowComment : HideComment} style={{ cursor: 'pointer' }}>
+                        <CommentOutlinedIcon fontSize="medium" style={{ color: '#707070', margin: '0px 5px', cursor: 'pointer' }} />
+                        <p>Answers</p>
+                    </div>
+                    <div className="cardIcons">
+                        <VisibilityOutlinedIcon fontSize="medium" style={{ color: '#707070', margin: '0px 10px', cursor: 'pointer' }} />
+                        <p>Views</p>
+                    </div>
+                    <div className="cardIcons">
+                        <ShareIcon fontSize="medium" style={{ color: '#707070', margin: '0px 10px', cursor: 'pointer' }} />
+                        <p>Share</p>
+                    </div>
+
+                </div>
+
+            </div>
         )
     }
 
     return (
         <div>
-        <div className="btmQues">
-           
-            <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
-                <div className="cardIcons" onClick={click == false ? ShowComment : HideComment}>
-                    <CommentOutlinedIcon fontSize="medium" style={{color: '#707070', margin: '0px 5px', cursor: 'pointer'}} />
-                    <p>23</p>
-                </div>
-                <div className="cardIcons">
-                    <VisibilityOutlinedIcon style={{color: '#707070', margin: '0px 10px'}}/>
-                    <p>34</p>
-                </div>
-                    <ShareIcon style={{color: '#707070', margin: '0px 10px'}}/>
-                    
-            </div>
-            <DeskCardHandles/>
-            <div className="btmQues2">
-                    <div onClick={likeBtn}>
-                    <ArrowDropUpIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
+            <div className="btmQues">
+
+                <div className="mobBtmQeus1 btmQues1" id="mobBtmQeus1">
+                    <div className="cardIcons" onClick={click == false ? ShowComment : HideComment}>
+                        <CommentOutlinedIcon fontSize="medium" style={{ color: '#707070', margin: '0px 5px', cursor: 'pointer' }} />
+                        <p>23</p>
                     </div>
-                    <p style={{color: '#B0343C', fontWeight: 'bold'}}>
+                    <div className="cardIcons">
+                        <VisibilityOutlinedIcon style={{ color: '#707070', margin: '0px 10px' }} />
+                        <p>34</p>
+                    </div>
+                    <ShareIcon style={{ color: '#707070', margin: '0px 10px' }} />
+
+                </div>
+                <DeskCardHandles />
+                <div className="btmQues2">
+                    <div onClick={likeBtn}>
+                        <ArrowDropUpIcon fontSize="large" style={{ color: '#797979', cursor: 'pointer' }} />
+                    </div>
+                    <p style={{ color: '#B0343C', fontWeight: 'bold' }}>
                         {props.likes}
                     </p>
                     <div onClick={dislikeBtn}>
-                    <ArrowDropDownIcon fontSize="large" style={{color: '#797979', cursor: 'pointer'}}/>
+                        <ArrowDropDownIcon fontSize="large" style={{ color: '#797979', cursor: 'pointer' }} />
                     </div>
-            </div>
-        </div>
-            {click == true ? <div>
-                    <ReplyCompo CName={props.CName} CId={props.CId} CImg={props.CImg} cardId={props.cardId}/> 
-                    <DisplayComment cardId={props.cardId} CId={props.CId}/>
                 </div>
+            </div>
+            {click == true ? <div>
+                <ReplyCompo CName={props.CName} CId={props.CId} CImg={props.CImg} cardId={props.cardId} />
+                <DisplayComment cardId={props.cardId} CId={props.CId} />
+            </div>
                 : HideComment}
         </div>
     );
 }
 
-function DisplayComment(props){
-    return(
-    <div>
-         <div className='commentCont'>
-                          {/* {props.commentON == true ? <div className="comments">
+function DisplayComment(props) {
+    return (
+        <div className='commentCont'>
+            {/* {props.commentON == true ? <div className="comments">
                                   <div className="commentAvatar">
                                     <Avatar style={{ width: '35px', height: '35px' }} />
                                   </div>
@@ -418,10 +408,8 @@ function DisplayComment(props){
                                     </div>
                                   </div>
                                 </div> : ''} */}
-                          {props.commentON == true ? <ReplyDesign CName={props.CName} CText={props.CText} CDate={props.CDate} /> : ''}
-                </div>  
-             
-    </div>
+            {props.commentON == true ? <ReplyDesign CName={props.CName} CText={props.CText} CDate={props.CDate} /> : ''}
+        </div>
     )
 }
 
@@ -436,15 +424,15 @@ function DisplayComment(props){
 //     //         <Demo/>
 //     //     )
 //     // }
-   
+
 //     var localData = [];
 
 //     const fetchPosts=()=>{
 //         var myHeaders = new Headers();
 //         myHeaders.append("Authorization", localStorage.getItem('token'));
-        
+
 //         var raw = "";
-        
+
 //         var requestOptions = {
 //           method: 'GET',
 //           headers: myHeaders,
@@ -470,13 +458,13 @@ function DisplayComment(props){
 //             setPostData({data: result})
 //            globData = result;
 //         // console.log('globData: ', globData);
-        
+
 //         console.log("postData from func: ", postData.data)
 //         console.log("globData from func: ", globData)
 //         console.log("localData from func: ", localData)
 //     })
 //     .catch(error => console.log('error from QuesCard: ', error));         
-    
+
 //     }
 
 //     useEffect(() => {
@@ -489,7 +477,7 @@ function DisplayComment(props){
 //         console.log('questCard redux val: ', localStorage.getItem('token'))
 //         console.log('globdata: ', globData);
 //         console.log('localData: ', localData);
-        
+
 //     }, [])
 
 //     return (
@@ -502,8 +490,8 @@ function DisplayComment(props){
 
 
 
-function mapStateToProps(state){
-    return{
+function mapStateToProps(state) {
+    return {
         authVal: state.authUser.authUser
     }
 }

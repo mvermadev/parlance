@@ -241,7 +241,7 @@
         position: sticky;
         position: -webkit-sticky;
         top: 0;
-        width: 99vw;
+        width:100vw;
         z-index: 99;
    }
 
