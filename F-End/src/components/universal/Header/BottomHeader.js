@@ -36,7 +36,7 @@ function BottomHeader() {
         <div>
         <div className="BottomHeader">
             <form className="myForm" onSubmit={finalStep}>
-                <input type="search" name='search' value={field.data} onChange={handleChange} required placeholder="Question monk's wisdom, you seek!" />
+                <input type="search" name='data' value={field.data} onChange={handleChange} required placeholder="Question monk's wisdom, you seek!" />
                 <button type="submit">
                     Ask
                 </button>
