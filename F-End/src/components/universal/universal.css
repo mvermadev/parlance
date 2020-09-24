@@ -126,6 +126,7 @@
     width: 60px;
     border: none;
     border-radius: 0px 8px 8px 0px;
+    cursor: pointer;
 }
 
 .BottomNav{

@@ -4,6 +4,7 @@ import Tab from '@material-ui/core/Tab';
 import AddQuestion from './AddQuestionForm';
 import AddPost from './AddPostForm';
 import AddPoll from './AddPollForm';
+import {useParams} from 'react-router-dom'
 import './posting.css';
 
 function TabPanel(props) {
@@ -27,6 +28,8 @@ function TabPanel(props) {
 function Post() {
     const [value, setValue] = React.useState(0);
 
+    const {data} = useParams();
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -41,10 +44,10 @@ function Post() {
             </Tabs>
 
             <TabPanel value={value} index={0}>
-                <AddQuestion />
+                <AddQuestion data={data}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <AddPoll />
+                <AddPoll data={data}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <AddPost />

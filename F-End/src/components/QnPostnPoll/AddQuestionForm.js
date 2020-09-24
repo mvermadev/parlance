@@ -22,7 +22,7 @@ function LoadAddQuestion(props) {
     };
 
     const [state, setState] = React.useState({
-        title: '',
+        title: props.data,
         category: '',
         explanation: '',
         advance: 'none',
@@ -141,7 +141,26 @@ function LoadAddQuestion(props) {
                         <option value="" disabled selected>Category</option>
                         <option value="Career">Career</option>
                         <option value="Engagement">Engagement</option>
-                        <option value="HRTech">HRTech</option>
+                        <optgroup label="HRTech">
+                            <option value="Automation">Automation</option>
+                            <option value="HR Analytics">HR Analytics</option>
+                            <option value="HRMS/ATS">HRMS/ATS</option>
+                        </optgroup>
+                            <option value="Interviewing">Interviewing</option>
+                            <option value="Job Req">Job Req</option>
+                        <optgroup label="Marketing">
+                            <option value="Branding">Branding</option>
+                            <option value="Mail/SMS">Mail/SMS</option>
+                            <option value="Story Telling">Story Telling</option>
+                        </optgroup>
+                            <option value="Others">Others</option>
+                        <optgroup label="Recruiting">
+                            <option value="Non-IT Hiring">Non-IT Hiring</option>
+                            <option value="Tech Hiring">Tech Hiring</option>
+                        </optgroup>
+                            <option value="Screening">Screening</option>
+                            <option value="Sourcing">Sourcing</option>
+                            <option value="Startup">Startup</option>
                     </NativeSelect>
                 </Grid>
             </Grid>
@@ -209,7 +228,7 @@ class AddQuestion extends Component {
     render() {
         return (
             <div>
-                <LoadAddQuestion name={this.props.info.info.name}/>
+                <LoadAddQuestion name={this.props.info.info.name} data={this.props.data}/>
             </div>
         )
     }

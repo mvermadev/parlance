@@ -47,7 +47,7 @@ function Collector() {
                         <Route path='/contactus' component={ContactUs}/>
                         <Route path='/profile' component={UserProfile}/>
                         <Route path='/reply' component={ReplyDesign}/>
-                        <Route path='/add-post' component={Post}/>
+                        <Route path='/add-post/:data' component={Post}/>
                         <Route path='/information' component={InformationGathering}/>
                         <Route path='/loader' component={Loader}/>
                         <Route exact path='/fellowmonk' component={Fellowmonk}/>
