@@ -22,7 +22,8 @@ function SideBar() {
 
     const Logout=()=>{
         localStorage.removeItem('token');
-        history.push('/')
+        window.location.href = "/";
+
     }
 
     return (
