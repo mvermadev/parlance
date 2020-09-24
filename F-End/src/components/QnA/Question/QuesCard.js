@@ -91,7 +91,7 @@ class QuesCard extends Component {
                                 <TextCard text={item.text} />
                                 <Handles cardId={item._id} likes={item.likes.length} />
                                 {item.comments.map((item, index) =>
-                                    item ? <div style={{ display: this.state.display }}> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} CDate={item.date.slice(0, 10)} commentON={true} /> </div> : ''
+                                    item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} CDate={item.date.slice(0, 10)} commentON={true} /> </div> : ''
                                 )}
                             </div>
                         )

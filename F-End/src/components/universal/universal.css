@@ -62,6 +62,10 @@
     color: white;
 }
 
+#mobTopHeader .logo {
+    margin-left: -70px;
+}
+
 #mobTopHeader{
     display: flex;
     justify-content: space-between;
@@ -79,7 +83,7 @@
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    width: 100vw;
+    width: 100%;
     z-index: 99;
 }
 
@@ -109,8 +113,8 @@
 .BottomHeader form input{
     border: 1px solid #B0343C;
     height: 36px;
-    width: 60vw;
-    padding: 11px;
+    width: 70vw;
+    padding: 10px;
     border-radius: 8px 0px 0px 8px;
 }
 
@@ -130,7 +134,7 @@
 }
 
 .BottomNav{
-    width: '100vw';
+    width: 100vw;
     position: absolute;
     bottom: 0px;
 }
@@ -242,7 +246,7 @@
         position: sticky;
         position: -webkit-sticky;
         top: 0;
-        width:100vw;
+        width:100%;
         z-index: 99;
    }
 

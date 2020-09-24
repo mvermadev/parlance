@@ -128,7 +128,7 @@ export default function Sign() {
     <div className="Sign" id="idSign">
       {
         localStorage.getItem('token') ? (
-          <AccountCircleIcon onClick={() => history.push('/profile')} fontSize='large' style={{ color: '#b32800', position: 'absolute', top: '0', right: '16px', cursor: 'pointer', marginTop: '-20px' }} />
+          <AccountCircleIcon onClick={() => history.push('/profile')} fontSize='large' style={{ color: '#b32800', position: 'absolute', right: '16px', cursor: 'pointer', marginTop: '-20px' }} />
         )
        :
        (
