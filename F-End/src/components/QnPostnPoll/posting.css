@@ -34,5 +34,16 @@
 
 .post-form .MuiInputAdornment-root {
     align-items: flex-end !important;
-    margin-top: -35px;
+}
+
+.ask-tab-forms {
+    background: #f2f2f2;
+    padding-bottom: 50px;
+    text-align: left;
+}
+
+@media only screen and (min-width: 800px) {
+    .ask-tab-forms {
+        width: 80%;
+    }
 }

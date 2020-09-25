@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -48,80 +48,89 @@ export default function TopHeader() {
     <div
       className={clsx(classes.list, {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })} 
+      })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
         <ListItem button>
-                <ListItemIcon> <LiveHelpIcon style={{color : '#b32800'}}/> </ListItemIcon>
-                <ListItemText primary='Questions'  style={{color : '#b32800'}}/>
+          <ListItemIcon> <LiveHelpIcon style={{ color: '#b32800' }} /> </ListItemIcon>
+          <ListItemText primary='Questions' style={{ color: '#b32800' }} />
         </ListItem>
         <ListItem button>
-                <ListItemIcon> <MailIcon style={{color : '#b32800'}}/> </ListItemIcon>
-                <ListItemText primary='FellowMont - Bot'  style={{color : '#b32800'}}/>
+          <ListItemIcon> <MailIcon style={{ color: '#b32800' }} /> </ListItemIcon>
+          <ListItemText primary='FellowMont - Bot' style={{ color: '#b32800' }} />
         </ListItem>
-        <ListItem button onClick={()=>history.push('/articles')}>
-                <ListItemIcon> <LibraryBooksIcon style={{color : '#b32800'}} /> </ListItemIcon>
-                <ListItemText primary='Library'  style={{color : '#b32800'}}/>
+        <ListItem button onClick={() => history.push('/articles')}>
+          <ListItemIcon> <LibraryBooksIcon style={{ color: '#b32800' }} /> </ListItemIcon>
+          <ListItemText primary='Library' style={{ color: '#b32800' }} />
         </ListItem>
-            
+
       </List>
       <Divider />
     </div>
   );
- 
-  const sideBar = ()=>{
-      return(
-        ['left'].map((anchor) => (
-            <React.Fragment key={anchor}>
-              <Button id="hamburger" onClick={toggleDrawer(anchor, true)}>
-                  <MenuIcon style={{ color: '#b32800', position: 'absolute', left: '19px' }} fontSize="medium" />
-              </Button>
-              <SwipeableDrawer
-                anchor={anchor}
-                open={state[anchor]}
-                onClose={toggleDrawer(anchor, false)}
-                onOpen={toggleDrawer(anchor, true)}
-              >
-                {list(anchor)}
-              </SwipeableDrawer>
-            </React.Fragment>
-          ))
-      )
-  }
 
-  const logoImg = () =>{
-      return(
-          <div className="logo" onClick={()=>history.push('/')}>
-              <img src={logo} alt="Logo"></img>
-          </div>
-      )
-  }
-
-  const signin = () =>{
-    return(
-          <Sign/>
+  const sideBar = () => {
+    return (
+      ['left'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <Button id="hamburger" onClick={toggleDrawer(anchor, true)}>
+            <MenuIcon style={{ color: '#b32800', position: 'absolute', left: '19px' }} fontSize="medium" />
+          </Button>
+          <SwipeableDrawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            onOpen={toggleDrawer(anchor, true)}
+          >
+            {list(anchor)}
+          </SwipeableDrawer>
+        </React.Fragment>
+      ))
     )
   }
-  
-  const signup = () =>{
-    return(
-          <Signup />
+
+  const logoImg = () => {
+    if (localStorage.token) {
+      return (
+        <div style={{ marginLeft: '-70px' }} className="logo" onClick={() => history.push('/')}>
+          <img src={logo} alt="Logo"></img>
+        </div>
       )
+    }
+    else {
+      return (
+        <div className="logo" onClick={() => history.push('/')}>
+          <img src={logo} alt="Logo"></img>
+        </div>
+      )
+    }
+  }
+
+  const signin = () => {
+    return (
+      <Sign />
+    )
+  }
+
+  const signup = () => {
+    return (
+      <Signup />
+    )
   }
 
   const [homeStyle, setHomeStyle] = useState('#B32800')
   const [comStyle, setComStyle] = useState('')
 
-  const btnHome = ()=>{
+  const btnHome = () => {
     history.push('/');
     setHomeStyle('#B32800')
     setComStyle('#000000')
   }
 
-  const btnCom = ()=>{
+  const btnCom = () => {
     history.push('/community');
     setComStyle('#B32800')
     setHomeStyle('#000000')
@@ -130,41 +139,41 @@ export default function TopHeader() {
   return (
     <div className="TopHead">
 
-    <div className="TopHeader" id="mobTopHeader">
+      <div className="TopHeader" id="mobTopHeader">
         <div>
-        {sideBar()}
+          {sideBar()}
         </div>
         <div>
-        {logoImg()}
+          {logoImg()}
         </div>
         <div>
-        {signin()}
+          {signin()}
         </div>
-    </div>
-
-        
-    <div id="deskTopHeader">
-      <div id="subTopHead">
-      <SideBar/>
-
-      {logoImg()}
-      <div className="subTopHead2">
-      <Button className="btnHome" style={{color: `${homeStyle}`}} onClick={btnHome}><span>Home</span></Button>
-      <Button className="btnCom" onClick={btnCom} style={{color: `${comStyle}`, marginLeft: '10px'}}><span>Community</span></Button>
-      </div>
-      </div>
-      
-      <div className="sign" style={{ display: 'inline-flex', position: 'absolute', right: '3%' }}>
-      <div>
-        {signin()}
       </div>
 
-      <div>
-        {signup()}
-      </div>
-      </div>
 
-    </div>
+      <div id="deskTopHeader">
+        <div id="subTopHead">
+          <SideBar />
+
+          {logoImg()}
+          <div className="subTopHead2">
+            <Button className="btnHome" style={{ color: `${homeStyle}` }} onClick={btnHome}><span>Home</span></Button>
+            <Button className="btnCom" onClick={btnCom} style={{ color: `${comStyle}`, marginLeft: '10px' }}><span>Community</span></Button>
+          </div>
+        </div>
+
+        <div className="sign" style={{ display: 'inline-flex', position: 'absolute', right: '3%' }}>
+          <div>
+            {signin()}
+          </div>
+
+          <div>
+            {signup()}
+          </div>
+        </div>
+
+      </div>
     </div>
 
   );

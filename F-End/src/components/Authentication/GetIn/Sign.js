@@ -107,7 +107,7 @@ export default function Sign() {
 
         //assigning the new value to the state
         store.dispatch(addUser(result.token));
-        window.location.href = "/";
+        //window.location.href = "/";
 
       })
       .catch(error => {
@@ -128,7 +128,7 @@ export default function Sign() {
     <div className="Sign" id="idSign">
       {
         localStorage.getItem('token') ? (
-          <AccountCircleIcon onClick={() => history.push('/profile')} fontSize='large' style={{ color: '#b32800', position: 'absolute', right: '16px', cursor: 'pointer', marginTop: '-20px' }} />
+          <AccountCircleIcon onClick={() => history.push('/profile')} fontSize='large' style={{ color: '#b32800', position: 'absolute', right: '16px', cursor: 'pointer', marginTop: '-25px' }} />
         )
        :
        (

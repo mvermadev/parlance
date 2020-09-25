@@ -68,7 +68,7 @@ function AddPost(props) {
                     value={state.postExplanation}  onChange={handleInput}
                     endAdornment={
                             <InputAdornment position="end">
-                                <input accept="file/*" id="post-attachment-file" type="file" />
+                                <input style={{ display: 'none' }} accept="file/*" id="post-attachment-file" type="file" />
                                 <label htmlFor="post-attachment-file">
                                     <IconButton className="post-file-attach" aria-label="attachment" component="span">
                                         <CameraAltIcon />        
