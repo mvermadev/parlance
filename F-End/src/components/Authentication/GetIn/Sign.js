@@ -92,21 +92,21 @@ export default function Sign() {
         //to update the state 
         store.subscribe(() => {
           console.warn('my redux: ', store.getState())
-          console.log('user: ', store.getState().authUser.authUser)
+          console.log('user: ', store.getState().authUser)
         })
 
         //Action for state
         const addUser = text => {
           return {
             type: "SET_AUTH_TOKEN",
-            payload: { auth: text }
+            payload: text
           }
         }
 
         localStorage.setItem("token", result.token);
 
         //assigning the new value to the state
-        store.dispatch(addUser(result.token));
+        store.dispatch(addUser(result));
         //window.location.href = "/";
 
       })
@@ -128,7 +128,7 @@ export default function Sign() {
     <div className="Sign" id="idSign">
       {
         localStorage.getItem('token') ? (
-          <AccountCircleIcon onClick={() => history.push('/profile')} fontSize='large' style={{ color: '#b32800', position: 'absolute', right: '16px', cursor: 'pointer', marginTop: '-25px' }} />
+          <AccountCircleIcon onClick={() => history.push('/profile')} fontSize='large' style={{ color: '#b32800', position: 'absolute', right: '16px', cursor: 'pointer', marginTop: '-22px' }} />
         )
        :
        (
