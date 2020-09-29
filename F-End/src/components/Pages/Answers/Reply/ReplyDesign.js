@@ -31,7 +31,7 @@ function ReplyHeader(props) {
 
                 <div className="topReply1">
                     <p><b>{props.CName} </b>.<span className="topReply2"> 
-                    {/* {props.CDate.slice(8, 10)} {new Date(props.CDate.slice(0, 4), props.CDate.slice(6, 7), props.CDate.slice(8, 10)).toLocaleString('default', { month: 'short' })} */}
+                    {props.CDate.slice(8, 10)} {new Date(props.CDate.slice(0, 4), props.CDate.slice(6, 7), props.CDate.slice(8, 10)).toLocaleString('default', { month: 'short' })}
                     </span></p>
                 </div>
 
