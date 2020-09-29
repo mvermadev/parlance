@@ -86,14 +86,19 @@ class QuesCard extends Component {
                     {this.state.load || !this.state.data ?
                         <Loader activity="Monk Loading..." /> :
                         this.state.data.map((item, index) =>
-                            <div key={index} className="QuesCard">
-                                <CardHead name={item.name} CDate={item.date.slice(0, 10)} />
-                                <TextCard text={item.text} />
-                                <Handles cardId={item._id} likes={item.likes.length} />
-                                {item.comments.map((item, index) =>
-                                    item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} CDate={item.date.slice(0, 10)} commentON={true} /> </div> : ''
-                                )}
-                            </div>
+                            item.isQuestion == true ? <div key={index} className="QuesCard">
+                            <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} />
+                            <TextCard text={item.text} name={item.name} />
+                            <Handles cardId={item._id} likes={item.likes.length} />
+                            {item.comments != null ? item.comments.map((item, index) =>
+                                item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} 
+                                CDate={item.date
+                                    // .slice(0, 10)
+                                }
+                                 commentON={true} /> </div> : ''
+                            ) : '' } 
+                            
+                        </div> : ''
                         )
                     }
 
@@ -213,7 +218,7 @@ function TextCard(props) {
     return (
         <div className="middleQues">
             <p style={{ fontWeight: 'bold' }}>
-                {props.text}
+                {props.name}
             </p>
             <p>
                 {props.text}
