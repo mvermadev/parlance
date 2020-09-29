@@ -24,7 +24,6 @@ import '../QnA.css'
 import Loader from '../../universal/Loader';
 
 var globData = [];
-;
 
 var numLikes = 0;
 

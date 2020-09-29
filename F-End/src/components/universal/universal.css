@@ -62,10 +62,6 @@
     color: white;
 }
 
-#mobTopHeader .logo {
-    margin-left: -70px;
-}
-
 #mobTopHeader{
     display: flex;
     justify-content: space-between;
@@ -233,7 +229,7 @@
     .logo img{
         position: relative;
         top: auto;
-        left: 70px;
+        left: 140px;
         width: 177px;
         height: 68px;
     }

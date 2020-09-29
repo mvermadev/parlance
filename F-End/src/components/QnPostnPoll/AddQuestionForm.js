@@ -176,7 +176,7 @@ function LoadAddQuestion(props) {
                     value={state.explanation}  onChange={handleInput}
                     endAdornment={
                             <InputAdornment position="end">
-                                <input accept="file/*" id="question-attachment-file" type="file" />
+                                <input style={{ display: 'none' }} accept="file/*" id="question-attachment-file" type="file" />
                                 <label htmlFor="question-attachment-file">
                                     <IconButton className="question-file-attach" aria-label="attachment" component="span">
                                         <CameraAltIcon />        

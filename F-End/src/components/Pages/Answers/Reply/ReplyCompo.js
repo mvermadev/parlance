@@ -143,7 +143,7 @@ class ReplyCompo extends Component {
                     onChange={this.handleReply} InputProps={{
                         endAdornment:
                         <InputAdornment position="end">
-                            <input accept="file/*" id="reply-attachment-file" type="file" />
+                            <input style={{ display: 'none' }} accept="file/*" id="reply-attachment-file" type="file" />
                         <label htmlFor="reply-attachment-file">
                             <IconButton className="reply-file-attach" aria-label="attachment" component="span">
                             <AttachmentIcon />        
