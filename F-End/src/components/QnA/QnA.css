@@ -218,6 +218,27 @@
     font-size: 14px;
 }
 
+.showMore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    /* box-shadow: 0px 0px 20px #c2c0c0; */
+    border-radius: 25px;
+    width: 12rem;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    line-height: normal;
+}
+
+.showMore p{
+    font-size: 15px;
+    cursor: pointer;
+    color: #B0343C;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 800px) {
     .mainQuesCard .commentCont{
         margin: 0px;

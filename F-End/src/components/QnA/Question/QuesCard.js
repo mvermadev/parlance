@@ -7,6 +7,7 @@ import ReportOutlinedIcon from '@material-ui/icons/ReportOutlined';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ViewDayIcon from '@material-ui/icons/ViewDay';
 import profile from '../../../img/profile.jpeg'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -31,7 +32,8 @@ var numLikes = 0;
 class QuesCard extends Component {
     constructor(props) {
         super(props)
-        this.state = { data: [], load: true, postIds: [], likesCol: [] }
+        this.state = { data: [], load: true, postIds: [], likesCol: [], rowsToDis: 10}
+        this.showMore = this.showMore.bind(this);
     }
 
     componentDidMount() {
@@ -75,6 +77,14 @@ class QuesCard extends Component {
 
     }
 
+    showMore(){
+
+            let dataLength = this.state.rowsToDis;
+            this.setState({rowsToDis: dataLength+=10});
+        
+
+    }
+
     render() {
         globData = this.state.data;
         return (
@@ -84,7 +94,7 @@ class QuesCard extends Component {
 
                     {this.state.load || !this.state.data ?
                         <Loader activity="Monk Loading..." /> :
-                        this.state.data.map((item, index) =>
+                        this.state.data.slice(0,this.state.rowsToDis).map((item, index) =>
                             item.isQuestion == true ? <div key={index} className="QuesCard">
                             <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} />
                             <TextCard text={item.text} name={item.name} />
@@ -100,7 +110,10 @@ class QuesCard extends Component {
                         </div> : ''
                         )
                     }
-
+                    <div className="showMore" onClick={this.showMore}>
+                    <p>Show More</p>
+                    <ViewDayIcon fontSize="medium" style={{ color: '#B0343C', margin: '0px 10px' }} />
+                    </div>
                     <BookPdf />
                     {/* {urlCardCompo()} */}
                     {/* {titleCardCompo()} */}
