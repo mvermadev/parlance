@@ -290,6 +290,10 @@ function Handles(props) {
                 .then(response => response.json())
                 .then(result => {
                     console.log("result like: ", result)
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'You have liked.',
+                    })
                 })
                 .catch(error => console.log('error from QuesCard: ', error));
         }
@@ -318,20 +322,24 @@ function Handles(props) {
             };
 
             fetch(`https://recmonk.herokuapp.com/posts/unlike/${props.cardId}`, requestOptions)
-                .then(response => {
-                    if (response.ok) {
-                        return response;
-                    } else {
-                        let errorMessage = `${response.status(response.statusText)}`
-                        let error = new Error(errorMessage);
-                        throw (error);
-                    }
+            .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    let errorMessage = `${response.status(response.statusText)}`
+                    let error = new Error(errorMessage);
+                    throw (error);
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log("result unlike: ", result)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'You have unliked.',
                 })
-                .then(response => response.json())
-                .then(result => {
-                    console.log("result like: ", result)
-                })
-                .catch(error => console.log('error from QuesCard: ', error));
+            })
+            .catch(error => console.log('error from QuesCard: ', error));
         }
     }
 
