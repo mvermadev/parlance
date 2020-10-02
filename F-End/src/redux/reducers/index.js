@@ -6,7 +6,7 @@ import ProfileReducer from './ProfileReducer'
 const rootReducer = combineReducers({
     // Key Value map of reducers
     authUser: authReducer,
-    info: ProfileReducer
+    profile: ProfileReducer
 
 });
 

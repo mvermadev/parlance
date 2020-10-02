@@ -87,7 +87,6 @@ export default function Sign() {
       .then(response => response.json())
 
       .then(result => {
-        console.log(result)
 
         //to update the state 
         store.subscribe(() => {
@@ -104,10 +103,11 @@ export default function Sign() {
         }
 
         localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.user.username)
 
         //assigning the new value to the state
         store.dispatch(addUser(result));
-        //window.location.href = "/";
+        window.location.href = "/";
 
       })
       .catch(error => {

@@ -3,19 +3,20 @@ import { ADD_PROFILE } from '../constants/index'
 
 export const fetchProfile = () => (dispatch) => {
 
-      var myHeaders = ({
-        'authorization': localStorage.token,
-        'Accept' : 'application/json',
-        'Content-Type': 'application/json'
-    });
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", localStorage.token);
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({"username":localStorage.username});
 
     var requestOptions = {
-      method: 'GET',
+      method: 'POST',
       headers: myHeaders,
+      body: raw,
       redirect: 'follow'
     };
 
-    return fetch("https://recmonk.herokuapp.com/current", requestOptions)
+    return fetch("https://recmonk.herokuapp.com/profile", requestOptions)
         .then(response => {
             if(response.ok) {
                 return response;
@@ -32,14 +33,9 @@ export const fetchProfile = () => (dispatch) => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('profileData: ', data);
             dispatch(addProfile(data))
         })
-        .catch(error => Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: error.message
-          }));
+        .catch(error => console.log(error.message));
 
 }
 
