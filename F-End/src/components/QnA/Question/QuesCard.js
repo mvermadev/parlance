@@ -100,7 +100,7 @@ class QuesCard extends Component {
                             <TextCard text={item.text} name={item.name} />
                             <Handles cardId={item._id} likes={item.likes.length} />
                             {item.comments != null ? item.comments.map((item, index) =>
-                                item ? <div> <DisplayComment commentId={item._id} CName={item.name} CText={item.text} CId={item._id} CImg={item.avatar} 
+                                item ? <div> <DisplayComment commentId={item._id} CName={item.user.name} CText={item.text} CId={item._id} CImg={item.avatar} 
                                 CDate={item.date
                                     // .slice(0, 10)
                                 }
