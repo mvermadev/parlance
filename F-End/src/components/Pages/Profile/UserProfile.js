@@ -121,7 +121,7 @@ class UserProfile extends Component {
 
 const mapStateToProps = state => {
   return {
-    info: state.profile.info
+    info: state.info.info
   }
 }
 

@@ -167,7 +167,7 @@ class ReplyCompo extends Component {
 }
 
 const mapStateToProps = state => ({
-  info: state.profile.info
+  info: state.info.info
 })
 
 const mapDispatchToProps = (dispatch) => ({
