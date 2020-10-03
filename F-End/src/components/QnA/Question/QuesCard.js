@@ -23,6 +23,7 @@ import ReplyDesign from '../../Pages/Answers/Reply/ReplyDesign'
 import Swal from 'sweetalert2'
 import '../QnA.css'
 import Loader from '../../universal/Loader';
+import parse from 'html-react-parser';
 
 var globData = [];
 
@@ -233,8 +234,9 @@ function TextCard(props) {
                 {props.name}
             </p>
             <p>
-                {props.text}
-                {/* <span style={{color: 'rgb(38, 0, 176)'}}>show more</span> */}
+                {
+                    parse(props.text)
+                }
             </p>
         </div>
     )

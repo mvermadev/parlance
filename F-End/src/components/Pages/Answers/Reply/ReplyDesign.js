@@ -8,6 +8,7 @@ import ReplyRoundedIcon from '@material-ui/icons/ReplyRounded';
 import ShareIcon from '@material-ui/icons/Share';
 import ReplyCompo from './ReplyCompo';
 import '../Answers.css';
+import parse from 'html-react-parser';
 
 /* Header for reply */
 function ReplyHeader(props) {
@@ -106,7 +107,9 @@ function ReplyDesign(props) {
             <div className="ReplyBody">
                 <ReplyHeader CName={props.CName} CDate={props.CDate} />
                 <Typography className="ReplyBody-content">
-                    {props.CText}
+                    {
+                        parse(props.CText)
+                    }
                 </Typography>
                 <ReplyFooter />
             </div>

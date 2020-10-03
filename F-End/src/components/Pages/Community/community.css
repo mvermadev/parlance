@@ -10,18 +10,49 @@
 }
 
 .community-tabpanel {
-    margin: 10px;
+    margin-top: 10px;
     background-color: white;
     border-radius: 8px;
     padding: 15px;
 }
 
+.community-label {
+    font-size: 22px !important;
+}
+
 .community-tabs-info {
-    margin-left: 30px !important;
+    margin-left: 5px !important;
+}
+
+.community-tabs {
+    margin-left: -27px;
+}
+
+.load-more {
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color: #f7f7f8;
+    box-shadow: rgba(99, 100, 102, 0.2) 0px 0px 0px 1px inset ;
+    color: #636466;
+    border-radius: 10px;
+    margin-top: 40px;
+    align-self: center;
+}
+
+.community-username {
+    font-size: 1.2rem !important;
+    padding-top: 3px;
 }
 
 @media only screen and (max-width:767px) {
+    .community-tabs {
+        margin-left: -5px;
+    }
     .community-tabs-info {
-        margin-left: 12px !important;
+        margin-left: 5px !important;
+    }
+    .community-username {
+        font-size: 1rem !important;
+        padding-top: 7px;
     }
 }

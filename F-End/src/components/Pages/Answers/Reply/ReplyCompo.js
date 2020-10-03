@@ -23,7 +23,6 @@ class ReplyCompo extends Component {
         this.state = {
             reply: "",
             dis: true,
-            display: "block",
             commentId: ''
           };
     }
@@ -53,15 +52,6 @@ class ReplyCompo extends Component {
           dis: true
         });
       };
-
-      cancelReply = e => {
-        
-        //hide the container
-
-        this.setState({
-            display: "none"
-          });
-      }
 
       sendComment = e=> {
 
@@ -126,8 +116,8 @@ class ReplyCompo extends Component {
         console.log('id: ', this.props.cardId)
         cId = this.props.cardId;
         console.log('idByVar: ', cId);
-        console.log("User name: ", this.props.info.info.name);
-        cName = this.props.info.info.name
+        console.log("User name: ", this.props.info.name);
+        cName = this.props.info.name
         console.log('nameByVar: ', cName);
       }
 
@@ -135,7 +125,7 @@ class ReplyCompo extends Component {
            
         if( this.props.login === true || localStorage.getItem('token')) {   
             return(
-            <div className="reply-container" style={{display: this.state.display}}>
+            <div className="reply-container">
               <div>
                 <form noValidate autoComplete="off" onSubmit={this.sendComment}>
                 
@@ -155,11 +145,7 @@ class ReplyCompo extends Component {
                     label="Your Reply" placeholder="Type Your Reply Here" 
                     variant="outlined" />
 
-                        <div align="right" style={{ paddingTop: '40px' }} className="reply-container-buttons">
-                            <Button size="small" variant="contained" className="Cancel-reply"
-                            onClick={this.cancelReply}
-                            >Cancel</Button>
-                            
+                        <div align="right" style={{ paddingTop: '40px' }} className="reply-container-buttons">                          
                             <Button type="submit" size="small" variant="contained" className="Submit-reply"
                             disabled={this.state.dis}
                             >Reply</Button>
@@ -181,7 +167,7 @@ class ReplyCompo extends Component {
 }
 
 const mapStateToProps = state => ({
-  info: state.info
+  info: state.profile.info
 })
 
 const mapDispatchToProps = (dispatch) => ({

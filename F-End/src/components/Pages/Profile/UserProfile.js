@@ -35,7 +35,6 @@ class UserProfile extends Component {
     super(props);
 
     this.state = {
-      info: {},
       value: 0
     }
 
