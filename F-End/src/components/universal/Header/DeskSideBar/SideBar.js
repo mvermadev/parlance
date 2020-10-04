@@ -12,18 +12,16 @@ function SideBar() {
 
     const CloseNav=()=>{
         document.getElementById("mySidenav").style.width = "60px";
-
     }
 
     const OpenNav=()=>{
         document.getElementById("mySidenav").style.width = "250px";
-
     }
 
     const Logout=()=>{
         localStorage.removeItem('token');
-        window.location.href = "/";
-
+        localStorage.removeItem('username');
+        window.location.reload();
     }
 
     return (

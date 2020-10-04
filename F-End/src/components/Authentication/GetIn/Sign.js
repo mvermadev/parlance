@@ -107,7 +107,7 @@ export default function Sign() {
 
         //assigning the new value to the state
         store.dispatch(addUser(result));
-        window.location.href = "/";
+        window.location.reload();
 
       })
       .catch(error => {

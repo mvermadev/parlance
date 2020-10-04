@@ -65,14 +65,8 @@ class QuesCard extends Component {
             })
             .then(response => response.json())
             .then(result => {
-                console.log("result: ", result)
                 this.setState({ data: result })
                 this.setState({ load: false })
-                //    globData = result;
-                // console.log('globData: ', globData);
-
-                console.log("postData: ", this.state.data)
-
             })
             .catch(error => console.log('error from QuesCard: ', error));
 

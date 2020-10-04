@@ -48,7 +48,7 @@ function Collector() {
                         <Route path='/profile' component={UserProfile}/>
                         <Route path='/reply' component={ReplyDesign}/>
                         <Route path='/add-post/:data' component={Post}/>
-                        <Route path='/information' component={InformationGathering}/>
+                        <Route path='/info' component={InformationGathering}/>
                         <Route path='/loader' component={Loader}/>
                         <Route exact path='/fellowmonk' component={Fellowmonk}/>
                     </Switch>
