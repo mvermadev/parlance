@@ -6,6 +6,13 @@
     .MuiDialogContent-root {
         padding: 0px !important;
     }
+    .MuiDialog-paper {
+        margin: 5px !important;
+        width: 92% !important;
+    }
+    .MuiDialogTitle-root, .MuiDialogContent-root {
+        padding: 10px !important;
+    }
 }
 
 .Load {

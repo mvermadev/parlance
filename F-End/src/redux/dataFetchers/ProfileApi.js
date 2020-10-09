@@ -1,6 +1,12 @@
 import Swal from 'sweetalert2'
 import { ADD_PROFILE } from '../constants/index'
 
+const Logout=()=>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    window.location.href = "/";
+}
+
 export const fetchProfile = () => (dispatch) => {
 
     var myHeaders = new Headers();
@@ -23,6 +29,8 @@ export const fetchProfile = () => (dispatch) => {
             }
             else {
                 var error = new Error("Error " + response.status + ": " + response.statusText);
+                if(response.status == 401)
+                    Logout();
                 error.response = response;
                 throw error;
             }

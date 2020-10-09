@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, ListItem, ListItemText } from '@material-ui/core';
+import EditProfile from './EditProfile'
 
 function About(props) {
 
@@ -11,6 +12,7 @@ function About(props) {
 
     return (
         <div style={{ paddingRight: '20px' }}>
+            <EditProfile props={props} style={{ float: 'right' }} />
             <p style={{ paddingLeft: '16px' }}>{props.props.bio}</p>
             <List>
                 <ListItem>

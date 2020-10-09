@@ -62,12 +62,40 @@
     color: #FFFFFF;
 }
 
-@media only screen and (max-width:990px) {
+.drop-down {
+    text-align: center;
+    width: 100%;
+}
+
+.profile-badge .MuiBadge-badge {
+    padding: 2px !important;
+    cursor: pointer;
+}
+
+.edit-profile {
+    font-size: 0.9rem !important;
+}
+
+.profile-page .edit-prof-btn {
+    width: 30px;
+    margin-top: -50px;
+    height: 30px;
+    float: right;
+}
+
+@media only screen and (max-width:900px) {
     .profile-bg {
         background: radial-gradient(43.75% 70% at 50% 26%, #B0343C 0.64%, #545D62 100%);
     }
     .profile-info-contributions, .profile-info-about {
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .profile-page .edit-prof-btn {
+        width: 30px;
+        margin-right: -40px;
+        margin-top: -30px;
+        height: 30px;
+        float: right;
     }
 }

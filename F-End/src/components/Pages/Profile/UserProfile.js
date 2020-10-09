@@ -3,6 +3,8 @@ import { Grid, Avatar, Button, ButtonGroup } from '@material-ui/core';
 import Hidden from '@material-ui/core/Hidden';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Badge from '@material-ui/core/Badge';
+import CreateIcon from '@material-ui/icons/Create';
 import './profile.css';
 import { fetchProfile } from '../../../redux/dataFetchers/ProfileApi'
 import { withRouter } from 'react-router-dom';
@@ -65,7 +67,14 @@ class UserProfile extends Component {
         <div className="profile-page">
           <Grid container className="profile-bg">
             <Grid align="center" item xs={12} style={{ marginBottom: '8px' }}>
-              <Avatar style={{ width: '75px', height: '75px' }} src={this.props.info.avatar} />
+              <Badge className="profile-badge"
+                overlap="circle"
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }} badgeContent={<CreateIcon className="edit-profile" />} color="primary" >
+                <Avatar style={{ width: '75px', height: '75px' }} src={this.props.info.avatar} />
+              </Badge>
             </Grid>
             <Grid align="center" className="username" item xs={12} style={{ marginBottom: '8px' }}>
               {this.props.info.name}
