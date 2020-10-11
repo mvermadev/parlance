@@ -4,6 +4,7 @@ import { ADD_PROFILE } from '../constants/index'
 const Logout=()=>{
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    localStorage.removeItem('admin');
     window.location.href = "/";
 }
 

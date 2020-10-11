@@ -15,6 +15,7 @@ import bannerLogo from '../../../img/logo.png'
 import { withStyles } from '@material-ui/core/styles';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import MoveToLib from './MoveToLib'
 import PopularPosts from '../PopularPosts'
 import BookPdf from './BookPdf'
 import { connect } from 'react-redux'
@@ -33,7 +34,7 @@ var numLikes = 0;
 class QuesCard extends Component {
     constructor(props) {
         super(props)
-        this.state = { data: [], load: true, postIds: [], likesCol: [], rowsToDis: 10}
+        this.state = { data: [], load: true, postIds: [], likesCol: [], rowsToDis: 10 }
         this.showMore = this.showMore.bind(this);
     }
 
@@ -72,11 +73,11 @@ class QuesCard extends Component {
 
     }
 
-    showMore(){
+    showMore() {
 
-            let dataLength = this.state.rowsToDis;
-            this.setState({rowsToDis: dataLength+=10});
-        
+        let dataLength = this.state.rowsToDis;
+        this.setState({ rowsToDis: dataLength += 10 });
+
 
     }
 
@@ -89,25 +90,25 @@ class QuesCard extends Component {
 
                     {this.state.load || !this.state.data ?
                         <Loader activity="Monk Loading..." /> :
-                        this.state.data.slice(0,this.state.rowsToDis).map((item, index) =>
+                        this.state.data.slice(0, this.state.rowsToDis).map((item, index) =>
                             item.isQuestion == true ? <div key={index} className="QuesCard">
-                            <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} />
-                            <TextCard text={item.text} name={item.name} />
-                            <Handles cardId={item._id} likes={item.likes.length} />
-                            {item.comments != null ? item.comments.map((item, index) =>
-                                item ? <div> <DisplayComment commentId={item._id} CName={item.user.name} CText={item.text} CId={item._id} CImg={item.avatar} 
-                                CDate={item.date
-                                    // .slice(0, 10)
-                                }
-                                 commentON={true} /> </div> : ''
-                            ) : '' } 
-                            
-                        </div> : ''
+                                <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} />
+                                <TextCard text={item.text} name={item.name} />
+                                <Handles cardId={item._id} likes={item.likes.length} />
+                                {item.comments != null ? item.comments.map((item, index) =>
+                                    item ? <div> <DisplayComment commentId={item._id} CName={item.user.name} CText={item.text} CId={item._id} CImg={item.avatar}
+                                        CDate={item.date
+                                            // .slice(0, 10)
+                                        }
+                                        commentON={true} /> </div> : ''
+                                ) : ''}
+
+                            </div> : ''
                         )
                     }
                     <div className="showMore" onClick={this.showMore}>
-                    <p>Show More</p>
-                    <ViewDayIcon fontSize="medium" style={{ color: '#B0343C', margin: '0px 10px' }} />
+                        <p>Show More</p>
+                        <ViewDayIcon fontSize="medium" style={{ color: '#B0343C', margin: '0px 10px' }} />
                     </div>
                     <BookPdf />
                     {/* {urlCardCompo()} */}
@@ -150,10 +151,6 @@ function CardHead(props) {
     const StyledMenuItem = withStyles((theme) => ({
         root: {
             '&:focus': {
-                backgroundColor: "#B02911",
-                '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-                    color: theme.palette.common.white,
-                },
             },
         },
     }))(MenuItem);
@@ -211,6 +208,10 @@ function CardHead(props) {
                         </ListItemIcon>
                         <ListItemText primary="Report post" />
                     </StyledMenuItem>
+                    {
+                        (localStorage.admin == "true") ?
+                            (<MoveToLib />) : (<div></div>)
+                    }
                 </StyledMenu>
 
             </div>
@@ -318,24 +319,24 @@ function Handles(props) {
             };
 
             fetch(`https://recmonk.herokuapp.com/posts/unlike/${props.cardId}`, requestOptions)
-            .then(response => {
-                if (response.ok) {
-                    return response;
-                } else {
-                    let errorMessage = response.status + ": " + response.statusText
-                    let error = new Error(errorMessage);
-                    throw (error);
-                }
-            })
-            .then(response => response.json())
-            .then(result => {
-                console.log("result unlike: ", result)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'You have unliked.',
+                .then(response => {
+                    if (response.ok) {
+                        return response;
+                    } else {
+                        let errorMessage = response.status + ": " + response.statusText
+                        let error = new Error(errorMessage);
+                        throw (error);
+                    }
                 })
-            })
-            .catch(error => console.log('error from QuesCard: ', error));
+                .then(response => response.json())
+                .then(result => {
+                    console.log("result unlike: ", result)
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'You have unliked.',
+                    })
+                })
+                .catch(error => console.log('error from QuesCard: ', error));
         }
     }
 
