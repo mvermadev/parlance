@@ -30,7 +30,6 @@ var globData = [];
 
 var numLikes = 0;
 
-
 class QuesCard extends Component {
     constructor(props) {
         super(props)
@@ -70,15 +69,11 @@ class QuesCard extends Component {
                 this.setState({ load: false })
             })
             .catch(error => console.log('error from QuesCard: ', error));
-
     }
 
     showMore() {
-
         let dataLength = this.state.rowsToDis;
         this.setState({ rowsToDis: dataLength += 10 });
-
-
     }
 
     render() {
@@ -86,8 +81,6 @@ class QuesCard extends Component {
         return (
             <div className="mainQuesCard">
                 <div>
-                    {/* {titleCardCompo("manish", "text", "avatar", "likes", "comments")} */}
-
                     {this.state.load || !this.state.data ?
                         <Loader activity="Monk Loading..." /> :
                         this.state.data.slice(0, this.state.rowsToDis).map((item, index) =>
@@ -111,13 +104,9 @@ class QuesCard extends Component {
                         <ViewDayIcon fontSize="medium" style={{ color: '#B0343C', margin: '0px 10px' }} />
                     </div>
                     <BookPdf />
-                    {/* {urlCardCompo()} */}
-                    {/* {titleCardCompo()} */}
-                    {/* {urlCardCompo()} */}
                 </div>
                 <div>
                     <PopularPosts />
-
                 </div>
             </div>
         )
@@ -236,19 +225,6 @@ function TextCard(props) {
         </div>
     )
 
-}
-
-// url card.
-function UrlCard() {
-    return (
-
-        <div className="middleQues">
-            <p>
-                I would like to know the differenc between these two seaches, will I get good profiles
-            </p>
-            <img src={bannerLogo} alt="thumbnail image" />
-        </div>
-    )
 }
 
 // handles of the card.
@@ -416,100 +392,10 @@ function Handles(props) {
 function DisplayComment(props) {
     return (
         <div className='commentCont'>
-            {/* {props.commentON == true ? <div className="comments">
-                                  <div className="commentAvatar">
-                                    <Avatar style={{ width: '35px', height: '35px' }} />
-                                  </div>
-                                  <div className="commentTexts">
-                                    <div className="commentName">
-                                      <p style={{fontWeight: 'bold', fontSize: '16px'}}>{props.CName} ·</p>
-                                      <p>21 July</p>
-                                    </div>
-                                    <div className="commetAns">
-                                    <p>{props.CText}</p>
-                                    </div>
-                                  </div>
-                                </div> : ''} */}
             {props.commentON == true ? <ReplyDesign CName={props.CName} CText={props.CText} CDate={props.CDate} /> : ''}
         </div>
     )
 }
-
-// Desktop view Handles of the card
-
-// function QuesCard(props) {
-
-//     const [postData, setPostData] = useState({data: []})
-
-//     // const loadData = ()=>{
-//     //     return(
-//     //         <Demo/>
-//     //     )
-//     // }
-
-//     var localData = [];
-
-//     const fetchPosts=()=>{
-//         var myHeaders = new Headers();
-//         myHeaders.append("Authorization", localStorage.getItem('token'));
-
-//         var raw = "";
-
-//         var requestOptions = {
-//           method: 'GET',
-//           headers: myHeaders,
-//           redirect: 'follow'
-//         };
-
-//         fetch("https://recmonk.herokuapp.com/posts", requestOptions)
-//         .then(response => {
-//             if (response.ok) {
-//                     return response;
-//             } else {
-//                 let errorMessage = `${response.status(response.statusText)}`
-//                 let error = new Error(errorMessage);
-//                 throw(error);
-//             }
-//         })
-//         .then(response => response.json())
-//         .then(result =>{
-//             console.log("result: ", result)
-//         //    this.setState({data: result})
-//             // globData = result
-//             localData = result
-//             setPostData({data: result})
-//            globData = result;
-//         // console.log('globData: ', globData);
-
-//         console.log("postData from func: ", postData.data)
-//         console.log("globData from func: ", globData)
-//         console.log("localData from func: ", localData)
-//     })
-//     .catch(error => console.log('error from QuesCard: ', error));         
-
-//     }
-
-//     useEffect(() => {
-//         fetchPosts();
-//         // loadData();
-//         store.subscribe(()=>{
-//             console.log('user: ', store.getState().authUser.authUser)
-//         })
-//         console.log('questCard redux val: ', props.authVal)
-//         console.log('questCard redux val: ', localStorage.getItem('token'))
-//         console.log('globdata: ', globData);
-//         console.log('localData: ', localData);
-
-//     }, [])
-
-//     return (
-//         <div>
-
-//         </div>
-//     )
-// }
-
-
 
 
 function mapStateToProps(state) {

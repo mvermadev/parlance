@@ -6,9 +6,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Filter from './universal/Header/Filter'
 import Loader from './universal/Loader'
 import Library from './Pages/SideBar/Libraries/Library'
-import Articles from './Pages/SideBar/Libraries/Articles'
-import Videos from './Pages/SideBar/Libraries/Videos'
-import BookPdf from './Pages/SideBar/Libraries/BookPdf'
 import './universal/universal.css'
 import DeskFooter from './universal/Footer/DeskFooter'
 import AboutUs from './Pages/AppInfo/AboutUs'
@@ -40,9 +37,6 @@ function Collector() {
                         <Route exact path='/' component={MainCompo}/>
                         <Route path='/community' component={Community}/>
                         <Route path='/library' component={Library}/>
-                        <Route path='/articles' component={Articles}/>
-                        <Route path='/bookpdf' component={BookPdf}/>
-                        <Route path='/videos' component={Videos}/>
                         <Route path='/aboutus' component={AboutUs}/>
                         <Route path='/contactus' component={ContactUs}/>
                         <Route path='/profile' component={UserProfile}/>

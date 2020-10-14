@@ -22,6 +22,7 @@ function SideBar() {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
         localStorage.removeItem('admin');
+        localStorage.removeItem('id');
         window.location.reload();
     }
 
@@ -39,7 +40,7 @@ function SideBar() {
             </div>
             <div className="nav" >
             <LocalLibraryIcon style={{color: '#b32800'}} fontSize="medium" />
-            <p onClick={()=>history.push('/articles')}>Library</p>
+            <p onClick={()=>history.push('/library')}>Library</p>
             </div>
             {
                 localStorage.getItem('token') ? 

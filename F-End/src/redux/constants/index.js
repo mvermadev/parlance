@@ -5,3 +5,4 @@ export const SET_CHAT_USER = 'SET_CHAT_USER'
 export const SET_ROOMS = 'SET_ROOMS'
 
 export const ADD_PROFILE = "ADD_PROFILE"
+export const FETCH_LIB = "FETCH_LIB"

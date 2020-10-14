@@ -105,6 +105,7 @@ export default function Sign() {
         localStorage.setItem("token", result.token);
         localStorage.setItem("username", result.user.username);
         localStorage.setItem("admin", result.user.isAdmin);
+        localStorage.setItem("id", result.user._id);
 
         //assigning the new value to the state
         store.dispatch(addUser(result));

@@ -134,7 +134,7 @@ function LoadAddQuestion(props) {
                 <Grid item xs={6} sm={4} md={2} className="cat-title">
                     <Typography>Select Category</Typography>
                 </Grid>
-                <Grid xs={6} sm={4} md={2} className="cat-chooser">
+                <Grid xs={6} sm={4} md={3} className="cat-chooser">
                 <InputLabel htmlFor="Category" />
                     <NativeSelect id="Category" name="category" className="cat-chooser-select" required={true} fullWidth
                         value={state.category}  onChange={handleInput} >

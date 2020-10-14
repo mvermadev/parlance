@@ -1,96 +1,130 @@
-import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import DescriptionIcon from '@material-ui/icons/Description';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import MovieIcon from '@material-ui/icons/Movie';
-import Menu from '@material-ui/core/Menu';
 import TuneIcon from '@material-ui/icons/Tune';
 import Articles from './Articles';
-import BookPdf from '../../../QnA/Question/BookPdf';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import BookPdf from './BookPdf';
 import Videos from './Videos';
 import '../SideBar.css'
 import './Library.css'
+import { fetchLibrary } from '../../../../redux/dataFetchers/Libapi'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Loader from '../../../universal/Loader'
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
 
-function Library(props) {
-  const classes = useStyles();
-  const [content, setContent] = useState(props.content);
-
-  const history = useHistory();
-
-  const handleChange = (event) => {
-    setContent(event.target.value);
-  };
-  
-  const [click, setClick] = useState('false');
-
-  const showList = () =>{
-      setClick('true');
+const mapStateToProps = state => {
+  return {
+    library: state.lib.lib
   }
-  const hideList =()=>{
-      setClick('false')
-  }
-
-  const displayItem = (e)=>{
-      return(
-          <div className="btmFilter">
-              <p>Category</p>
-              <p>Last Week</p>
-          </div>
-      )
-  }
-
-  return (
-    <div className="LibraryHeader">
-        <div className="libraryHead">
-          <div className="libraryHead1">
-              <h2>Library</h2>
-                <FormControl className={classes.formControl} style={{marginLeft: '10px'}}>
-                    <Select
-                    value={content}
-                    onChange={handleChange}
-                    displayEmpty
-                    className={classes.selectEmpty}
-                    inputProps={{ 'aria-label': 'Without label' }}
-                    >
-                    <MenuItem value='Articles' onClick={()=>history.push('/articles')}> 
-                        <DescriptionIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/>Articles
-                    </MenuItem>
-                    <MenuItem value='BookPdfs' onClick={()=>history.push('/bookpdf')}>
-                        <MenuBookIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/>BookPdfs
-                        </MenuItem>
-                    <MenuItem value='Videos' onClick={()=>history.push('/videos')}>
-                        <MovieIcon fontSize='small'  style={{color: '#707070', marginRight:'10px'}}/>Videos
-                        </MenuItem>
-                    </Select>
-                </FormControl>
-        </div>  
-          <div className="Filter" container>
-              <div className="topFilter">
-                    <TuneIcon size="small" onClick={click == 'false' ? showList : hideList} style={{color:'#000', cursor: 'pointer'}}/>
-              </div>
-
-          </div>
-             
-        </div>
-        {click == 'true' ? displayItem() : hideList}
-    </div>
-  );
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  fetchLibrary: () => { dispatch(fetchLibrary()) }
+});
 
 
-export default Library
+class Library extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      content: 'Articles',
+      click: false
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      content: event.target.value
+    })
+  };
+
+  showList = () => {
+    this.setState({
+      click: true
+    })
+  }
+  hideList = () => {
+    this.setState({
+      click: false
+    })
+  }
+
+  displayItem = () => {
+    return (
+      <div className="btmFilter">
+        <p>Category</p>
+        <p>Last Week</p>
+      </div>
+    )
+  }
+
+  componentDidMount() {
+    this.props.fetchLibrary();
+  }
+
+  render() {
+    if (!this.props.library) {
+      return (
+        <Loader style={{ width: '100vw', height: '100vh' }} />
+      )
+    }
+    else {
+      return (
+        <div className="LibraryHeader">
+          <div className="libraryHead">
+            <div className="libraryHead1">
+              <h2>Library</h2>
+              <Select label="Library" name="content"
+                value={this.state.content} onChange={this.handleChange} fullWidth>
+                <MenuItem value="Articles">
+                  <ListItem>
+                    <ListItemIcon>
+                      <DescriptionIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Articles" />
+                  </ListItem>
+                </MenuItem>
+                <MenuItem value="BookPdfs">
+                  <ListItem>
+                    <ListItemIcon>
+                      <MenuBookIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="BookPdfs" />
+                  </ListItem>
+                </MenuItem>
+                <MenuItem value="Videos">
+                  <ListItem>
+                    <ListItemIcon>
+                      <MovieIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Videos" />
+                  </ListItem>
+                </MenuItem>
+              </Select>
+            </div>
+            <div className="Filter" container>
+              <div className="topFilter">
+                <TuneIcon size="small" onClick={this.state.click == 'false' ? this.showList : this.hideList} style={{ color: '#000', cursor: 'pointer' }} />
+              </div>
+            </div>
+          </div>
+          {this.state.click == 'true' ? this.displayItem : this.hideList}
+          <div style={{ height: '15px' }}></div>
+          <div>
+            {
+              (this.state.content == 'Articles') ? <Articles library={this.props.library} /> : (this.state.content == 'BookPdfs') ? <BookPdf library={this.props.library} /> : <Videos library={this.props.library} />
+            }
+          </div>
+        </div>
+      );
+    }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Library));
