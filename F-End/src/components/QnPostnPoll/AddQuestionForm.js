@@ -131,7 +131,7 @@ function LoadAddQuestion(props) {
             </Grid>
 
             <Grid container className="question-cat-container">
-                <Grid item xs={6} sm={4} md={2} className="cat-title">
+                <Grid item xs={6} sm={4} md={3} className="cat-title">
                     <Typography>Select Category</Typography>
                 </Grid>
                 <Grid xs={6} sm={4} md={3} className="cat-chooser">

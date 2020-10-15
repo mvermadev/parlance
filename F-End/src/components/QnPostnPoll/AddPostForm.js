@@ -8,11 +8,11 @@ function AddPost(props) {
 
     const [state, setState] = React.useState({
         uploaded_by: localStorage.id,
-        video: '',
-        category: '',
-        sub_category: '',
-        content: '',
-        title: ''
+        video: "",
+        category: "",
+        sub_category: "",
+        content: "",
+        title: ""
     });
 
     const handleInput = (event) => {
@@ -24,6 +24,7 @@ function AddPost(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         var myHeaders = new Headers();
         myHeaders.append("Authorization", localStorage.token);
         myHeaders.append("Content-Type", "application/json");
@@ -33,7 +34,7 @@ function AddPost(props) {
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
-            body: raw,
+            body: state,
             redirect: 'follow'
         };
 
@@ -42,8 +43,6 @@ function AddPost(props) {
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
     }
-
-
 
     return (
         <form className="post-form" onSubmit={handleSubmit}>
@@ -63,13 +62,13 @@ function AddPost(props) {
 
                 <Grid container className="post-cat-container">
                     <Grid item xs={6} sm={5} md={3} className="cat-title">
-                        <Typography>Select Category</Typography>
+                        <Typography>Select Type</Typography>
                     </Grid>
                     <Grid xs={6} sm={5} md={3} className="cat-chooser">
                         <InputLabel htmlFor="category" />
                         <NativeSelect id="category" name="category" className="cat-chooser-select" required={true} fullWidth
                             value={state.category} onChange={handleInput} >
-                            <option value="" disabled selected>Category</option>
+                            <option value="" disabled selected>Type</option>
                             <option value="Video">Video</option>
                             <option value="Articles">Articles</option>
                             <option value="BookPdfs">Book/Pdf</option>
@@ -124,7 +123,7 @@ function AddPost(props) {
                         value={state.content} onChange={handleInput}
                         endAdornment={
                             <InputAdornment position="end">
-                                <input style={{ display: 'none' }} accept="file/*" id="post-attachment-file" type="file" />
+                                <input accept="file/*" id="post-attachment-file" type="file" />
                                 <label htmlFor="post-attachment-file">
                                     <IconButton className="post-file-attach" aria-label="attachment" component="span">
                                         <CameraAltIcon />

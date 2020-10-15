@@ -85,7 +85,7 @@ class QuesCard extends Component {
                         <Loader activity="Monk Loading..." /> :
                         this.state.data.slice(0, this.state.rowsToDis).map((item, index) =>
                             item.isQuestion == true ? <div key={index} className="QuesCard">
-                                <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} />
+                                <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} category={item.category} />
                                 <TextCard text={item.text} name={item.name} />
                                 <Handles cardId={item._id} likes={item.likes.length} />
                                 {item.comments != null ? item.comments.map((item, index) =>
@@ -154,7 +154,6 @@ function CardHead(props) {
         setAnchorEl(null);
     };
 
-
     return (
 
         <div className="topQuesHead">
@@ -168,7 +167,13 @@ function CardHead(props) {
                     </div>
                     <div className="topQues2">
                         <p>Posted: {props.CDate.slice(8, 10)} {new Date(props.CDate.slice(0, 4), props.CDate.slice(6, 7), props.CDate.slice(8, 10)).toLocaleString('default', { month: 'short' })}</p>
-                        <p>In: Sourcing</p>
+                        {
+                            (props.category.length > 0 && props.category[0] != "" ) ? <p>In: {props.category.map((item) => {
+                                return(
+                                    <span> {item} </span>
+                                )
+                            })}</p> : <p></p>
+                        }
                     </div>
                 </div>
             </div>
