@@ -8,11 +8,11 @@ function AddPost(props) {
 
     const [state, setState] = React.useState({
         uploaded_by: localStorage.id,
-        video: "",
-        category: "",
-        sub_category: "",
-        content: "",
-        title: ""
+        video: '',
+        category: '',
+        sub_category: '',
+        content: '',
+        title: ''
     });
 
     const handleInput = (event) => {
@@ -81,8 +81,8 @@ function AddPost(props) {
                         <Typography>Select Post Category</Typography>
                     </Grid>
                     <Grid xs={6} sm={5} md={3} className="cat-chooser">
-                    <InputLabel htmlFor="sub_ategory" />
-                    <NativeSelect id="sub_ategory" name="sub_category" className="cat-chooser-select" required={true} fullWidth
+                    <InputLabel htmlFor="sub_category" />
+                    <NativeSelect id="sub_category" name="sub_category" className="cat-chooser-select" required={true} fullWidth
                         value={state.sub_category}  onChange={handleInput} >
                         <option value="" disabled selected>Category</option>
                         <option value="Career">Career</option>

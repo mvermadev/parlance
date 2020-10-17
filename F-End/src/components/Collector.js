@@ -3,7 +3,7 @@ import MainHeader from './universal/Header/MainHeader'
 import BottomNav from './universal/Footer/BottomNav'
 import QuesCard from './QnA/Question/QuesCard'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Filter from './universal/Header/Filter'
+import QAFilter from './QnA/Question/QAFilter'
 import Loader from './universal/Loader'
 import Library from './Pages/SideBar/Libraries/Library'
 import './universal/universal.css'
@@ -20,8 +20,7 @@ import Fellowmonk from './Pages/SideBar/Bot/Fellowmonk'
 const MainCompo =()=> {
     return(
         <div className="MainCompo">
-            <Filter/>
-            <QuesCard/>
+            <QAFilter/>
         </div>
     );
 }

@@ -169,6 +169,21 @@
     margin-left: 20px;
 }
 
+.LibraryHeader .btmFilter{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 15px;
+    color: #353535;
+    cursor: pointer;
+}
+
+.LibraryHeader .btmFilter p:nth-child(2){
+    margin-left: 20px;
+}
+
+
 #deskTopHeader{
     display: none;
 }
@@ -187,6 +202,10 @@
    
     .Filter{
         margin: auto 40vw auto 15vw;
+    }
+
+    .LibraryHeader .btmFilter {
+        margin: auto 40vw auto 18vw;
     }
 
     .BottomHeader form button{

@@ -88,6 +88,7 @@
 
 .ReplyBody-content {
     padding-left: 10px;
+    padding-right: 5px;
     font-size: 17px !important;
     font-weight: normal;
 }

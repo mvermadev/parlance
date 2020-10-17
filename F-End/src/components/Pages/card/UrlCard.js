@@ -21,7 +21,7 @@ function UrlCard(props) {
                     <p style={{ fontWeight: 'bold' }}>
                         {props.data.title}
                     </p>
-                    <div style={{ color: '#707070', fontSize: '14px', margin: '0px' }}>
+                    <div style={{ color: '#333333', fontSize: '14px', margin: '0px' }}>
                         <p style={{ float: 'left', marginTop: '0px' }}>
                             Author: Name
                     </p>
