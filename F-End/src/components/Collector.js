@@ -1,7 +1,6 @@
 import React from 'react'
 import MainHeader from './universal/Header/MainHeader'
 import BottomNav from './universal/Footer/BottomNav'
-import QuesCard from './QnA/Question/QuesCard'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import QAFilter from './QnA/Question/QAFilter'
 import Loader from './universal/Loader'
