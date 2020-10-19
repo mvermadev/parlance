@@ -91,6 +91,11 @@
     padding-right: 5px;
     font-size: 17px !important;
     font-weight: normal;
+    overflow: hidden;
+}
+
+.QuesText {
+    overflow: hidden;
 }
 
 .ReplyBody-Container {
