@@ -83,7 +83,25 @@
     float: right;
 }
 
+.posted, .post-cat {
+    margin-top: -10px;
+    font-size: 13px;
+    width: 50%;
+}
+
+.QuesCard .topQues {
+    padding: 0px;
+    padding-top: 5px;
+}
+
+.post-cat {
+    text-align: right;
+}
+
 @media only screen and (max-width:900px) {
+    .MuiAccordionDetails-root {
+        padding: 0px !important;
+    }
     .profile-bg {
         background: radial-gradient(43.75% 70% at 50% 26%, #B0343C 0.64%, #545D62 100%);
     }
@@ -98,4 +116,9 @@
         height: 30px;
         float: right;
     }
+}
+
+.QuesCard{
+    max-width: 100%;
+    text-align: left;
 }

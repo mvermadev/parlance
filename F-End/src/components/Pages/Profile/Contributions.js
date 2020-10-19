@@ -4,19 +4,20 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Grid } from '@material-ui/core';
+import ProfQues from './ProfQues'
 
 function Contributions(props) {
 
     let q = props.props.questions;
+    console.log(q);
 
     const [state, setState] = React.useState({
-        row: 3
+        row: 1
     });
 
     const showMore = () => {
         let dataLength = state.row;
-        setState({ row: dataLength += 3 });
+        setState({ row: dataLength += 1 });
     }
 
     const [expanded, setExpanded] = React.useState(false);
@@ -40,11 +41,7 @@ function Contributions(props) {
                         {
                             q.slice(0, state.row).map((data) => {
                                 return (
-                                    <Grid container>
-                                        <Grid item>
-                                            <p>testing</p>
-                                        </Grid>
-                                    </Grid>
+                                    <ProfQues props={data} />
                                 );
                             })
                         }
