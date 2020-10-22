@@ -6,8 +6,24 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import bannerLogo from '../../../img/logo.png'
 import Loader from '../../universal/Loader'
+import { getLinkPreview } from 'link-preview-js';
 
 function UrlCard(props) {
+
+    const [state, setState] = React.useState({
+        url: {}
+    })
+
+    const getUrl = (item) => {
+        getLinkPreview('https://www.youtube.com/watch?v=abaFffQLJoY')
+            .then(data => {
+                console.log(data)
+                setState({
+                    url: data
+                })
+            })
+            .catch(error => console.log(error.message));
+    }
 
     const Card = (props) => {
         if (!props.data) {
@@ -29,7 +45,9 @@ function UrlCard(props) {
                             In: {props.data.sub_category}
                         </p>
                     </div>
-                    <img src={bannerLogo} alt="thumbnail image" />
+                    {
+                        state.url.images ?  <a href={state.url.url}><img src={state.url.images[0]} alt="image" /></a> : <a href=""><img src={bannerLogo} alt="image" /></a>
+                    }
                 </div>
             );
         }

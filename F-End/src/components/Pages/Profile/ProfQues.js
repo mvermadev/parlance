@@ -30,7 +30,7 @@ function ProfQues(props) {
     }
 
     return (
-        <div key={props.props._id}>
+        <div key={props.props._id} className="profile">
             <div className="QuesCard">
                 <Card data={props.props} />
                 <div className="btmQues">

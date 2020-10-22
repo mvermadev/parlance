@@ -11,7 +11,6 @@ import ViewDayIcon from '@material-ui/icons/ViewDay';
 import profile from '../../../img/profile.jpeg'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import bannerLogo from '../../../img/logo.png'
 import { withStyles } from '@material-ui/core/styles';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -44,8 +43,6 @@ class QuesCard extends Component {
     _getData = () => {
         var myHeaders = new Headers();
         myHeaders.append("Authorization", localStorage.getItem('token'));
-
-        var raw = "";
 
         var requestOptions = {
             method: 'GET',
@@ -239,7 +236,7 @@ function TextCard(props) {
             <p style={{ fontWeight: 'bold' }}>
                 {props.name}
             </p>
-            <p>
+            <p className="QuesText">
                 {
                     parse(props.text)
                 }

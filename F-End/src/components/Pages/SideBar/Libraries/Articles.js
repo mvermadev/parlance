@@ -3,6 +3,8 @@ import UrlCard from '../../card/UrlCard'
 import Loader from '../../../universal/Loader'
 
 function Articles(props) {
+
+    console.log(props.library)
     if (!props.library) {
         return (
             <Loader style={{ width: '100vw', height: '100vh' }} />
@@ -16,13 +18,13 @@ function Articles(props) {
                         props.cat == "All" ?
                             props.library.map(data => {
                                 return (
-                                    <UrlCard props={data} />
+                                    <UrlCard key={data._id}  props={data} />
                                 );
                             }) :
                             props.library.map(data => {
                                 return (
                                     props.cat == data.sub_category ?
-                                        <UrlCard props={data} /> : ''
+                                        <UrlCard key={data._id} props={data} /> : ''
                                 )
                             })
                     }
