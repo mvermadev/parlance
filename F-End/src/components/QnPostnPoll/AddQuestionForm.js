@@ -41,7 +41,7 @@ function LoadAddQuestion(props) {
         e.preventDefault();
 
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", localStorage.getItem('token'));
+        myHeaders.append("Authorization", localStorage.token);
         var formdata = new FormData();
         if (file != null)
             formdata.append("file", file);
@@ -54,7 +54,7 @@ function LoadAddQuestion(props) {
             redirect: 'follow'
         };
 
-        fetch("https://recmonk.herokuapp.com/library", requestOptions)
+        fetch("https://recmonk.herokuapp.com/posts", requestOptions)
             .then(response => {
                 if (response.ok) {
                     Swal.fire({
