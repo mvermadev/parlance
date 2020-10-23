@@ -15,9 +15,7 @@ function LoadAddQuestion(props) {
         name: props.data,
         category: '',
         text: '',
-        avatar: '',
-        isQuestion: true,
-        tags: 'tags'
+        isQuestion: true
     });
 
     const [file, setFile] = React.useState(null);
@@ -45,6 +43,7 @@ function LoadAddQuestion(props) {
         var formdata = new FormData();
         if (file != null)
             formdata.append("file", file);
+        
         formdata.append("content", JSON.stringify(state));
 
         var requestOptions = {
@@ -72,9 +71,7 @@ function LoadAddQuestion(props) {
             name: '',
             category: '',
             text: '',
-            avatar: '',
-            isQuestion: true,
-            tags: 'tags'
+            isQuestion: true
         })
     }
 

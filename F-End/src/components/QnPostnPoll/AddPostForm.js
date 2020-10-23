@@ -9,7 +9,6 @@ function AddPost(props) {
 
     const [state, setState] = React.useState({
         uploaded_by: localStorage.id,
-        video: 'empty',
         category: '',
         sub_category: '',
         content: '',
@@ -37,34 +36,37 @@ function AddPost(props) {
         e.preventDefault();
         console.log(state)
         console.log(file)
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", localStorage.token);
         var formdata = new FormData();
-        if(file != null)
+        if (file != null)
             formdata.append("file", file);
+
         formdata.append("content", JSON.stringify(state));
 
         var requestOptions = {
             method: 'POST',
+            headers: myHeaders,
             body: formdata,
             redirect: 'follow'
         };
 
         fetch("https://recmonk.herokuapp.com/library", requestOptions)
             .then(response => {
-                if(response.ok) {
+                if (response.ok) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Post Added!'
-                      })
+                    })
                     return response;
                 }
             })
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
-        
+
         setFile(null)
         setState({
             uploaded_by: localStorage.id,
-            video: 'empty',
             category: '',
             sub_category: '',
             content: '',
@@ -153,7 +155,7 @@ function AddPost(props) {
                                 <input style={{ display: 'none' }} name="file" id="post-attachment-file" onChange={handleFileInput} type="file" />
                                 <label htmlFor="post-attachment-file">
                                     <IconButton className="post-file-attach" aria-label="attachment" component="p">
-                                        {file!= null ? <p>{file.name}</p> : <p></p>} <AttachmentRoundedIcon />
+                                        {file != null ? <p>{file.name}</p> : <p></p>} <AttachmentRoundedIcon />
                                     </IconButton>
                                 </label>
                             </InputAdornment>
