@@ -198,6 +198,10 @@
     overflow: hidden;
 }
 
+#bottomNav{
+    margin-top: 56px;
+}
+
 @media only screen and (min-width: 800px){
    
     .Filter{
@@ -284,7 +288,7 @@
    .DeskFooter{
        z-index: 99;
        background-color: #fff;
-       margin-top: 250px;
+       margin-top: 100px;
        display: flex;
        justify-content: center;
        align-items: center;
