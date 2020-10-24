@@ -119,7 +119,7 @@ class Library extends Component {
         <div className="LibraryHeader">
           <div className="libraryHead">
             <div className="libraryHead1">
-              <h3>Library</h3>
+              <h2>Library</h2>
               <Select label="Library" name="content"
                 value={this.state.content} onChange={this.handleChange} fullWidth>
                 <MenuItem value="Articles">

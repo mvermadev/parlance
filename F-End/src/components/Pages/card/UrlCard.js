@@ -5,6 +5,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Loader from '../../universal/Loader'
+import { Grid } from '@material-ui/core';
 import { ReactTinyLink } from 'react-tiny-link'
 
 function UrlCard(props) {
@@ -37,20 +38,20 @@ function UrlCard(props) {
                     </p>
                 </div>
                 {
-                    is_url(props.data.content) == true ? !pat.test(props.data.content) ? 
-                     <ReactTinyLink
-                        cardSize="small"
-                        showGraphic={true}
-                        maxLine={2}
-                        minLine={1}
-                        url={"http://" + props.data.content}
-                    /> : <ReactTinyLink
-                    cardSize="small"
-                    showGraphic={true}
-                    maxLine={2}
-                    minLine={1}
-                    url={props.data.content}
-                />: <p></p>
+                    is_url(props.data.content) == true ? !(pat.test(props.data.content)) ?
+                        <ReactTinyLink
+                            cardSize="small"
+                            showGraphic={true}
+                            maxLine={2}
+                            minLine={1}
+                            url={"http://" + props.data.content}
+                        /> : <ReactTinyLink
+                            cardSize="small"
+                            showGraphic={true}
+                            maxLine={2}
+                            minLine={1}
+                            url={props.data.content}
+                        /> : <p></p>
                 }
                 {
                     props.data.pdf ? <p>{props.data.pdf}</p> : <p></p>
@@ -59,34 +60,41 @@ function UrlCard(props) {
         );
     }
 
-    return (
-        <div key={props.props._id}>
-            <div className="QuesCard">
-                <Card data={props.props} />
-                <div className="btmQues">
-                    <div className="btmQues1">
-                        <div className="cardIcons">
-                            <CommentOutlinedIcon fontSize="medium" style={{ color: '#707070', margin: '0px 5px' }} />
-                            <p>12</p>
-                        </div>
-                        <div className="cardIcons">
-                            <VisibilityOutlinedIcon style={{ color: '#707070', margin: '0px 10px' }} />
-                            <p>43</p>
-                        </div>
-                        <ShareIcon style={{ color: '#707070', margin: '0px 10px' }} />
+    if (!props.props.content) {
+        return (
+            <Loader style={{ width: '100vw', height: '100vh' }} />
+        )
+    }
+    else {
+        return (
+            <Grid item xs={12} sm={6} md={4} key={props.props._id} className="library-grid">
+                <div className="QuesCard">
+                    <Card data={props.props} />
+                    <div className="btmQues">
+                        <div className="btmQues1">
+                            <div className="cardIcons">
+                                <CommentOutlinedIcon fontSize="medium" style={{ color: '#707070', margin: '0px 5px' }} />
+                                <p>12</p>
+                            </div>
+                            <div className="cardIcons">
+                                <VisibilityOutlinedIcon style={{ color: '#707070', margin: '0px 10px' }} />
+                                <p>43</p>
+                            </div>
+                            <ShareIcon style={{ color: '#707070', margin: '0px 10px' }} />
 
-                    </div>
-                    <div className="btmQues2">
-                        <ArrowDropUpIcon fontSize="large" style={{ color: '#797979' }} />
-                        <p style={{ color: '#B0343C', fontWeight: 'bold' }}>
-                            5
+                        </div>
+                        <div className="btmQues2">
+                            <ArrowDropUpIcon fontSize="large" style={{ color: '#797979' }} />
+                            <p style={{ color: '#B0343C', fontWeight: 'bold' }}>
+                                5
                             </p>
-                        <ArrowDropDownIcon fontSize="large" style={{ color: '#797979' }} />
+                            <ArrowDropDownIcon fontSize="large" style={{ color: '#797979' }} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    )
+            </Grid>
+        )
+    }
 }
 
 export default UrlCard

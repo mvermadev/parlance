@@ -18,16 +18,20 @@
     .Cards {
         margin-left: 60px;
     }
+
+    .library-grid .QuesCard, .BookPdf{
+        margin: 15px 12px !important;
+    }
 }
 
-.QuesCard, .BookPdf{
+.library-grid .QuesCard, .BookPdf{
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 20px #c2c0c0;
-    margin: 15px 5px;
+    margin: 12px 5px;
     background-color: #fff;
     line-height: 20px;
-    height: auto;
+    min-height: 320px;
     padding: 0px;
     z-index: 1;
     background-color: '#f0f0f0';
@@ -73,12 +77,13 @@
     align-items: center;
 }
 
-.QuesCard .middleQues{
+.library-grid .QuesCard .middleQues{
    display: flex;
    flex-flow: column wrap;
     padding: 0px 10px;
     position: relative;
     /* bottom: 15px; */
+    min-height: 250px;
 }
 
 .QuesCard .middleQues p:nth-child(2){
@@ -166,18 +171,8 @@
     display: none;
 }
 
-@media screen and (max-width: 990px) and (min-width: 767px) {
-    .QuesCard, .BookPdf{
-        max-width: 40vw;
-    }
-}
-
-
 @media only screen and (min-width: 990px)
 {
-    .QuesCard, .BookPdf{
-        max-width: 30vw;
-    }
     #mobBtmQeus1{
         display: none;
     }
