@@ -60,7 +60,7 @@ function UrlCard(props) {
         );
     }
 
-    if (!props.props.content) {
+    if (!props.props.title) {
         return (
             <Loader style={{ width: '100vw', height: '100vh' }} />
         )
