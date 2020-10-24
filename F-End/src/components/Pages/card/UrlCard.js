@@ -7,19 +7,21 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Loader from '../../universal/Loader'
 import { ReactTinyLink } from 'react-tiny-link'
 
-function is_url(str) {
-    var pattern = new RegExp('^((ft|htt)ps?:\\/\\/)?' + // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-        '(\\:\\d+)?' + // port
-        '(\\/[-a-z\\d%@_.~+&:]*)*' + // path
-        '(\\?[;&a-z\\d%@_.,~+&:=-]*)?' + // query string
-        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-    return pattern.test(str);
-}
-
 function UrlCard(props) {
 
+    function is_url(str) {
+        var pattern = new RegExp('^((ft|htt)ps?:\\/\\/)?' + // protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+            '(\\:\\d+)?' + // port
+            '(\\/[-a-z\\d%@_.~+&:]*)*' + // path
+            '(\\?[;&a-z\\d%@_.,~+&:=-]*)?' + // query string
+            '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+
+        return pattern.test(str);
+    }
+
+    const pat = new RegExp('^(https?|ftp)://');
     const Card = (props) => {
         return (
             <div className="middleQues">
@@ -33,13 +35,23 @@ function UrlCard(props) {
                     <p style={{ float: 'right', marginTop: '0px' }}>
                         In: {props.data.sub_category}
                     </p>
-                </div><ReactTinyLink
+                </div>
+                {
+                    is_url(props.data.content) == true ? !pat.test(props.data.content) ? 
+                     <ReactTinyLink
+                        cardSize="small"
+                        showGraphic={true}
+                        maxLine={2}
+                        minLine={1}
+                        url={"http://" + props.data.content}
+                    /> : <ReactTinyLink
                     cardSize="small"
                     showGraphic={true}
                     maxLine={2}
                     minLine={1}
-                    url="https://www.youtube.com/"
-                />
+                    url={props.data.content}
+                />: <p></p>
+                }
                 {
                     props.data.pdf ? <p>{props.data.pdf}</p> : <p></p>
                 }
