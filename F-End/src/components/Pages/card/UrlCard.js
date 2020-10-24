@@ -4,70 +4,47 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import ShareIcon from '@material-ui/icons/Share';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import bannerLogo from '../../../img/logo.png'
 import Loader from '../../universal/Loader'
-import { getLinkPreview } from 'link-preview-js';
+import { ReactTinyLink } from 'react-tiny-link'
 
 function is_url(str) {
-    let regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-    if (regexp.test(str))
-        return true;
-    else
-        return false;
+    var pattern = new RegExp('^((ft|htt)ps?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?' + // port
+        '(\\/[-a-z\\d%@_.~+&:]*)*' + // path
+        '(\\?[;&a-z\\d%@_.,~+&:=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return pattern.test(str);
 }
 
 function UrlCard(props) {
 
-    const [state, setState] = React.useState({
-        url: {}
-    })
-
-    const getUrl = (item) => {
-        getLinkPreview('https://www.youtube.com/watch?v=abaFffQLJoY')
-            .then(data => {
-                console.log(data)
-                setState({
-                    url: data
-                })
-            })
-            .catch(error => console.log(error.message));
-    }
-
     const Card = (props) => {
-        if (!state.url) {
-            if (is_url(props.data.content))
-                getUrl(props.data.content)
-            else
-                setState({
-                    url: {
-                        images: [bannerLogo],
-                        url: '#'
-                    }
-                })
-            return (
-                <Loader style={{ width: '100vw', height: '100vh' }} />
-            )
-        }
-        else {
-            return (
-                <div className="middleQues">
-                    <p style={{ fontWeight: 'bold' }}>
-                        {props.data.title}
+        return (
+            <div className="middleQues">
+                <p style={{ fontWeight: 'bold' }}>
+                    {props.data.title}
+                </p>
+                <div style={{ color: '#333333', fontSize: '14px', margin: '0px' }}>
+                    <p style={{ float: 'left', marginTop: '0px' }}>
+                        Author: Name
                     </p>
-                    <div style={{ color: '#333333', fontSize: '14px', margin: '0px' }}>
-                        <p style={{ float: 'left', marginTop: '0px' }}>
-                            Author: Name
+                    <p style={{ float: 'right', marginTop: '0px' }}>
+                        In: {props.data.sub_category}
                     </p>
-                        <p style={{ float: 'right', marginTop: '0px' }}>
-                            In: {props.data.sub_category}
-                        </p>
-                    </div>
-                    {
-                        state.url.images ? <a href={state.url.url}><img src={state.url.images[0]} alt="image" /></a> : <a href=""><img src={bannerLogo} alt="image" /></a>
-                    }
-                </div>
-            );
-        }
+                </div><ReactTinyLink
+                    cardSize="small"
+                    showGraphic={true}
+                    maxLine={2}
+                    minLine={1}
+                    url="https://www.youtube.com/"
+                />
+                {
+                    props.data.pdf ? <p>{props.data.pdf}</p> : <p></p>
+                }
+            </div>
+        );
     }
 
     return (

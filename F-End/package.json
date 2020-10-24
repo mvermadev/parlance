@@ -10,13 +10,13 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "html-react-parser": "^0.14.0",
-    "link-preview-js": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-swipeable-views": "^0.13.9",
+    "react-tiny-link": "^3.6.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
@@ -45,5 +45,6 @@
       "last 1 safari version"
     ]
   },
-  "CI": "react-scripts build"
+  "CI": "react-scripts build",
+  "devDependencies": {}
 }
