@@ -54,7 +54,7 @@ function UrlCard(props) {
                         /> : <p></p>
                 }
                 {
-                    props.data.pdf ? <p>{props.data.pdf}</p> : <p></p>
+                    props.data.pdf_link ? <a href={props.data.pdf_link}>{props.data.pdf}</a> : <p></p>
                 }
             </div>
         );
