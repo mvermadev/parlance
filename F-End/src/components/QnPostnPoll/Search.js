@@ -31,7 +31,6 @@ class Search extends Component {
         fetch("https://recmonk.herokuapp.com/posts", requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log(result)
                 let FilteredTitle =
                     result.filter((item) => {
                         if (item.isQuestion == true)

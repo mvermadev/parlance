@@ -1,6 +1,5 @@
 import React from 'react'
 import UrlCard from '../../card/UrlCard'
-import Loader from '../../../universal/Loader'
 
 function BookPdf(props) {
     let arr = []

@@ -2,7 +2,6 @@ import React from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AddQuestion from './AddQuestionForm';
-import AddPost from './AddPostForm';
 import AddPoll from './AddPollForm';
 import { useParams } from 'react-router-dom'
 import './posting.css';
@@ -41,7 +40,6 @@ function Post() {
                 <Tabs value={value} onChange={handleChange} aria-label="post-tabs" className="post-tabs" >
                     <Tab label="Add Question" />
                     <Tab label="Poll" />
-                    <Tab label="Post" />
                 </Tabs>
 
                 <TabPanel value={value} index={0}>
@@ -49,9 +47,6 @@ function Post() {
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <AddPoll data={data} />
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                    <AddPost />
                 </TabPanel>
             </div>
         </div>

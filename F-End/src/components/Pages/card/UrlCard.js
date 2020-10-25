@@ -51,10 +51,16 @@ function UrlCard(props) {
                             maxLine={2}
                             minLine={1}
                             url={props.data.content}
-                        /> : <p></p>
+                        /> : ''
                 }
                 {
-                    props.data.pdf_link ? <a href={props.data.pdf_link}>{props.data.pdf}</a> : <p></p>
+                    props.data.pdf_link ? <ReactTinyLink
+                    cardSize="small"
+                    showGraphic={true}
+                    maxLine={2}
+                    minLine={1}
+                    url={props.data.pdf_link}
+                /> : ''
                 }
             </div>
         );

@@ -10,6 +10,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { InputLabel, NativeSelect, Grid, Typography } from '@material-ui/core';
 import BookPdf from './BookPdf';
 import Videos from './Videos';
+import AddPost from '../../../QnPostnPoll/AddPostForm'
 import '../SideBar.css'
 import './Library.css'
 import { fetchLibrary } from '../../../../redux/dataFetchers/Libapi'
@@ -59,9 +60,9 @@ class Library extends Component {
 
   handleInput = (event) => {
     this.setState({
-        [event.target.name]: event.target.value
+      [event.target.name]: event.target.value
     })
-};
+  };
 
   displayItem = () => {
     return (
@@ -153,6 +154,11 @@ class Library extends Component {
                 <TuneIcon size="small" onClick={this.state.click == 'false' ? this.showList : this.hideList} style={{ color: '#000', cursor: 'pointer' }} />
               </div>
             </div>
+            {
+              localStorage.admin == "true" ? <div className="position-lib">
+                <AddPost />
+              </div> : ''
+            }
           </div>
           {this.state.click == 'true' ? this.displayItem() : this.hideList}
           <div style={{ height: '10px' }}></div>

@@ -1,11 +1,10 @@
 import React from 'react'
 import UrlCard from '../../card/UrlCard'
-import Loader from '../../../universal/Loader'
 
 function Videos(props) {
     let arr = []
     props.library.map(data => {
-        if (data.category == "Videos")
+        if (data.category == "Video")
             arr.push(data)
     })
 
