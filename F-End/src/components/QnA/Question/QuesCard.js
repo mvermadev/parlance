@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
 import MoveToLib from './MoveToLib'
 import PopularPosts from '../PopularPosts'
 import BookPdf from './BookPdf'
@@ -83,7 +84,7 @@ class QuesCard extends Component {
                         this.state.data.slice(0, this.state.rowsToDis).map((item, index) =>
                             (item.isQuestion == true && this.props.cat == "All") ?
                                 <div key={index} className="QuesCard">
-                                    <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} category={item.category} />
+                                    <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} category={item.category} text={item.text} title={item.name} />
                                     <TextCard text={item.text} name={item.name} />
                                     <Handles cardId={item._id} likes={item.likes.length} />
                                     {item.comments != null ? item.comments.map((item, index) =>
@@ -99,7 +100,7 @@ class QuesCard extends Component {
                                     {
                                         this.props.cat == item.category[0] || this.props.cat == item.category[1] ?
                                             <div key={index} className="QuesCard">
-                                                <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} category={item.category} />
+                                                <CardHead name={item.user.name} CDate={item.date.slice(0, 10)} category={item.category} text={item.text} title={item.name} />
                                                 <TextCard text={item.text} name={item.name} />
                                                 <Handles cardId={item._id} likes={item.likes.length} />
                                                 {item.comments != null ? item.comments.map((item, index) =>
@@ -132,6 +133,8 @@ class QuesCard extends Component {
 //Header of the card.
 function CardHead(props) {
     // 3Dots style
+
+    const [open, setOpen] = React.useState(false);
     const StyledMenu = withStyles({
         paper: {
             border: '1px solid #d3d4d5',
@@ -170,6 +173,11 @@ function CardHead(props) {
         setAnchorEl(null);
     };
 
+    const handleMove = () => {
+        setOpen(true)
+        handleClose()
+    }
+
     return (
 
         <div className="topQuesHead">
@@ -183,11 +191,7 @@ function CardHead(props) {
                     </div>
                     <div className="topQues2">
                         <p>Posted: {props.CDate.slice(8, 10)} {new Date(props.CDate.slice(0, 4), props.CDate.slice(6, 7), props.CDate.slice(8, 10)).toLocaleString('default', { month: 'short' })}</p>
-                        {
-                            (props.category.length > 1) ? <p>In: {props.category[1]}</p> : (
-                                props.category[0] != "" ? <p>In: {props.category[0]}</p> : <p></p>
-                            )
-                        }
+                        <p>In: {props.category[props.category.length - 1]}</p>
                     </div>
                 </div>
             </div>
@@ -217,11 +221,18 @@ function CardHead(props) {
                         <ListItemText primary="Report post" />
                     </StyledMenuItem>
                     {
-                        (localStorage.admin == "true") ?
-                            (<MoveToLib />) : (<div></div>)
+                        localStorage.admin == "true" ?
+                            <StyledMenuItem onClick={handleMove}>
+                                <ListItemIcon>
+                                    <MoveToInboxIcon style={{ color: '#707070', margin: '0px 10px' }} />
+                                </ListItemIcon>
+                                <ListItemText primary="Move" />
+                            </StyledMenuItem> : ''
                     }
                 </StyledMenu>
-
+                    {
+                        open == true ? <MoveToLib sub={props.category} content={props.text} title={props.title} open={open} /> : ''
+                    }
             </div>
         </div>
     )

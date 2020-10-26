@@ -1,17 +1,20 @@
 import React from 'react';
 import {
     Dialog, DialogContent, DialogActions, Button, DialogTitle,
-    Grid, InputLabel, NativeSelect, ListItemText, MenuItem, ListItemIcon
+    Grid, InputLabel, NativeSelect
 } from '@material-ui/core';
-import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
 import Swal from 'sweetalert2'
 
 
-function MoveToLib() {
-    const [open, setOpen] = React.useState(false);
+function MoveToLib(props) {
+    const [open, setOpen] = React.useState(props.open);
 
     const [state, setState] = React.useState({
-        category: ''
+        uploaded_by: localStorage.id,
+        category: '',
+        sub_category: props.sub[0],
+        content: props.content,
+        title: props.title
     });
 
     const handleChange = (event) => {
@@ -21,27 +24,44 @@ function MoveToLib() {
         })
     };
 
-    const handleOpen = () => {
-        setOpen(true)
-    }
-
     const handleClose = () => {
         setOpen(false)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        console.log(state)
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", localStorage.token);
+        var formdata = new FormData();
+        formdata.append("content", JSON.stringify(state));
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+        };
+
         handleClose();
+
+        fetch("https://recmonk.herokuapp.com/library", requestOptions)
+            .then(response => {
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Content Added!'
+                    })
+                    return response;
+                }
+            })
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
     }
 
     return (
         <div>
-            <MenuItem onClick={handleOpen}>
-                <ListItemIcon>
-                    <MoveToInboxIcon style={{ color: '#707070', margin: '0px 10px' }} />
-                </ListItemIcon>
-                <ListItemText primary="Move" />
-            </MenuItem>
             <Dialog open={open} onClose={handleClose} aria-labelledby="move-popup" fullWidth>
                 <DialogTitle>Move Post To Library
                     <Button style={{ float: 'right', marginRight: '-24px' }} onClick={handleClose}><span class="fa fa-times"></span></Button>
