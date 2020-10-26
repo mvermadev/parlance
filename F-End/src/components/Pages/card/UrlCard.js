@@ -7,6 +7,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Loader from '../../universal/Loader'
 import { Grid } from '@material-ui/core';
 import { ReactTinyLink } from 'react-tiny-link'
+import parse from 'html-react-parser';
 
 function UrlCard(props) {
 
@@ -51,7 +52,7 @@ function UrlCard(props) {
                             maxLine={2}
                             minLine={1}
                             url={props.data.content}
-                        /> : ''
+                        /> : parse(props.data.content)
                 }
                 {
                     props.data.pdf_link ? <ReactTinyLink
