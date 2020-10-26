@@ -25,6 +25,8 @@ import Swal from 'sweetalert2'
 import '../QnA.css'
 import Loader from '../../universal/Loader';
 import parse from 'html-react-parser';
+import Linkify from 'react-linkify';
+import { ReactTinyLink } from 'react-tiny-link'
 
 var globData = [];
 
@@ -230,14 +232,27 @@ function CardHead(props) {
                             </StyledMenuItem> : ''
                     }
                 </StyledMenu>
-                    {
-                        open == true ? <MoveToLib sub={props.category} content={props.text} title={props.title} open={open} /> : ''
-                    }
+                {
+                    open == true ? <MoveToLib sub={props.category} content={props.text} title={props.title} open={open} /> : ''
+                }
             </div>
         </div>
     )
 
 
+}
+
+
+function is_url(str) {
+    var pattern = new RegExp('^((ft|htt)ps?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?' + // port
+        '(\\/[-a-z\\d%@_.~+&:]*)*' + // path
+        '(\\?[;&a-z\\d%@_.,~+&:=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+
+    return pattern.test(str);
 }
 
 // text Card.
@@ -249,7 +264,14 @@ function TextCard(props) {
             </p>
             <p className="QuesText">
                 {
-                    parse(props.text)
+                    is_url(props.text) == true ? 
+                    <ReactTinyLink
+                        cardSize="small"
+                        showGraphic={true}
+                        maxLine={2}
+                        minLine={1}
+                        url={props.text}
+                    /> : <Linkify>{parse(props.text)}</Linkify>
                 }
             </p>
         </div>
